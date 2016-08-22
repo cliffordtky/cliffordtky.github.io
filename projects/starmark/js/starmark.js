@@ -18,7 +18,7 @@
 			starmark_font.rel = 'stylesheet';
 			starmark_font.id = 'starmark_style_font';
 			starmark_font.href = 'https://fonts.googleapis.com/css?family=Roboto';
-			jQuery('head').append(starmark_font);
+			jQuery('head').append(starmark_font);   			
 		}else{
 			jQuery('#starmark_style_font').remove();
 		}
@@ -31,10 +31,14 @@
 		}else{
 			jQuery('#starmark_style_fa').remove();
 		}		
-		if (jQuery('#starmark_inline_css').length == 0){	
-			starmark_run_css();
+		if (jQuery('#starmark_style_css').length == 0){	
+			starmark_style = document.createElement('link');
+			starmark_style.rel = 'stylesheet';
+			starmark_style.id = 'starmark_style_css';
+			starmark_style.href = 'https://cliffordtky.github.io/projects/starmark/css/starmark.css';
+			jQuery('head').append(starmark_style);	   			
 		}else{
-			jQuery('#starmark_inline_css').remove();
+			jQuery('#starmark_style_css').remove();
 		}
 		if (jQuery('#starmark_container').length == 0){	
 			jQuery('body').prepend('<div id="starmark_container"></div>');
@@ -52,90 +56,6 @@
 		jQuery('.starmark_search_option_selected a').html(jQuery('#starmark_search_type li.starmark_search_option a').first().html());
 	}
 
-	function starmark_run_css(){
-		jQuery("head").append(
-			"<style id='starmark_inline_css'>
-				#starmark_container{
-					font-family: 'Roboto', sans-serif !important;
-					z-index:999999 !important;
-					position:fixed;
-					top:0;
-					left:0;
-					right:0;
-					bottom:0px;
-					background:#e4e4e4;
-					color:#ffffff;
-					display:none;
-					overflow-y:scroll;
-					padding:0;
-					margin:0;
-				}
-				#starmark_top{
-					float:left;
-					width:100%;
-					background:#ffffff;
-					padding:0px;
-					margin:0px;
-				}
-				#starmark_search_label{
-					color:#777777;
-					display:block;
-					float:left;
-				}
-				#starmark_searchform{
-					box-sizing:border-box;
-					float:left;
-					padding:2px;
-					width:100%;
-					max-width:950px;					
-					border-right:1px solid #cccccc;
-				}
-				#starmark_searchform input{
-					float:left;
-					font-size:20px !important;
-					color:#333333;
-					width:75%;
-					padding:12px 8px;
-					border:none !important;
-					box-shadow:0px 0px transparent;
-					background:transparent !important;
-				}
-				#starmark_searchform input:focus{
-					outline: none;
-				}
-				#starmark_searchform button{
-					border:none;
-					background:transparent;
-					padding:6px;
-					box-shadow:0px 0px transparent;
-				}
-				#starmark_searchform i.fa{
-					margin-top:5px;
-					color:#cccccc;
-					font-size:20px;
-				}
-				#starmark_search_type{
-					list-style-type:none;
-					float:left;
-					padding:10px 15px;
-				}
-				.starmark_search_option{
-					display:none;
-					border-bottom:1px solid #cccccc;
-					color:#cccccc;
-				}
-				.starmark_search_option_selected{
-					display:block;
-					border:none;
-					color:#cccccc;
-				}
-				.starmark_search_option a, .starmark_search_option_selected a{
-					color:#cccccc !important;
-					text-decoration:none;
-				}
-			</style>"
-		);
-	}
 
 	function starmark_top(){
 		var html = '<div id="starmark_top">';
