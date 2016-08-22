@@ -1,5 +1,5 @@
 
-javascript: (function () { 
+(function () { 
 
 	if (!($ = window.jQuery)) {
 	   starmark_jquery = document.createElement('script');
