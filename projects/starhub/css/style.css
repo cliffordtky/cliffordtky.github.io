@@ -59,7 +59,9 @@ body{
 .sbox form input[type=text]:focus{
     outline: none;
 }
-
+.gsc-adBlock{
+  display:none;
+}
 .serps{
   width:100%;
   background:#ffffff;
