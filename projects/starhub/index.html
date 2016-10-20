@@ -29,8 +29,9 @@
           google.search.Csedr.addOverride('tgg_');
           customSearchControl.draw('cse', options);
           if (qs('q') != '' && qs('q') != 'undefined'){
-            customSearchControl.execute(qs('q'));  
+            //customSearchControl.execute(qs('q'));  
           }
+          customSearchControl.execute('downtown east'); 
           
       }, true);
     </script>
