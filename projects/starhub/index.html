@@ -56,23 +56,21 @@
 
             <table>
               <tr>
-              <td style="width:90px;text-align:center">
-                <div data-if="Vars.richSnippet && Vars.metatags.productImageUrl" data-attr="0" data-body="render('thumbnail',richSnippet,{url:unescapedUrl,target:target})"></div>
+              <td data-if="Vars.richSnippet && Vars.metatags.productImageUrl" style="width:90px;text-align:center">
+                <div data-attr="0" data-body="render('thumbnail',richSnippet,{url:unescapedUrl,target:target})"></div>
               </td>
               <td>
                 <div class="gs-title">
-                  <a data-if="unescapedUrl.indexOf('qoo10.sg') !== -1" class="gs-title" data-attr="{href:unescapedUrl,target:target}"
-                    data-body="html(Vars.richSnippet.product.name)"></a>
-                  <a data-elif="unescapedUrl.indexOf('qoo10.sg') === -1" class="gs-title" data-attr="{href:unescapedUrl,target:target}"
+                  <a class="gs-title" data-attr="{href:unescapedUrl,target:target}"
                     data-body="html(title)"></a>                  
                 </div>
 
                 <div class="specs-area">
                     <div data-if="Vars.metatags.productColor !== 'undefined' && Vars.metatags.productColor">
-                      Colours : <span data-body="Vars.metatags.productColor"></span>
+                      Colours : <span data-body="metatags.productColor"></span>
                     </div>
                     <div data-if="Vars.metatags.productCapacity !== 'undefined' && Vars.metatags.productCapacity">
-                      Capacity : <span d data-body="Vars.metatags.productCapacity"></span>
+                      Capacity : <span d data-body="metatags.productCapacity"></span>
                     </div>
                 </div>
                 <div class="gs-snippet" data-body="html(content)"></div>
