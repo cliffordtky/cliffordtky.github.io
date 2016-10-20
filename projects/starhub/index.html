@@ -24,13 +24,12 @@
           var customSearchControl = new google.search.CustomSearchControl('003942373914094212096:kzffr__84qg');
           customSearchControl.setResultSetSize(20);
           var options = new google.search.DrawOptions();
-          options.setAutoComplete(true);
           options.enableSearchResultsOnly();
-          google.search.Csedr.addOverride('tgg_');
+          google.search.Csedr.addOverride('shs_');
           customSearchControl.draw('cse', options);
-          if (qs('q') != '' && qs('q') != 'undefined'){
+          //if (qs('q') != '' && qs('q') != 'undefined'){
             //customSearchControl.execute(qs('q'));  
-          }
+          //}
           customSearchControl.execute('downtown east'); 
           
       }, true);
@@ -42,14 +41,14 @@
 
 
   <div style="display:none">
-    <div id="tgg_thumbnail">
+    <div id="shs_thumbnail">
       <div data-if="Vars.cseThumbnail" class="gs-image-box gs-web-image-box">
         <a class="gs-image" data-attr="{href:url, target:target}">
           <img class="gs-image" data-attr="{src:cseThumbnail.src, width:85, height: 85}"/>
         </a>
       </div>
     </div>
-    <div id="tgg_webResult">
+    <div id="shs_webResult">
       <div class="gs-webResult gs-result container"
         data-vars="{longUrl:function() {
           var i = unescapedUrl.indexOf(visibleUrl);
