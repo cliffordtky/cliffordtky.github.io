@@ -30,7 +30,7 @@
           customSearchControl.draw('cse', options);
           if (qs('q') != '' && qs('q') != 'undefined'){
             customSearchControl.execute(qs('q'));
-            $('title').('StarHub Search : '+qs('q'));
+            $('title').text('StarHub Search : '+qs('q'));
           }          
       }, true);
     </script>
