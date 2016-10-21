@@ -6,6 +6,7 @@
   <meta name="robots" content="NOINDEX, NOFOLLOW" />
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <title>StarHub Search</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://www.google.com/jsapi" type="text/javascript"></script>
     <script type="text/javascript">
 
@@ -28,10 +29,9 @@
           google.search.Csedr.addOverride('shs_');
           customSearchControl.draw('cse', options);
           if (qs('q') != '' && qs('q') != 'undefined'){
-            customSearchControl.execute(qs('q'));  
-          }
-          //customSearchControl.execute('downtown east'); 
-          
+            customSearchControl.execute(qs('q'));
+            $('title').('StarHub Search : '+qs('q'));
+          }          
       }, true);
     </script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
