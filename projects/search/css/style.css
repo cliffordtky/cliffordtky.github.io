@@ -1,0 +1,41 @@
+body{
+  background:#ffffff;
+  padding:0px;
+  margin:0px;
+}
+
+.gs-result{
+  display:block;
+  position:relative;
+  float:left;
+  width:100%;
+  box-sizing: border-box;
+  padding:0;
+}
+
+.gsc-webResult .gsc-result {
+    margin: 0 !important;
+    padding: 1em 0 !important;
+    border-bottom: 1px solid transparent !important;
+}
+
+.gs-res-right{
+  vertical-align:top;
+  float:left;
+}
+
+.gs-res-right{
+  width:100%;
+}
+
+.gs-title,.gs-snippet,.gs-visibleUrl{
+  word-wrap: break-word !important;
+}
+
+.gs-image-box{
+  float:left;
+  margin-right:10px;
+}
+.gs-web-image-box img.gs-image, .gs-promotion-image-box img.gs-promotion-image{
+  max-width:90px !important;
+}
