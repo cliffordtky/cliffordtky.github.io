@@ -45,7 +45,7 @@
           options.enableSearchResultsOnly();
           google.search.Csedr.addOverride('shs_');
           customSearchControl.draw('cse', options);
-          if (app.qs('q') != '' && app.qs('q') != 'undefined'){
+          if (app.qs('q') != '' && app.qs('q') != 'null'){
             customSearchControl.execute(app.qs('q'));
             $('title').html('Search : '+app.qs('q'));
             customSearchControl.setSearchCompleteCallback(
@@ -58,7 +58,7 @@
       }, true);
 
       $(document).ready(function(){
-        if (app.queried() == true){
+        if (app.qs('q') != '' && app.qs('q') != 'null'){
           $('.sbox').hide();
         }else{
           $('.sbox').show();
