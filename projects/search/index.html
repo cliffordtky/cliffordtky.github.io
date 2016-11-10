@@ -58,10 +58,10 @@
       }, true);
 
       $(document).ready(function(){
-        if (app.queried()){
-          $('.sbox').show();
-        }else{
+        if (app.queried() == true){
           $('.sbox').hide();
+        }else{
+          $('.sbox').show();
         }
       });
 
