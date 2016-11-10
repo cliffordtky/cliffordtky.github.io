@@ -27,10 +27,10 @@
           }
         },
         queried:function(){
-          if (this.qs('q') != '' && this.qs('q') != 'undefined'){
-            return true;
-          }else{
+          if (!this.qs('q')){
             return false;
+          }else{
+            return true;
           }
         }
       };
@@ -45,7 +45,7 @@
           options.enableSearchResultsOnly();
           google.search.Csedr.addOverride('shs_');
           customSearchControl.draw('cse', options);
-          if (app.qs('q') != '' && app.qs('q') != 'null'){
+          if (app.queried()){
             customSearchControl.execute(app.qs('q'));
             $('title').html('Search : '+app.qs('q'));
             customSearchControl.setSearchCompleteCallback(
@@ -58,7 +58,7 @@
       }, true);
 
       $(document).ready(function(){
-        if (app.qs('q') != '' && app.qs('q') != 'null'){
+        if (app.queried()){
           $('.sbox').hide();
         }else{
           $('.sbox').show();
