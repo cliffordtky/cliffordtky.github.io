@@ -5,11 +5,11 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="robots" content="NOINDEX, NOFOLLOW" />
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <title>StarHub Search</title>
+  <title>Search</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://www.google.com/jsapi" type="text/javascript"></script>
     <script type="text/javascript">
-      var shopping = {
+      var triggle = {
         qs:function(name, url){
           if (!url) url = window.location.href;
           name = name.replace(/[\[\]]/g, "\\$&");
@@ -25,10 +25,17 @@
           }else{
             return false;
           }
+        },
+        queried:function(){
+          if (this.qs('q') != '' && this.qs('q') != 'undefined'){
+            return true;
+          }else{
+            false;
+          }
         }
       };
 
-      var app = shopping;
+      var app = triggle;
 
       google.load('search', '1');
       google.setOnLoadCallback(function() {
@@ -49,11 +56,25 @@
             );
           }          
       }, true);
+
+      $(document).ready(function(){
+        if (app.queried()){
+          $('.sbox').hide();
+        }else{
+          $('.sbox').show();
+        }
+      });
+
     </script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>  
 
+ <div class="sbox">
+  <form class="form-control">
+    <input type="text" name="q"/>
+  </form>
+ </div>
 
 
   <div style="display:none">
