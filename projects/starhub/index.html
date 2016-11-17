@@ -66,10 +66,13 @@
           jQuery('.res_clearance').show();
           jQuery('.res_header').show();
           jQuery('.start').hide();
+          jQuery('#starhub_sform a').show();
+          jQuery('#starhub_sform .query').val(app.qs('q'));
         }else{
           jQuery('.res_clearance').hide();
           jQuery('.res_header').hide();
           jQuery('.start').show();
+          jQuery('#starhub_sform a').hide();
         }
 
         jQuery('.query').keyup(function(){
