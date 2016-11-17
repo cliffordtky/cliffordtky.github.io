@@ -1,84 +1,83 @@
 body{
-  background:#f7f7f7;
+  background:#ffffff;
   padding:0px;
   margin:0px;
 }
 
-.main{
+.gs-result{
+  display:block;
   position:relative;
-  margin:0;
+  float:left;
+  width:100%;
+  box-sizing: border-box;
   padding:0;
-  border-top:5px solid #73c20e;
 }
 
+.gsc-webResult .gsc-result {
+    margin: 0 !important;
+    padding: 1em 0 !important;
+    border-bottom: 1px solid transparent !important;
+}
+
+.gs-res-right{
+  vertical-align:top;
+  float:left;
+}
+
+.gs-res-right{
+  width:100%;
+}
+
+.gs-title,.gs-snippet,.gs-visibleUrl{
+  word-wrap: break-word !important;
+}
+
+.gs-image-box{
+  float:left;
+  margin-right:10px;
+}
 .gs-web-image-box img.gs-image, .gs-promotion-image-box img.gs-promotion-image{
   max-width:90px !important;
-  max-height:90px !important;
-}
-
-.gsc-results .gsc-cursor-box .gsc-cursor-page{
-  text-decoration:none !important;
 }
 
 .gsc-cursor-page{
-    background: #4ca72a;
-    width: 25px;
-    padding: 4px 0px;
-    display: inline-block !important;
-    vertical-align: middle;
-    color: #ffffff !important;
-    text-align: center;
-    text-decoration: none;
-}
-.gsc-cursor-current-page{
-  background:#ffffff !important;
-  color:#4ca72a !important;
+  display:inline-block;
+  padding:3px 8px;
+  background:#73c20e;
+  color:#ffffff !important;
+  text-decoration:none !important;
 }
 
-.gsc-results .gsc-cursor-box {
-    margin-bottom: 10px;
+.gsc-cursor-page:hover{
+  background:#777777;
+}
+
+.gsc-cursor-current-page{
+  background:#555555;
+}
+
+.gsc-adBlock{
+  display:none !important;
+}
+
+.gs-bidi-start-align {
+    text-align: center;
     margin-top: 30px;
 }
 
-.sbox{
-  width:100%;
-  max-width:450px;
-  border-radius:4px;
-  border:1px solid #aaaaaa;
-  background:#ffffff;
-  margin:auto;
-  margin-top:20%;
-  padding:2px;
+.gsc-results .gsc-cursor-box {
+    margin-bottom: 20px;
+    margin-top: 30px;
+    text-align:center !important;
 }
 
-.sbox form input[type=text]{
-  border:none;
-  padding:5px;
-  width:100%;
-}
-.sbox form input[type=text]:focus{
-    outline: none;
-}
-.gsc-adBlock{
-  display:none;
-}
-.serps{
-  width:100%;
-  background:#ffffff;
-  min-height:800px;
-}
-.result-item{
-  width:100%;
-  padding:0;
-  margin:0;
-  position:relative;
-  overflow:hidden;
-  margin-left:-14px;
-}
-.result-left{
-  float:left;
-  margin-right:15px;
-}
-.result-right{
-  float:left;
+.gs-mobile-store,
+.gs-broadband-store,
+.gs-tv-store,
+.gs-hubbing-store,
+.gs-vertical-promo,
+.gs-generic-promo,
+.gs-generic-store
+{
+  margin-top:8px;
 }
