@@ -199,7 +199,11 @@
             return i < 1 ? visibleUrl : unescapedUrl.substring(i);
           }}">
           
-
+        <div data-vars="{
+          linkMap:function() {
+            'mobile_brand': ['starhub.com/personal/store/mobile/browse/']
+          }}">
+        </div>
 
               <div class="gs-res-right">
                 <div data-if="Vars.richSnippet" data-attr="0" data-body="render('thumbnail',richSnippet,{url:unescapedUrl,target:target})"></div>
