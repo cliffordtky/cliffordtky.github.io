@@ -13,9 +13,11 @@ body{
   z-index:999;
   /*display:none;*/
   background:#73c20e;
+  min-height:50px;
 }
 #starhub_sform{
-  margin:7px auto;
+  margin:0 auto;
+  margin-top: 4px;
   max-width:400px;
   width:100%;
   background:#ffffff;
@@ -26,6 +28,7 @@ body{
   border:none;
   width:90%;
   float:left;
+  padding:10px;
 }
 #starhub_sform .query:focus{
   outline: none;
