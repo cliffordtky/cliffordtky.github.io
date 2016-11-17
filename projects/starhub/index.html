@@ -56,12 +56,37 @@
             $('title').html('StarHub Search : '+app.qs('q'));
             customSearchControl.setSearchCompleteCallback(
               this,
-              function() {
-                
-              }
+              function() {}
             );
           }          
       }, true);
+
+      jQuery(document).ready(function(){
+        if (app.queried()){
+          jQuery('.res_clearance').show();
+          jQuery('.res_header').show();
+          jQuery('.start').hide();
+        }else{
+          jQuery('.res_clearance').hide();
+          jQuery('.res_header').hide();
+          jQuery('.start').show();
+        }
+
+        jQuery('.query').keyup(function(){
+          if (jQuery(this).val() != ''){
+            jQuery('#starhub_sform a').show();
+          }else{
+            jQuery('#starhub_sform a').hide();
+          }
+        });
+
+        jQuery('#starhub_sform a').click(function(){
+          jQuery('.query').val('').focus();
+          jQuery(this).hide();
+        });      
+      });
+
+
     </script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -306,6 +331,7 @@
   </div>
 </div>
 
+<div class="res_clearance"></div>
 
 <div class="serps">  
   <div class="container">

@@ -11,9 +11,14 @@ body{
   right:0;
   width:100%;
   z-index:999;
-  /*display:none;*/
+  display:none;
   background:#73c20e;
   min-height:50px;
+}
+.res_clearance{
+  display:none;
+  clear:both;
+  height:50px;
 }
 #starhub_sform{
   float:left;
@@ -34,10 +39,15 @@ body{
   outline: none;
 }
 #starhub_sform a{
-  text-decoration:none;
-  color:#333333;
-  width:10%;
-  float:left;
+  display:none;
+  text-decoration: none;
+  color: #333333;
+  width: 10%;
+  float: left;
+  font-size: 20px;
+  margin-top: 6px;
+  display: block;
+  text-align: center;
 }
 
 .gs-result{
