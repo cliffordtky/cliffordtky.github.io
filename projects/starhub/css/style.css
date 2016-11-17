@@ -15,8 +15,8 @@ body{
 }
 .start_wrap{
   margin:0 auto;
-  margin-top: 20%;
-  max-width:400px;
+  margin-top: 13%;
+  max-width: 500px;
 }
 #starhub_start{
     float:left;
@@ -30,6 +30,8 @@ body{
   width:90%;
   float:left;
   padding:10px;
+  padding: 15px;
+  font-size: 20px;
 }
 #starhub_start .query:focus{
   outline: none;
@@ -40,9 +42,8 @@ body{
   color: #333333;
   width: 10%;
   float: left;
-  font-size: 20px;
-  margin-top: 6px;
-  display: block;
+  font-size: 25px;
+  margin-top: 10px;
   text-align: center;
 }
 .res_header{
