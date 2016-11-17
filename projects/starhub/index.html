@@ -201,26 +201,21 @@
             return i < 1 ? visibleUrl : unescapedUrl.substring(i);
           }}"> 
         <div data-vars="{
-          linkMap:function() {
+          gotLinkMap:function(lmid) {
             var lm = [];
             lm['mobile_brand'] = ['starhub.com/personal/store/mobile/browse/'];
-            return lm;
+
+            var has_link_map = false;
+            var linkcheck = lm[lmid];
+            for (var i=0; i<=linkcheck.length-1; i++){
+              if (unescapedUrl.indexOf(linkcheck[i]) > -1){
+                has_link_map = true;
+                break;
+              }  
+            }
+            return has_link_map;
           }}">
         </div>
-        <div data-vars="{
-            hasLinkMap:function(lmid){
-              var has_link_map = false;
-              var linkcheck = linkMap[lmid];
-              for (var i=0; i<=linkcheck.length-1; i++){
-                if (unescapedUrl.indexOf(linkcheck[i]) > -1){
-                  has_link_map = true;
-                  break;
-                }  
-              }
-              return has_link_map;
-          }}">
-        </div> 
-
 
               <div class="gs-res-right">
                 <div data-if="Vars.richSnippet" data-attr="0" data-body="render('thumbnail',richSnippet,{url:unescapedUrl,target:target})"></div>
