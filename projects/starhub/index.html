@@ -197,11 +197,13 @@
           longUrl:function() {
             var i = unescapedUrl.indexOf(visibleUrl);
             return i < 1 ? visibleUrl : unescapedUrl.substring(i);
-          };
-          linkMap:function() {
+          }}">
+          
+        <span data-vars="{linkMap:function() {
             'mobile_brand': ['starhub.com/personal/store/mobile/browse/']
-          };
-        }">
+          }}">
+
+        </span>
 
               <div class="gs-res-right">
                 <div data-if="Vars.richSnippet" data-attr="0" data-body="render('thumbnail',richSnippet,{url:unescapedUrl,target:target})"></div>
