@@ -44,7 +44,7 @@ body{
   float: left;
   font-size: 25px;
   margin-top: 10px;
-  text-align: center;
+  padding-left: 8px;
 }
 .res_header{
   position:fixed;
@@ -55,16 +55,16 @@ body{
   z-index:999;
   display:none;
   background:#73c20e;
-  min-height:50px;
+  min-height:60px;
 }
 .res_clearance{
   display:none;
   clear:both;
-  height:50px;
+  height:60px;
 }
 #starhub_sform{
   float:left;
-  margin-top: 4px;
+  margin-top: 9px;
   max-width:400px;
   width:100%;
   background:#ffffff;
@@ -89,7 +89,7 @@ body{
   font-size: 20px;
   margin-top: 6px;
   display: block;
-  text-align: center;
+  padding-left: 8px;
 }
 
 .gs-result{
@@ -145,7 +145,7 @@ body{
 }
 
 .gsc-adBlock{
-  /*display:none !important;*/
+  display:none !important;
 }
 
 .gs-bidi-start-align {
