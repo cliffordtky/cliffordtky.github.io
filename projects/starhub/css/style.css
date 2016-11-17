@@ -10,18 +10,22 @@ body{
   left:0;
   right:0;
   width:100%;
+  z-index:999;
   /*display:none;*/
   background:#73c20e;
 }
 #starhub_sform{
-  margin:0 auto;
+  margin:7px auto;
   max-width:400px;
   width:100%;
   background:#ffffff;
   padding:0px;
+  box-sizing: border-box;
 }
 #starhub_sform .query{
   border:none;
+  width:90%;
+  float:left;
 }
 #starhub_sform .query:focus{
   outline: none;
@@ -29,6 +33,8 @@ body{
 #starhub_sform a{
   text-decoration:none;
   color:#333333;
+  width:10%;
+  float:left;
 }
 
 .gs-result{
