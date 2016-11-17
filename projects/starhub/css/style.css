@@ -16,7 +16,7 @@ body{
   min-height:50px;
 }
 #starhub_sform{
-  margin:0 auto;
+  float:left;
   margin-top: 4px;
   max-width:400px;
   width:100%;
