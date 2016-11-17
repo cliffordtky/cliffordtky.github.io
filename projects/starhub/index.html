@@ -194,13 +194,7 @@
     <div id="shs_webResult">
 
       <!-- Custom JS functions -->
-      <div class="gs-webResult gs-result"
-        data-vars="{
-          longUrl:function() {
-            var i = unescapedUrl.indexOf(visibleUrl);
-            return i < 1 ? visibleUrl : unescapedUrl.substring(i);
-          };}"> 
-        <div data-vars="{
+      <div data-vars="{
           hasLinkMap:function(lmid) {
             var lm = [];
             lm['mobile_brand'] = ['starhub.com/personal/store/mobile/browse/'];
@@ -213,8 +207,14 @@
               }  
             }
             return has_link_map;
-          };}">
-        </div>
+          }}">
+      </div>      
+      <div class="gs-webResult gs-result"
+        data-vars="{
+          longUrl:function() {
+            var i = unescapedUrl.indexOf(visibleUrl);
+            return i < 1 ? visibleUrl : unescapedUrl.substring(i);
+          }}"> 
 
               <div class="gs-res-right">
                 <div data-if="Vars.richSnippet" data-attr="0" data-body="render('thumbnail',richSnippet,{url:unescapedUrl,target:target})"></div>
