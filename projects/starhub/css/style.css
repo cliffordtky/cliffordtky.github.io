@@ -3,6 +3,11 @@ body{
   padding:0px;
   margin:0px;
 }
+.backhome{
+  text-decoration:none;
+  color:#ffffff;
+  font-size:17px;
+}
 .start{
   position:fixed;
   top:0;
