@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="robots" content="NOINDEX, NOFOLLOW" />
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <title>StarHub Search</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/0.11.1/typeahead.jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/0.11.1/bloodhound.min.js"></script>    
     <script src="https://www.google.com/jsapi" type="text/javascript"></script>
-    <script type="text/javascript">
 
-      function qs(name, url) {
+    <script type="text/javascript">
+      var starhub = {
+        qs:function(name, url){
           if (!url) url = window.location.href;
           name = name.replace(/[\[\]]/g, "\\$&");
           var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
@@ -18,7 +21,31 @@
           if (!results) return null;
           if (!results[2]) return '';
           return decodeURIComponent(results[2].replace(/\+/g, " "));
-      }
+        },
+        contains:function(shortstr,longstr){
+          if(longstr.indexOf(shortstr) > -1){
+            return true;
+          }else{
+            return false;
+          }
+        },
+        greplacespace:function(str){
+          return str.replace(' ', /-/g);
+        },
+        queried:function(){
+          if (!this.qs('q')){
+            return false;
+          }else{
+            return true;
+          }
+        }        
+      };
+
+      var starhub_link_map = {
+
+      };
+
+      var app = starhub;
 
       google.load('search', '1');
       google.setOnLoadCallback(function() {
@@ -28,10 +55,15 @@
           options.enableSearchResultsOnly();
           google.search.Csedr.addOverride('shs_');
           customSearchControl.draw('cse', options);
-          if (qs('q') != '' && qs('q') != 'undefined'){
-            customSearchControl.execute(qs('q'));
-            $('title').html('StarHub Search : '+qs('q'));
-            console.log('test');
+          if (app.queried()){
+            customSearchControl.execute(app.qs('q'));
+            $('title').html('StarHub Search : '+app.qs('q'));
+            customSearchControl.setSearchCompleteCallback(
+              this,
+              function() {
+                
+              }
+            );
           }          
       }, true);
     </script>
@@ -42,51 +74,193 @@
 
 
   <div style="display:none">
+
     <div id="shs_thumbnail">
-      <div data-if="Vars.metatags.productImageUrl" class="gs-image-box gs-web-image-box" style="width:90px;text-align:center">
+      <div data-if="Vars.metatags && Vars.metatags.productImageUrl" class="gs-image-box gs-web-image-box" style="width:90px;text-align:center">
         <a class="gs-image" data-attr="{href:url, target:target}">
           <img class="gs-image" data-attr="{src:metatags.productImageUrl, width:85, height: 85}"/>
         </a>
       </div>
     </div>
+    <div id="shs_mobile_brand">
+      <a class="gs-store-browse" data-if="Vars.metatags.brand" data-attr="{href:'http://www.starhub.com/personal/store/mobile/browse/'+metatags.brand.toLowerCase().replace(' ', /-/g)+'.html',title:'Browse '+metatags.brand+' products'}">
+      Browse <span data-body="metatags.brand"></span>
+      </a>
+      <span data-if="Vars.metatags.brand">&nbsp;&middot;&nbsp;</span>
+      <a class="gs-store-browse" data-if="Vars.metatags.brand" data-attr="{href:metatags.productUrl,title:'Buy '+metatags.productTitle}">
+      Buy <span data-body="metatags.productTitle"></span>
+      </a>
+    </div> 
+    <div id="shs_mobile_personal">
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/store/mobile.html',title:'Shop for Mobile phones and plans'}">
+      Shop for Mobile
+      </a>    
+    </div>     
+    <div id="shs_broadband">
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/store/broadband.html',title:'Shop for Broadband plans'}">
+      Shop for Broadband
+      </a>
+      &nbsp;&middot;&nbsp;
+      <a class="gs-store-browse" data-if="Vars.metatags.ogUrl" data-attr="{href:metatags.ogUrl,title:'Subscribe '+metatags.ogTitle}">
+      Subscribe Now
+      </a>      
+    </div>         
+    <div id="shs_broadband_personal">
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/store/broadband.html',title:'Shop for Broadband plans'}">
+      Shop for Broadband
+      </a>    
+    </div> 
+    <div id="shs_tv">
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/store/tv.html',title:'Shop for TV'}">
+      Shop for TV
+      </a>     
+    </div>         
+    <div id="shs_tv_personal">
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/store/tv.html',title:'Shop for TV'}">
+      Shop for TV
+      </a>    
+    </div>       
+    <div id="shs_hubbing">
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/store/homehub.html',title:'Shop for Hubbing bundles'}">
+      Shop for Bundles
+      </a>     
+    </div>         
+    <div id="shs_hubbing_personal">
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/store/homehub.html',title:'Shop for Hubbing bundles'}">
+      Shop for Bundles
+      </a>    
+    </div>    
+    <div id="shs_store_generic">
+      Shop :&nbsp;&nbsp;
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/store/mobile.html',title:'Shop for Mobile phones and plans'}">
+      Mobile
+      </a>
+      &nbsp;&middot;&nbsp; 
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/store/broadband.html',title:'Shop for Broadband plans'}">
+      Broadband
+      </a>    
+      &nbsp;&middot;&nbsp; 
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/store/tv.html',title:'Shop for TV'}">
+      TV
+      </a>
+      &nbsp;&middot;&nbsp; 
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/store/homehub.html',title:'Shop for Hubbing bundles'}">
+      Bundles
+      </a>              
+    </div> 
+
+    <div id="shs_promo_mobile">
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/promotions/mobile.html',title:'See all Mobile promotions'}">
+      See Mobile Promotions
+      </a> 
+    </div> 
+    <div id="shs_promo_broadband">
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/promotions/broadband.html',title:'See all Broadband promotions'}">
+      See Broadband Promotions
+      </a> 
+    </div> 
+    <div id="shs_promo_tv">
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/promotions/tv.html',title:'See all TV promotions'}">
+      See TV Promotions
+      </a> 
+    </div> 
+    <div id="shs_promo_hubbing">
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/promotions/hubbing.html',title:'See all bundled promotions'}">
+      See Bundle Promotions
+      </a> 
+    </div>         
+
+    <div id="shs_promo_generic">
+      Promotions :&nbsp;&nbsp;
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/promotions/mobile.html',title:'Mobile phones and plans promotions'}">
+      Mobile
+      </a>
+      &nbsp;&middot;&nbsp; 
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/promotions/broadband.html',title:'Broadband plans promotions'}">
+      Broadband
+      </a>    
+      &nbsp;&middot;&nbsp; 
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/promotions/tv.html',title:'TV promotions'}">
+      TV
+      </a>
+      &nbsp;&middot;&nbsp; 
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/promotions/hubbing.html',title:'Hubbing bundle promotions'}">
+      Hubbing Bundles
+      </a>              
+    </div>       
+
     <div id="shs_webResult">
-      <div class="gs-webResult gs-result container"
+      <div class="gs-webResult gs-result"
         data-vars="{longUrl:function() {
           var i = unescapedUrl.indexOf(visibleUrl);
           return i < 1 ? visibleUrl : unescapedUrl.substring(i);}}">
 
-            <table>
-              <tr>
-              <td style="vertical-align:top;">
-                <div data-attr="0" data-body="render('thumbnail',richSnippet,{url:unescapedUrl,target:target})"></div>
-              </td>
-              <td>
+              <div class="gs-res-right">
+                <div data-if="Vars.richSnippet" data-attr="0" data-body="render('thumbnail',richSnippet,{url:unescapedUrl,target:target})"></div>
                 <div class="gs-title">
                   <a class="gs-title" data-attr="{href:unescapedUrl,target:target}"
                     data-body="html(title)"></a>                  
                 </div>
-                <!--
-                <div class="specs-area">
-                    <div data-if="Vars.metatags.productColor !== 'undefined' && Vars.metatags.productColor">
-                      Colours : <span data-body="metatags.productColor"></span>
-                    </div>
-                    <div data-if="Vars.metatags.productCapacity !== 'undefined' && Vars.metatags.productCapacity">
-                      Capacity : <span d data-body="metatags.productCapacity"></span>
-                    </div>
-                </div>
-                -->
                 <div class="gs-snippet" data-body="html(content)"></div>
                 <div class="gs-visibleUrl gs-visibleUrl-short" data-body="longUrl()"></div>              
                 <div data-if="Vars.richSnippet && Vars.richSnippet.action" class="gs-actions"
                   data-body="render('action',richSnippet,{url:unescapedUrl,target:target})">
-                </div>  
-              </td>
-            </tr>
-          </table>      
+                </div>
+                <div data-if="Vars.richSnippet && unescapedUrl.indexOf('starhub.com/personal/store/mobile/browse/') > -1" class="gs-mobile-store" data-body="render('mobile_brand',richSnippet)">
+                </div>
+                <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/mobile/') > -1" class="gs-mobile-store" data-body="render('mobile_personal',richSnippet)">
+                </div>                 
+                <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/store/broadband/browse/products/') > -1" class="gs-broadband-store" data-body="render('broadband',richSnippet)">
+                </div>       
+                <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/broadband/') > -1" class="gs-broadband-store" data-body="render('broadband_personal',richSnippet)">
+                </div>    
+                <div class="gs-tv-store">
+                <span data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/store/tv/browse/products/') > -1" data-body="render('tv',richSnippet)"></span>
+                <span data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/store/tv/browse/products/') > -1">
+                &nbsp;&middot;&nbsp;
+                </span>
+                  <a data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/store/tv/browse/products/') > -1" class="gs-store-browse" data-attr="{href:unescapedUrl,target:target}">
+                  Subscribe Now
+                  </a>                    
+                </div> 
+                <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/tv/') > -1" class="gs-tv-store" data-body="render('tv_personal',richSnippet)">
+                </div> 
+                <div class="gs-hubbing-store">
+                <span data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/store/homehub/browse/products/') > -1" data-body="render('hubbing',richSnippet)"></span>
+                <span data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/store/homehub/browse/products/') > -1">
+                &nbsp;&middot;&nbsp;
+                </span>
+                  <a data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/store/homehub/browse/products/') > -1" class="gs-store-browse" data-attr="{href:unescapedUrl,target:target}">
+                  Subscribe Now
+                  </a>                    
+                </div> 
+                <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/hubbing/') > -1" class="gs-hugging-store" data-body="render('hubbing_personal',richSnippet)">
+                </div> 
+
+                <div data-if="Vars.richSnippet && (unescapedUrl.indexOf('www.starhub.com/personal/store.html') > -1 || unescapedUrl.indexOf('www.starhub.com/personal/store/mobile.html') > -1 || unescapedUrl.indexOf('www.starhub.com/personal/store/broadband.html') > -1 || unescapedUrl.indexOf('www.starhub.com/personal/store/tv.html') > -1 || unescapedUrl.indexOf('www.starhub.com/personal/store/homehub.html') > -1)" class="gs-generic-store" data-body="render('store_generic',richSnippet)">
+                </div>
+
+                <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/promotions/mobile/') > -1" class="gs-vertical-promo" data-body="render('promo_mobile',richSnippet)">
+                </div> 
+                <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/promotions/broadband/') > -1" class="gs-vertical-promo" data-body="render('promo_broadband',richSnippet)">
+                </div> 
+                <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/promotions/tv/') > -1" class="gs-vertical-promo" data-body="render('promo_tv',richSnippet)">
+                </div>      
+                <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/promotions/hubbing/') > -1" class="gs-vertical-promo" data-body="render('promo_hubbing',richSnippet)">
+                </div>                            
+
+                <div data-if="Vars.richSnippet && (unescapedUrl.indexOf('www.starhub.com/personal/promotions.html') > -1 || unescapedUrl.indexOf('www.starhub.com/personal/promotions/mobile.html') > -1 || unescapedUrl.indexOf('www.starhub.com/personal/promotions/broadband.html') > -1 || unescapedUrl.indexOf('www.starhub.com/personal/promotions/tv.html') > -1 || unescapedUrl.indexOf('www.starhub.com/personal/promotions/hubbing.html') > -1)" class="gs-generic-promo" data-body="render('promo_generic',richSnippet)">
+                </div> 
+
+
+              </div>
+     
           <!--<p id="stringy" data-body="JSON.stringify(richSnippet)"></p>-->
       </div>
   </div>
 </div>
+
+
 
 <div class="serps">  
   <div class="container">
