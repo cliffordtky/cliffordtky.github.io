@@ -90,11 +90,20 @@
       Buy <span data-body="metatags.productTitle"></span>
       </a>
     </div> 
-    <div id="shs_mobile_personal">
+    <div id="shs_mobile_personal_prepaid">
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/mobile/prepaid-plans/prepaid-sim-cards/prepaid-sim-comparison.html',title:'Compare SIM cards'}">
+      Compare SIM cards
+      </a>    
+      &nbsp;&middot;&nbsp;
+      <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/mobile/prepaid-plans/top-up-methods.html',title:'View all top-up methods'}">
+      Top-up Methods
+      </a>          
+    </div>  
+    <div id="shs_mobile_personal_postpaid_4g">
       <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/store/mobile.html',title:'Shop for Mobile phones and plans'}">
       Shop for Mobile
       </a>    
-    </div>     
+    </div>        
     <div id="shs_broadband">
       <a class="gs-store-browse" data-attr="{href:'http://www.starhub.com/personal/store/broadband.html',title:'Shop for Broadband plans'}">
       Shop for Broadband
@@ -193,22 +202,7 @@
 
     <div id="shs_webResult">
 
-      <!-- Custom JS functions -->
-      <div data-vars="{
-          hasLinkMap:function(lmid) {
-            var lm = [];
-            lm['mobile_brand'] = ['starhub.com/personal/store/mobile/browse/'];
-            var has_link_map = false;
-            var linkcheck = lm[lmid];
-            for (var i=0; i<=linkcheck.length-1; i++){
-              if (unescapedUrl.indexOf(linkcheck[i]) > -1){
-                has_link_map = true;
-                break;
-              }  
-            }
-            return has_link_map;
-          }}">
-      </div>      
+      <!-- Custom JS functions -->    
       <div class="gs-webResult gs-result"
         data-vars="{
           longUrl:function() {
@@ -227,14 +221,24 @@
                 <div data-if="Vars.richSnippet && Vars.richSnippet.action" class="gs-actions"
                   data-body="render('action',richSnippet,{url:unescapedUrl,target:target})">
                 </div>
+
+                <!-- Display linkmaps -- >
+
                 <div data-if="Vars.richSnippet && unescapedUrl.indexOf('starhub.com/personal/store/mobile/browse/') > -1" class="gs-mobile-store" data-body="render('mobile_brand',richSnippet)">
                 </div>
-                <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/mobile/') > -1" class="gs-mobile-store" data-body="render('mobile_personal',richSnippet)">
+
+                <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/mobile/prepaid-plans') > -1" class="gs-mobile-store" data-body="render('mobile_personal_prepaid',richSnippet)">
+                </div> 
+
+                <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/mobile/postpaid-plans/4g-plans') > -1" class="gs-mobile-store" data-body="render('mobile_personal_postpaid_4g',richSnippet)">
                 </div>                 
+
                 <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/store/broadband/browse/products/') > -1" class="gs-broadband-store" data-body="render('broadband',richSnippet)">
                 </div>       
+
                 <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/broadband/') > -1" class="gs-broadband-store" data-body="render('broadband_personal',richSnippet)">
                 </div>    
+
                 <div class="gs-tv-store">
                 <span data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/store/tv/browse/products/') > -1" data-body="render('tv',richSnippet)"></span>
                 <span data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/store/tv/browse/products/') > -1">
@@ -244,8 +248,10 @@
                   Subscribe Now
                   </a>                    
                 </div> 
+
                 <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/tv/') > -1" class="gs-tv-store" data-body="render('tv_personal',richSnippet)">
                 </div> 
+
                 <div class="gs-hubbing-store">
                 <span data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/store/homehub/browse/products/') > -1" data-body="render('hubbing',richSnippet)"></span>
                 <span data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/store/homehub/browse/products/') > -1">
@@ -255,6 +261,7 @@
                   Subscribe Now
                   </a>                    
                 </div> 
+
                 <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/hubbing/') > -1" class="gs-hugging-store" data-body="render('hubbing_personal',richSnippet)">
                 </div> 
 
