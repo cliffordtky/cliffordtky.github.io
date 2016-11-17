@@ -3,7 +3,48 @@ body{
   padding:0px;
   margin:0px;
 }
-
+.start{
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#eeeeee;
+  z-index:9999;
+  border-top:5px solid #73c20e;
+}
+.start_wrap{
+  margin:0 auto;
+  margin-top: 20%;
+  max-width:400px;
+}
+#starhub_start{
+    float:left;
+    width:100%;
+    background:#ffffff;
+    padding:0px;
+    box-sizing: border-box;
+}
+#starhub_start .query{
+  border:none;
+  width:90%;
+  float:left;
+  padding:10px;
+}
+#starhub_start .query:focus{
+  outline: none;
+}
+#starhub_start a{
+  display:none;
+  text-decoration: none;
+  color: #333333;
+  width: 10%;
+  float: left;
+  font-size: 20px;
+  margin-top: 6px;
+  display: block;
+  text-align: center;
+}
 .res_header{
   position:fixed;
   top:0;
