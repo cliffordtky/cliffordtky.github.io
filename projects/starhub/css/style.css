@@ -3,6 +3,9 @@ body{
   padding:0px;
   margin:0px;
 }
+.twitter-typeahead{
+  width:88%;
+}
 .backhome, .backhome:hover{
   text-decoration: none;
   color: #ffffff;
