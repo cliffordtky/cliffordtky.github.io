@@ -53,10 +53,21 @@ body{
   margin-top: 10px;
   padding-left: 8px;
 }
+.start_wrap p{
+  margin-top: 50px;
+  font-size: 15px;
+}
 .start_wrap ol li{
-  line-height:20px;
-  font-size:14px;
+  line-height: 24px;
+  font-size: 15px;
   color:#777777;
+}
+.start_wrap ol li a{
+  color:#777777; 
+}
+.start_wrap ol li a:hover{
+  color:#999999; 
+  text-decoration:underline;
 }
 .res_header{
   position:fixed;
