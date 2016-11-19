@@ -5,6 +5,7 @@ body{
 }
 .twitter-typeahead{
   width:88%;
+  float:left;
 }
 .backhome, .backhome:hover{
   text-decoration: none;
