@@ -12,9 +12,13 @@ body{
   z-index: 999;
   background:#ffffff;
 }
+.tt-cursor{
+  background:#fefefe;
+}
 .tt-suggestion{
   padding:5px 10px;
   color:#888888;
+  border:1px solid #eeeeee;
 }
 .backhome, .backhome:hover{
   text-decoration: none;
