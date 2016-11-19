@@ -125,7 +125,8 @@
 
         $('.query').keypress(function (e) {
           if (e.which == 13) {
-            $('#starhub_sform').submit();
+            //$('#starhub_sform').submit();
+            console.log($('.query').val());
             return false;
           }
         });
