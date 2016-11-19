@@ -126,9 +126,9 @@
           source: substringMatcher(keys)
         });
 
-        $('.query').keypress(function (e) {
+        $('.tt-input').keypress(function (e) {
           if (e.which == 13) {
-            window.location.href = 'https://cliffordtky.github.io/projects/starhub/?q='+$('.tt-input').val();
+            window.location.href = 'https://cliffordtky.github.io/projects/starhub/?q='+$(this).val();
             //console.log($('.tt-input').val());
             return false;
           }
