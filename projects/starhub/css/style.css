@@ -10,16 +10,16 @@ body{
 .tt-menu{
   width:100%;
   z-index: 999;
-  background:#eeeeee;
+  background:#ffffff;
+  border:1px solid #e1e1e1;
 }
 .tt-cursor{
-  background:#ffffff;
+  background:#eeeeee;
 }
 .tt-suggestion{
   padding:10px;
   font-size:16px;
   color:#333333;
-  border-top:1px solid #ffffff;
 }
 .backhome, .backhome:hover{
   text-decoration: none;
