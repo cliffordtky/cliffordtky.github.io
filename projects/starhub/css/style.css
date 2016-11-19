@@ -53,6 +53,11 @@ body{
   margin-top: 10px;
   padding-left: 8px;
 }
+.start_wrap ol li{
+  line-height:20px;
+  font-size:14px;
+  color:#777777;
+}
 .res_header{
   position:fixed;
   top:0;
