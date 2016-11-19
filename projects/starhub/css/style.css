@@ -7,6 +7,11 @@ body{
   width:88%;
   float:left;
 }
+.tt-menu{
+  width:100%;
+  z-index: 999;
+  background:#ffffff;
+}
 .backhome, .backhome:hover{
   text-decoration: none;
   color: #ffffff;
