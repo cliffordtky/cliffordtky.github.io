@@ -13,12 +13,13 @@ body{
   background:#ffffff;
 }
 .tt-cursor{
-  background:#fefefe;
+  background:#eeeeee;
 }
 .tt-suggestion{
-  padding:5px 10px;
+  padding:10px;
+  font-size:20px;
   color:#888888;
-  border:1px solid #eeeeee;
+  border-top:1px solid #efefef;
 }
 .backhome, .backhome:hover{
   text-decoration: none;
