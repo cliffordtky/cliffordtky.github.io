@@ -120,6 +120,7 @@ body{
   width:88%;
   float:left;
   padding:10px;
+  font-size:16px;
 }
 #starhub_sform .query:focus{
   outline: none;
