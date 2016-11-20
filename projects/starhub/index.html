@@ -136,9 +136,10 @@
         var keys = new Bloodhound({
           datumTokenizer: Bloodhound.tokenizers.whitespace,
           queryTokenizer: Bloodhound.tokenizers.whitespace,
-          prefetch: 'data/keywords.json'
+          prefetch: 'https://cliffordtky.github.io/projects/starhub/data/keywords.json'
         });
         $('.query').typeahead({
+          hint: true,
           highlight: true,
           minLength: 1
         },
