@@ -105,7 +105,6 @@
           };
         };
 
-/*
         var keys = [
           '4G mobile plans','4G plans','Apple Watch 2','Bundle promotions','Business internet bundle',
           'Business mobile plans','Buy samsung phones','Card for tourist','Card for traveller','Cloud services',
@@ -115,12 +114,11 @@
           'iPhone SE','iPhone 7','iPhone 7 Plus','Mobile broadband','Mobile data plan',
           'Mobile TV','My StarHub App','NSF mobile plans','Office telephone','Personal mobile plan',
           'Prepaid card tourist','Recontract iPhone','Recontract LG','Recontract new phone','Recontract promotions',
-          'Recontract Samsung','Security solutions','StarHub Go streaming','Starhub Apps','Starhub SPH Apps',
+          'Recontract Samsung','Security solutions','SIM Only','StarHub Go streaming','Starhub Apps','Starhub SPH Apps',
           'SurfHub','TV bundle for home','TV promotions','TV streaming','Youth plans',
           'Youth programmes'
         ];
         $('.query').typeahead({
-          hint: true,
           highlight: true,
           minLength: 1
         },
@@ -131,8 +129,7 @@
         .on('typeahead:selected',function(e,data){
           jQuery('#starhub_sform a,#starhub_start a').show();
         });
-*/
-
+/*
         var keys = new Bloodhound({
           datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.kw)},
           queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -151,7 +148,7 @@
         .on('typeahead:selected',function(e,data){
           jQuery('#starhub_sform a,#starhub_start a').show();
         });        
-
+*/
 
         $('.tt-input').keypress(function (e) {
           if (e.which == 13) {
