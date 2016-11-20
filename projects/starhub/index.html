@@ -137,11 +137,8 @@
           datumTokenizer: Bloodhound.tokenizers.whitespace,
           queryTokenizer: Bloodhound.tokenizers.whitespace,
           limit: 5,
-          prefetch: 'https://cliffordtky.github.io/projects/starhub/data/keywords.json'
+          remote: 'https://cliffordtky.github.io/projects/starhub/data/keywords.json'
         });
-        keys.clearPrefetchCache();
-        keys.initialize();
-        
         $('.query').typeahead({
           hint: true,
           highlight: true,
