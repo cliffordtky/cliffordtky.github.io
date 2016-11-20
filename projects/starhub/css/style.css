@@ -205,6 +205,12 @@ body{
     text-align:center !important;
 }
 
+.gsc-control-cse .gs-spelling, .gsc-control-cse .gs-result .gs-title, .gsc-control-cse .gs-result .gs-title *{
+  color:#333333 !important;
+}
+.gs-snippet{
+  color:#444444 !important;
+}
 .gs-mobile-store,
 .gs-broadband-store,
 .gs-tv-store,
