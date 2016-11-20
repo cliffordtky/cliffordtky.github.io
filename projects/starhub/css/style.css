@@ -211,6 +211,19 @@ body{
 .gs-snippet{
   color:#444444 !important;
 }
+
+.gs-result a.gs-visibleUrl, .gs-result .gs-visibleUrl{
+  color:#73c20e !important; 
+}
+
+.gs-browse-store{
+  color:#3f51b5 !important;
+}
+
+.gs-browse-store:hover{
+ text-decoration:underline;
+}
+
 .gs-mobile-store,
 .gs-broadband-store,
 .gs-tv-store,
