@@ -8,7 +8,7 @@ body{
   float:left;
 }
 .tt-menu{
-  width:100%;
+  width:114%;
   z-index: 999;
   background:#ffffff;
   border:1px solid #e1e1e1;
@@ -37,6 +37,7 @@ body{
   background:#eeeeee;
   z-index:9999;
   border-top:5px solid #73c20e;
+  overflow-y:scroll;
 }
 .start_wrap{
   margin:0 auto;
