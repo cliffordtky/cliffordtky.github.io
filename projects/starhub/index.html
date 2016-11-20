@@ -127,6 +127,9 @@
         {
           name: 'keys',
           source: substringMatcher(keys)
+        })
+        .on('typeahead:selected',function(e,data){
+          jQuery('#starhub_sform a,#starhub_start a').show();
         });
 
         $('.tt-input').keypress(function (e) {
