@@ -105,6 +105,7 @@
           };
         };
 
+/*
         var keys = [
           '4G mobile plans','4G plans','Apple Watch 2','Bundle promotions','Business internet bundle',
           'Business mobile plans','Buy samsung phones','Card for tourist','Card for traveller','Cloud services',
@@ -118,6 +119,7 @@
           'SurfHub','TV bundle for home','TV promotions','TV streaming','Youth plans',
           'Youth programmes'
         ];
+      
         $('.query').typeahead({
           highlight: true,
           minLength: 1
@@ -129,7 +131,8 @@
         .on('typeahead:selected',function(e,data){
           jQuery('#starhub_sform a,#starhub_start a').show();
         });
-/*
+*/  
+
         var keys = new Bloodhound({
           datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.kw)},
           queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -143,12 +146,13 @@
         },
         {
           name: 'keys',
+          displayKey: 'kw',
           source: substringMatcher(keys)
         })
         .on('typeahead:selected',function(e,data){
           jQuery('#starhub_sform a,#starhub_start a').show();
         });        
-*/
+
 
         $('.tt-input').keypress(function (e) {
           if (e.which == 13) {
