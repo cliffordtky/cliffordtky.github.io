@@ -135,15 +135,18 @@
 */  
 
         var keys = new Bloodhound({
-          datumTokenizer: function(d) { Bloodhound.tokenizers.whitespace(d.kw); },
+          //datumTokenizer: function(d) { Bloodhound.tokenizers.whitespace(d.kw); },
+          datumTokenizer: Bloodhound.tokenizers.obj.whitespace('kw'),
           queryTokenizer: Bloodhound.tokenizers.whitespace,
+          limit: 5,
           prefetch:'https://cliffordtky.github.io/projects/starhub/data/keywords.json'
         });
         keys.initialize();
 
         $('.query').typeahead({
           hint: true,
-          highlight: true
+          highlight: true,
+          minLength: 1
         },
         {
           name: 'keys',
