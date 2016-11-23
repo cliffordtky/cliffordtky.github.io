@@ -27,6 +27,7 @@ body{
   font-size: 25px;
   display: block;
   margin-top: 14px;
+  margin-left: -5px;
 }
 .start{
   position:fixed;
