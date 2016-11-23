@@ -135,7 +135,6 @@
 */  
 
         var keys = new Bloodhound({
-          //datumTokenizer: function(d) { Bloodhound.tokenizers.whitespace(d.kw); },
           datumTokenizer: Bloodhound.tokenizers.obj.whitespace('kw'),
           queryTokenizer: Bloodhound.tokenizers.whitespace,
           limit: 5,
