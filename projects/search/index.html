@@ -59,12 +59,15 @@
 
       $(document).ready(function(){
         if (app.queried()){
-          $('.sbox').hide();
+          $('.sbox .right a').show();
         }else{
-          $('.sbox').show();
+          $('.sbox .right a').hide();
         }
-        console.log(app.queried());
-        console.log(app.qs('q'));
+      });
+
+      $('.sbox .right a').click(function(){
+        $('.sbox input').val('').focus();
+        $(this).hide();
       });
 
     </script>
@@ -73,8 +76,15 @@
 <body>  
 
  <div class="sbox">
-  <form class="form-control">
-    <input type="text" name="q"/>
+  <form>
+    <div class="left">
+      <input type="text" name="q"/>
+    </div>
+    <div class="right">
+      <a href="javascript:;">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </a>
+    </div>
   </form>
  </div>
 

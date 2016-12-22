@@ -39,3 +39,39 @@ body{
 .gs-web-image-box img.gs-image, .gs-promotion-image-box img.gs-promotion-image{
   max-width:90px !important;
 }
+
+.sbox{
+  width:100%;
+  padding:0px;
+  margin:0px;
+  background:#ffffff;
+}
+
+.sbox form{
+  border:none;
+  width:100%;
+  padding:0px;
+  margin:0px;
+  box-sizing:border-box;
+  position:relative;
+}
+
+.sbox .left{
+  float:left;
+  width:90%;
+}
+.sbox .right{
+  float:left;
+  width:10%;
+}
+
+.sbox .right a{
+  display:none;
+  text-decoration:none;
+  color:#dddddd;
+  font-size:20px;
+}
+.sbox input[type=text]{
+  border:1 px solid #eeeeee;
+  padding:10px 5px;
+}
