@@ -59,17 +59,17 @@
 
       $(document).ready(function(){
         if (app.queried()){
-          $('.sbox .right a').show();
+          $('.sbox .right a').show().css('display','block');
+          $('.sbox input').val(app.qs('q'));
         }else{
           $('.sbox .right a').hide();
         }
-      });
 
-      $('.sbox .right a').click(function(){
-        $('.sbox input').val('').focus();
-        $(this).hide();
+        $('.sbox .right a').click(function(){
+          $('.sbox input').val('').focus();
+          $(this).hide();
+        });
       });
-
     </script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -78,7 +78,7 @@
  <div class="sbox">
   <form>
     <div class="left">
-      <input type="text" name="q"/>
+      <input type="text" name="q" placeholder="What are you looking for?"/>
     </div>
     <div class="right">
       <a href="javascript:;">
@@ -87,7 +87,6 @@
     </div>
   </form>
  </div>
-
 
   <div style="display:none">
     <div id="shs_thumbnail">
@@ -124,6 +123,8 @@
       </div>
   </div>
 </div>
+
+<div class="clearresults"></div>
 
 <div class="serps">  
   <div class="container">

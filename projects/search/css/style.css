@@ -4,6 +4,11 @@ body{
   margin:0px;
 }
 
+.clearresults{
+  clear:both;
+  height:50px;
+}
+
 .gs-result{
   display:block;
   position:relative;
@@ -41,10 +46,13 @@ body{
 }
 
 .sbox{
+  float:left;
   width:100%;
   padding:0px;
   margin:0px;
   background:#ffffff;
+  border-bottom:1px solid #cccccc;
+  position:fixed;
 }
 
 .sbox form{
@@ -67,11 +75,21 @@ body{
 
 .sbox .right a{
   display:none;
-  text-decoration:none;
-  color:#dddddd;
-  font-size:20px;
+  text-decoration: none;
+  color: #dddddd;
+  font-size: 20px;
+  margin-top: 8px;
+  margin-right:20px;
+  float:right;
 }
+
 .sbox input[type=text]{
-  border:1 px solid #eeeeee;
-  padding:10px 5px;
+  padding:10px 15px;
+  width:100%;
+  font-size:18px;
+  border:none;
+}
+
+.sbox input[type=text]:focus{
+  outline: none;
 }
