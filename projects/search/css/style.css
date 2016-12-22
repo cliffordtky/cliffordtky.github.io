@@ -53,6 +53,7 @@ body{
   background:#ffffff;
   border-bottom:1px solid #cccccc;
   position:fixed;
+  z-index:100;
 }
 
 .sbox form{
