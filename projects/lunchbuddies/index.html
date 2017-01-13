@@ -121,7 +121,7 @@
         <div class="col-xs-5">
           <div class="bill-redo">
             <a title="Re-start a new bill calculation" onclick="return confirm('Clear the form and re-start another bill calculation?');" href="https://cliffordtky.github.io/projects/lunchbuddies/" class="btn btn-info pull-right" style="margin-left:6px;">
-              <span class="glyphicon glyphicon-repeat"></span><span style="margin-left:5px" class="hidden-xs">Redo</span>
+              <span class="glyphicon glyphicon-repeat"></span><span style="margin-left:5px" class="hidden-xs">Re-Calculate</span>
             </a>
             <a title="Edit bill" href="javascript:;" onclick="edit_bill()" class="btn btn-default pull-right">
               <span class="glyphicon glyphicon-pencil"></span><span style="margin-left:5px" class="hidden-xs">Edit</span>
@@ -469,7 +469,7 @@
           var sharing_eaters = items_eaten[u][v][3];
           var se_count = sharing_eaters.length;
           se_count = se_count+1;
-          split_tables += '<span class="small">Split '+se_count+'-ways with '+sharing_eaters.join().toUpperCase()+"</span>";
+          split_tables += '<span class="small">(Cost split '+se_count+'-ways with '+sharing_eaters.join().toUpperCase()+")</span>";
         }
         split_tables += '</td>';
         split_tables += '<td>$';
@@ -558,18 +558,11 @@
 
   function create_short_uri(){
     uri = window.location.href;
-    $.ajax({
-      url: "https://is.gd/create.php?format=json&url="+escape(uri),
-      jsonp: "callback",
-      dataType: "jsonp",
-      success: function( response ) {
-        $('.right').append('<h4><span class="glyphicon glyphicon-share" aria-hidden="true"></span> Share this bill!</h4><div class="alert alert-warning"><p><a target="_blank" href="'+response.shorturl+'">'+response.shorturl+'</a></p></div>');
-          //console.log(response);
-      },
-      error: function(error) {
-        console.log(error);
-      }
-    });
+    $.getScript("https://is.gd/create.php?cb=short_uri&format=json&url="+escape(uri)).done(function(){}); 
+  }
+
+  function short_uri(uri_data){
+    $('.right').append('<h4><span class="glyphicon glyphicon-share" aria-hidden="true"></span> Share this bill!</h4><div class="alert alert-warning"><p><a target="_blank" href="'+uri_data.shorturl+'">'+uri_data.shorturl+'</a></p></div>');    
   }
 
   function drop_item(arr_data,itemtodrop){
