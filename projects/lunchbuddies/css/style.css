@@ -1,0 +1,178 @@
+/* Form Section */
+body{
+	background: #517fa4; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #517fa4 , #243949); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #517fa4 , #243949); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
+	color:#fefefe;     
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #666666;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #666666;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #666666;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #666666;
+}
+.hide{
+	display:none;
+}
+.clear{
+	clear:both;
+	height:20px;
+}
+.apptitle{
+	font-size:45px;
+	text-align:center;
+	font-family: 'Bungee Shade', cursive;
+	-webkit-transition: all .4s; /* Safari */
+    transition: all .4s;	
+}
+.nlab{
+	font-weight:bold;
+	font-size:25px;
+	color:#fefefe;
+}
+form.calc input[type=text],form.calc input[type=number]{
+	width:100%;
+	padding:10px 6px;
+	font-size:16px;
+	color:#444444;
+	border-radius:3px;
+	border:none;
+}
+form.calc input[type=text]:focus,form.calc input[type=number]:focus{
+	outline: none;
+}
+.cbwrap{
+	width:100%;
+	max-width:280px;
+	padding:0px;
+	padding-left:30px;
+	margin:auto;
+	margin-bottom:20px;
+}
+input[type='checkbox'] {
+    -webkit-appearance:none;
+    width:19px;
+    height:19px;
+    background:white;
+    border-radius:3px;
+    border:2px solid #555;
+    float:left;
+}
+input[type='checkbox']:checked {
+    background: #73c20e;
+}
+form label{
+  	color:#fefefe;
+	font-size:16px;
+	margin-left:8px;
+	font-weight:normal;
+	float:left;
+}
+.lineitem{
+	margin-bottom:20px;
+}
+a.kill{
+	text-decoration:none;
+	color:#fefefe;
+	font-size:20px;
+	font-weight:light;
+	margin-top:7px;
+	display:block;
+	visibility:hidden;
+}
+.addline{
+	background:#ffffff;
+	color:#517fa4;
+	padding:8px;
+	font-size:20px;
+	border-radius:3px;
+	border:none;
+}
+.addline:hover{
+	background:#517fa4;
+	color:#ffffff;
+}
+.calculate{
+	background:#73c20e;
+	color:#ffffff;
+	padding:8px 12px;
+	font-size:25px;
+	border-radius:5px;
+	border:none;	
+}
+
+/* Bill Section */
+.bill{
+	display:none;
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	background:#ffffff;
+	z-index:99;
+}
+.bill-header{	
+	width:100%;
+	position:fixed;
+	padding:0;
+	margin:0;
+	background: #517fa4; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #517fa4 , #243949); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #517fa4 , #243949); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+	box-sizing:border-box;
+	z-index:99;
+}
+.bill-logo{
+	float:left;
+	font-size:25px;
+	font-family: 'Bungee Shade', cursive;
+	padding:10px 0px;
+	color:#fefefe;
+}
+.bill-redo{
+	float:right;
+	padding:10px 0px;
+}
+.bill-body{
+	color:#555555;
+	position:fixed;
+	top:70px;
+	left:0;
+	right:0;
+	bottom:0;
+	/*margin-top:70px;*/
+	overflow-x:hidden;
+	overflow-y:scroll;
+	background:#ffffff;
+}
+.bill-body p{
+	font-size:18px;
+}
+
+
+/* All media queries */
+@media screen and (max-width:767px){
+	.apptitle{
+		font-size:34px;
+	}
+	.calculate{
+		font-size:21px;
+	}
+	.addline{
+		font-size:18px;	
+	}
+	form.calc input[type=text],form.calc input[type=number]{
+		padding:7px 4px;
+	}
+	.bill-logo{
+		font-size:20px;
+		padding-top:13px;
+	}
+}

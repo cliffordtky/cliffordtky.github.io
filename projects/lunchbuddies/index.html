@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="robots" content="NOINDEX, NOFOLLOW" />
+  <meta name="theme-color" content="#333333">
+  <link rel="icon" href="img/favicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>Bill-splitting, for friends</title>
+</head>
+<body>  
+
+<div class="main">
+
+<div class="clear"></div>
+<h1 class="apptitle">Lunch Buddies</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="clear"></div><div class="clear"></div><div class="clear hidden-xs"></div>
+      <form class="calc" action="./index.html">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-1 col-sm-1"></div>
+            <div class="col-xs-6 col-sm-6">
+              <input type="text" style="background:#dcdca0" placeholder="Where did you go for lunch?" name="w" class="where" required />
+            </div>
+            <div class="col-xs-5 col-sm-4">
+              <input type="text" style="background:#dcdca0" placeholder="Who paid?" name="b" class="boss" required />
+            </div>
+            <div class="hidden-xs col-sm-1"></div>
+          </div>            
+        </div>
+        <div class="clear"></div><div class="clear"></div>
+        <div class="container-fluid itemslist">
+          <div class="row lineitem" id="1">
+            <div class="clear visible-xs" style="border-top:1px solid #cccccc"></div>    
+            <div class="col-xs-1 col-sm-1 text-center">
+              <span class="nlab">1</span>
+            </div>
+            <div class="col-xs-11 col-sm-4">
+              <input name="f1" type="text" placeholder="eg; Nasi Lemak" class="fooditem" id="fi1" required />
+            </div>
+            <div class="clear visible-xs"></div>
+            <div class="col-xs-1 visible-xs"></div>
+            <div class="col-xs-4 col-sm-2">
+              <input name="p1" type="number" placeholder="eg; 8.90" class="price" id="p1" min="1" step="any" required />
+            </div>            
+            <div class="col-xs-6 col-sm-4">
+              <input name="e1" type="text" placeholder="eg; Josh" class="eater" id="e1" required />
+            </div>
+            <div class="col-xs-1 col-sm-1 text-center">
+              <a title="Clear this line" href="javascript:;" class="kill" id="k1"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+            </div>        
+          </div>
+          <div class="row lineitem" id="2">
+            <div class="clear visible-xs" style="border-top:1px solid #cccccc"></div>       
+            <div class="col-xs-1 col-sm-1 text-center">
+              <span class="nlab">2</span>
+            </div>
+            <div class="col-xs-11 col-sm-4">
+              <input name="f2" type="text" placeholder="eg; Hor Fun - sauce separate" class="fooditem" id="fi2"/>
+            </div>
+            <div class="clear visible-xs"></div>
+            <div class="col-xs-1 visible-xs"></div>            
+            <div class="col-xs-4 col-sm-2">
+              <input name="p2" type="number" placeholder="eg; 10.90" class="price" id="p2" min="1" step="any"/>
+            </div>            
+            <div class="col-xs-6 col-sm-4">
+              <input name="e2" type="text" placeholder="eg; Kelly,Raseena (if sharing)" class="eater" id="e2"/>
+            </div>
+            <div class="col-xs-1 col-sm-1 text-center">
+              <a title="Clear this line" href="javascript:;" class="kill" id="k2"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+            </div>             
+          </div>          
+        </div>
+        <div class="clear"></div><div class="clear"></div>
+        <div class="container-fluid">          
+          <div class="row">
+            <div class="col-xs-11 text-right">
+              <button title="Add 1 more line item" class="addline" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add a line</button>
+            </div>
+            <div class="col-xs-1"></div>
+          </div>           
+          <div class="row">
+            <div class="col-xs-12 text-center">
+              <div class="clear"></div><div class="clear"></div>
+              <div class="cbwrap">
+                <input type="checkbox" class="ys" name="ys" value="1"/><label>Include service chg (10%) ?</label>
+                <div class="clear"></div>                
+                <input type="checkbox" class="yg" name="yg" value="1"/><label>Include GST (7%) ?</label>
+                <div class="clear"></div>
+                <input type="checkbox" class="x" name="x" value="1"/><label>Split GST/service chg evenly ?</label>
+                <div class="clear"></div>
+              </div>
+              <button title="Calculate" class="calculate" type="submit"><span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span> Calculate</button>
+            </div>
+          </div>          
+        </div> 
+        <input type="hidden" id="sm" name="sm" value="1">
+        <input type="hidden" id="tf" name="tf" value="2">
+      </form>
+      <div class="clear"></div><div class="clear"></div>
+    </div>
+  </div>
+</div>
+
+</div>
+<!--//main-->
+
+<div class="bill">
+  <div class="bill-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-7">
+          <div class="bill-logo">Lunch Buddies</div>
+        </div>
+        <div class="col-xs-5">
+          <div class="bill-redo">
+            <a title="Re-start a new bill calculation" onclick="return confirm('Clear the form and re-start another bill calculation?');" href="index.html" class="btn btn-info pull-right" style="margin-left:6px;">
+              <span class="glyphicon glyphicon-repeat"></span><span style="margin-left:5px" class="hidden-xs">Redo</span>
+            </a>
+            <a title="Edit bill" href="javascript:;" onclick="edit_bill()" class="btn btn-default pull-right">
+              <span class="glyphicon glyphicon-pencil"></span><span style="margin-left:5px" class="hidden-xs">Edit</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bill-body">
+    <div class="clear hidden-xs hidden-sm"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-12 col-md-9 left">
+                  <h3>Hello <em>lunch buddies</em>,</h3><br/>
+                  <p class="buddies-msg"></p>
+                </div>
+                <div class="col-sm-12 col-md-3 right">
+                  <div class="clear visible-sm visible-xs"></div>
+                </div>
+              </div>
+            </div>
+            <div class="container-fluid" id="bill_tables">
+              <hr>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="caneditmsg" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" style="color:#777777">Edit Bill</h4>
+      </div>
+      <div class="modal-body">
+        <p style="color:#777777">Spotted a mistake? You can amend the bill and click "Calculate".</p>
+        <p><img src="img/edit-bill.jpg" style="width:100%"/></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+
+  function getp(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  function contains(shortstr,longstr){
+    if(longstr.indexOf(shortstr) > -1){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  function addline(){
+    var currnum = $('#tf').val();
+    var nextnum = parseInt(currnum) + 1;
+    var html = '<div class="row lineitem" id="'+nextnum+'">';
+    html += '<div class="clear visible-xs" style="border-top:1px solid #cccccc"></div>';
+    html += '<div class="col-xs-1 col-sm-1 text-center">';
+    html += '<span class="nlab">'+nextnum+'</span>';
+    html += '</div>';
+    html += '<div class="col-xs-11 col-sm-4">';
+    html += '<input name="f'+nextnum+'" type="text" placeholder="eg; Mee hoon soup" class="fooditem" id="fi'+nextnum+'"/>';
+    html += '</div>';
+    html += '<div class="clear visible-xs"></div>';
+    html += '<div class="col-xs-1 visible-xs"></div>';
+    html += '<div class="col-xs-4 col-sm-2">';
+    html += '<input name="p'+nextnum+'" type="number" placeholder="eg; 3.50" class="price" id="p'+nextnum+'" min="1" step="any"/>';
+    html += '</div>';    
+    html += '<div class="col-xs-6 col-sm-4">';
+    html += '<input name="e'+nextnum+'" type="text" placeholder="eg; RJ" class="eater" id="e'+nextnum+'"/>';
+    html += '</div>';
+    html += '<div class="col-xs-1 col-sm-1 text-center">';
+    html += '<a title="Clear this line" href="javascript:;" class="kill" id="k'+nextnum+'"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>';
+    html += '</div>';             
+    html += '</div>';
+    $('.itemslist').append(html);
+    $('#tf').val(nextnum);
+  }
+
+  function process_form(){
+    if (getp('sm') == 1 && getp('boss') != '' && getp('where') != ''){
+      var totitems = parseInt(getp('tf'));
+      var allnames = '';
+      for (var i=1; i<=totitems; i++){
+        var rowhtml = '';
+        if (i > 2){
+          rowhtml += '<div class="row lineitem" id="'+i+'">';
+          rowhtml += '<div class="clear visible-xs" style="border-top:1px solid #cccccc"></div>';
+          rowhtml += '<div class="col-xs-1 col-sm-1 text-center">';
+          rowhtml += '<span class="nlab">'+i+'</span>';
+          rowhtml += '</div>';
+          rowhtml += '<div class="col-xs-11 col-sm-4">';
+          rowhtml += '<input name="f'+i+'" type="text" placeholder="eg; Mee hoon soup" class="fooditem" id="fi'+i+'"/>';
+          rowhtml += '</div>';
+          rowhtml += '<div class="clear visible-xs"></div>';
+          rowhtml += '<div class="col-xs-1 visible-xs"></div>';          
+          rowhtml += '<div class="col-xs-4 col-sm-2">';
+          rowhtml += '<input name="p'+i+'" type="number" placeholder="eg; 3.50" class="price" id="p'+i+'" min="1" step="any"/>';
+          rowhtml += '</div>';    
+          rowhtml += '<div class="col-xs-6 col-sm-4">';
+          rowhtml += '<input name="e'+i+'" type="text" placeholder="eg; RJ" class="eater" id="e'+i+'"/>';
+          rowhtml += '</div>';
+          rowhtml += '<div class="col-xs-1 col-sm-1 text-center">';
+          rowhtml += '<a title="Clear this line" href="javascript:;" class="kill" id="k'+i+'"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>';
+          rowhtml += '</div>';             
+          rowhtml += '</div>';
+          $('.itemslist').append(rowhtml);
+        }
+        if (getp('f'+i) !='' && getp('e'+i) !='' && getp('p'+i) !=''){
+          $('#fi'+i).val(getp('f'+i));
+          $('#e'+i).val(getp('e'+i));
+          $('#p'+i).val(getp('p'+i));
+          $('#k'+i).css('visibility','visible');
+                  
+          allnames += getp('e'+i) + ',';
+        }
+      }
+
+      /* Bill calculation magic happens here */
+
+      /* Form unique name list */
+      allnames = allnames.substring(0, allnames.length-1).toLowerCase();
+      var namesarray = allnames.split(',');
+      var eaters = [];
+      for (var j=0; j<namesarray.length; j++){
+        var singlename = namesarray[j].trim();
+        if ($.inArray(singlename, eaters) ==  -1){
+          eaters.push(singlename);
+        }
+      }
+      eaters.sort();
+
+      /* Assign items to individual names */
+      var items_eaten = [];
+      for (var k=0; k<eaters.length; k++){
+        var inditems = [];
+        for (var l=1; l<=totitems; l++){
+          var itemcollection = [];
+          var thenames = getp('e'+l).toLowerCase();
+          var theitem = getp('f'+l);
+          var ntype = 'individual';
+          var pricing = money_it(getp('p'+l));
+          var split_with = 'nobody';
+          if (contains(',',thenames)){
+            ntype = 'split';
+            var numnames = thenames.split(',').length;
+            var split_pricing = pricing / numnames;
+            split_pricing = money_it(split_pricing);
+            split_with = drop_item(thenames.split(','),eaters[k]);
+            itemcollection.push(theitem,split_pricing,ntype,split_with);
+          }else{
+            itemcollection.push(theitem,pricing,ntype,split_with);
+          }
+          if (contains(eaters[k],thenames)){
+            inditems.push(itemcollection);
+          }
+        }
+        items_eaten.push(inditems);
+      }
+
+      /* Calculate grand totals */
+      
+      var grand_total_items = 0;
+      var grand_total_svc_chg = 0;
+      var grand_total_gst = 0;
+
+      for (var c=1; c<=totitems; c++){
+        if (getp('p'+c) != ''){
+          var grand_summer = parseFloat(getp('p'+c));
+          grand_total_items += parseFloat(grand_summer);  
+        }
+      }
+      grand_total_items = parseFloat(grand_total_items);
+      grand_total_svc_chg = parseFloat(grand_total_items*0.1);
+      grand_total_gst = parseFloat((grand_total_items+grand_total_svc_chg)*0.07);     
+
+
+      /* Calculate total spending per person */
+      var spending_totals = [];
+      for (var m=0; m<items_eaten.length; m++){
+        var numitems = items_eaten[m].length;
+        var totholder = [];
+        var adder = 0;
+        if (numitems > 1){
+          for (var n=0; n<numitems; n++){
+            adder = parseFloat(adder) + parseFloat(items_eaten[m][n][1]);
+          }
+        }else{
+          adder = parseFloat(items_eaten[m][0][1]);
+        }
+        adder = money_it(adder);
+
+        var totsvc = money_it(0);
+        var svc = money_it(0);
+        var totgst = money_it(0);
+        var gst = money_it(0);
+
+        if (getp('x') == 1){
+          // split gst & svc evenly
+          var pplcount = eaters.length;
+          if (getp('ys') == 1){
+            svc = parseFloat(grand_total_svc_chg / pplcount);
+            totsvc = adder+svc;
+            svc = money_it(svc);
+          }
+          if (getp('yg') == 1){
+            if (totsvc != ''){          
+              gst = parseFloat(grand_total_gst / pplcount);
+              totgst = parseFloat(adder) + parseFloat(svc) + parseFloat(gst);
+              gst = money_it(gst);
+              totgst = money_it(totgst);              
+            }else{
+              totgst = parseFloat(adder) + parseFloat(gst);
+              totgst = money_it(totgst);              
+            }
+          }
+
+        }else{
+          // everyone pays his/her own gst & svc chg
+          if (getp('ys') == 1){
+            totsvc = money_it(adder*1.1);
+            svc = money_it(adder*0.1);
+          }else{
+            totsvc = money_it(adder);
+          }
+          if (getp('yg') == 1){
+            if (totsvc != ''){
+              totgst = money_it(totsvc*1.07);  
+              gst = money_it(totsvc*0.07);
+            }else{
+              totgst = money_it(adder*1.07);  
+              gst = money_it(adder*0.07);
+            }
+          }else{
+            totgst = totsvc;
+          }     
+        }
+        totholder.push([adder,svc,gst,totgst]);
+        spending_totals.push(totholder);
+      }
+      
+      /* Filling up other mandatory info */
+      $('.where').val(getp('w'));
+      $('.boss').val(getp('b'));
+      $('#tf').val(getp('tf'));
+      $('#sm').val(getp('sm'));
+    }
+    if (getp('yg') == '1'){
+      $('.yg').attr('checked', true);
+    }
+    if (getp('ys') == '1'){
+      $('.ys').attr('checked', true);
+    }
+    if (getp('x') == '1'){
+      $('.x').attr('checked', true);
+    }
+
+    /* Totals, items and people check */
+    //console.log(eaters+' - '+eaters.length);
+    //console.log(items_eaten);
+    console.log(spending_totals);
+    console.log(grand_total_items);
+    console.log(grand_total_svc_chg);
+    console.log(grand_total_gst);
+
+    /* Draw Bill */
+    var buddies_msg = 'Please pay <b>'+getp('b')+'</b> for your meal together @ <b>'+getp('w')+'</b>!';
+    $('.buddies-msg').html(buddies_msg);
+
+    var meal_chg_msg = '';
+    meal_chg_msg += '<div class="clear"></div><p>* Note : This meal:<ul>';
+    if (getp('ys') == '1'){
+      meal_chg_msg += '<li>Includes service charge.</li>';    
+    }else{
+      meal_chg_msg += '<li>Does not include service charge.</li>';
+    }      
+    if (getp('yg') == '1'){
+      meal_chg_msg += '<li>Includes GST.</li>';
+    }else{
+      meal_chg_msg += '<li>Does not include GST.</li>';
+    }      
+    if (getp('x') == '1'){ 
+      if (getp('ys') == '1' && getp('yg') == '1'){
+        meal_chg_msg += '<li>Service charge & GST are split among <u>'+eaters.length+' people</u> evenly.</li>';
+      }else if (getp('ys') == '1' && getp('yg') != '1'){
+        meal_chg_msg += '<li>Service charge is split among <u>'+eaters.length+' people</u> evenly.</li>';
+      }else if (getp('ys') != '1' && getp('yg') == '1'){
+        meal_chg_msg += '<li>GST is split among <u>'+eaters.length+' people</u> evenly.</li>';
+      }
+    }
+    meal_chg_msg += '</ul></p>';
+    $('.left').append(meal_chg_msg);
+
+    /* Draw the split bill tables */
+    
+    for (var u=0; u<eaters.length; u++){
+      var split_tables = '';
+      split_tables += '<div class="row">';
+      split_tables += '<div class="col-sm-12 col-md-3 namecol">';
+      split_tables += '<h3>'+eaters[u].toUpperCase()+'</h3>';
+      split_tables += '</div>';
+      split_tables += '<div class="col-sm-12 col-md-9 billcol">';
+      split_tables += '<table class="table table-condensed">';
+      split_tables += '<thead>';
+      split_tables += '<tr class="active">';
+      split_tables += '<th class="col-xs-1">#</th>';
+      split_tables += '<th class="col-xs-9">Food / Beverage</th>';
+      split_tables += '<th class="col-xs-2">Price (S$)</th>';      
+      split_tables += '</tr>';
+      split_tables += '</thead>';
+      split_tables += '<tbody>';
+      // loop items
+      for (var v=0; v<items_eaten[u].length; v++){
+        split_tables += '<tr>';
+        split_tables += '<td>'+(v+1)+'</td>';
+        split_tables += '<td>';
+        split_tables += items_eaten[u][v][0];
+        if (items_eaten[u][v][2] == 'split'){
+          split_tables += '<br/>';
+          var sharing_eaters = items_eaten[u][v][3];
+          var se_count = sharing_eaters.length;
+          se_count = se_count+1;
+          split_tables += '<span class="small">Split '+se_count+'-ways with '+sharing_eaters.join().toUpperCase()+"</span>";
+        }
+        split_tables += '</td>';
+        split_tables += '<td>$';
+        split_tables += items_eaten[u][v][1];
+        split_tables += '</td>';
+        split_tables += '</tr>';        
+        if (v == (items_eaten[u].length-1)){
+          // last item for the eater; put in totals
+          split_tables += '<tr>';
+          split_tables += '<td></td>';
+          split_tables += '<td class="text-right">Sub-total : </td>';
+          split_tables += '<td>$';
+          split_tables += spending_totals[u][0][0];        
+          split_tables += '</td>';
+          split_tables += '</tr>';        
+          if (getp('ys') == '1'){
+            split_tables += '<tr>';
+            split_tables += '<td></td>';
+            split_tables += '<td class="text-right">Service Chg';
+            if (getp('x') == '1'){
+              split_tables += ' (10% split evenly '+eaters.length+'-ways)';
+            }else{
+              split_tables += ' (10%)';  
+            }
+            split_tables += ' : </td>';
+            split_tables += '<td>$';
+            split_tables += spending_totals[u][0][1];        
+            split_tables += '</td>';
+            split_tables += '</tr>';    
+          }  
+          if (getp('yg') == '1'){
+            split_tables += '<tr>';
+            split_tables += '<td></td>';
+            split_tables += '<td class="text-right">GST';
+            if (getp('x') == '1'){
+              split_tables += ' (10% split evenly '+eaters.length+'-ways)';
+            }else{
+              split_tables += ' (7%)';  
+            }
+            split_tables += ' : </td>';
+            split_tables += '<td>$';
+            split_tables += spending_totals[u][0][2];        
+            split_tables += '</td>';
+            split_tables += '</tr>';    
+          } 
+          split_tables += '<tr style="color:#0aa3dc">';
+          split_tables += '<td></td>';
+          split_tables += '<td class="text-right">Total Payable : </td>';
+          split_tables += '<td>$';
+          split_tables += spending_totals[u][0][3];        
+          split_tables += '</td>';
+          split_tables += '</tr>';                         
+        }
+      }
+      split_tables += '</tbody>';
+      split_tables += '</table>';                
+      split_tables += '</div>';
+      split_tables += '</div>';
+      split_tables += '<hr><div class="clear"></div>';
+      $('#bill_tables').append(split_tables); 
+    }
+    show_bill();
+  }
+
+  function show_bill(){
+    create_short_uri();
+    $('.bill').show();
+  }
+  function hide_bill(){
+    $('.bill').hide();
+  }
+
+  function edit_bill(){
+    $('.bill').hide();
+    //$('#caneditmsg').modal('show');  
+  }
+
+  function create_short_uri(uri){
+    $.ajax({
+      url: "https://is.gd/create.php",
+      jsonp: "callback",
+      dataType: "jsonp",
+      data: {
+          url: uri == '' ? window.location.href : uri,
+          format: "json"
+      },
+      success: function( response ) {
+        $('.right').append('<h4><span class="glyphicon glyphicon-share" aria-hidden="true"></span> Share this bill!</h4><div class="alert alert-warning"><p><a target="_blank" href="'+response.shorturl+'">'+response.shorturl+'</a></p></div>');
+      }
+    });
+  }
+
+  function drop_item(arr_data,itemtodrop){
+    var index = arr_data.indexOf(itemtodrop);
+    if (index > -1) {
+      arr_data.splice(index, 1);
+    }
+    return arr_data;
+  }
+
+  function money_it(fl){
+    return parseFloat(Math.round(fl * 100) / 100).toFixed(2);
+  }
+
+  $('.addline').click(function(){
+    addline();
+  });
+
+
+  $('.itemslist').on('click', '.kill' ,function(){
+    var idn = $(this).attr('id').replace('k','');
+    $('#e'+idn).val('');
+    $('#p'+idn).val('');
+    $('#fi'+idn).val('').focus();
+    $(this).css('visibility','hidden');
+  });    
+    
+  $('.itemslist').on('keyup', '.fooditem,.eater,.price' ,function(){
+    for (var a=1; a<=$('#tf').val(); a++){
+      if ($('#fi'+a).val() != '' || $('#e'+a).val() != '' || $('#p'+a).val() != ''){
+        $('#k'+a).css('visibility','visible');
+      }else{
+        $('#k'+a).css('visibility','hidden');
+      }         
+    }
+  });  
+
+  $(document).ready(function(){
+    if (getp('sm') == 1){
+      process_form();
+    }else{
+      hide_bill();
+    }
+  });  
+
+</script>
+</body>
+</html>
