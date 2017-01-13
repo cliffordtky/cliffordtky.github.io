@@ -413,7 +413,7 @@
     console.log(grand_total_gst);
 
     /* Draw Bill */
-    var buddies_msg = 'Please pay <b>'+getp('b')+'</b> for your meal together @ <b>'+getp('w')+'</b>!';
+    var buddies_msg = 'Please pay <b>'+getp('b')+'</b> for the meal @ <b>'+getp('w')+'</b>!';
     $('.buddies-msg').html(buddies_msg);
 
     var meal_chg_msg = '';
@@ -569,6 +569,9 @@
       },
       success: function( response ) {
         $('.right').append('<h4><span class="glyphicon glyphicon-share" aria-hidden="true"></span> Share this bill!</h4><div class="alert alert-warning"><p><a target="_blank" href="'+response.shorturl+'">'+response.shorturl+'</a></p></div>');
+      },
+      success: function(error) {
+        console.log(error);
       }
     });
   }
