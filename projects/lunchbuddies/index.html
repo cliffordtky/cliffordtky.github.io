@@ -559,22 +559,17 @@
   function create_short_uri(){
     uri = window.location.href;
     $.ajax({
-      url: "https://is.gd/create.php",
+      url: "https://is.gd/create.php?format=json&url="+escape(uri),
       jsonp: "callback",
       dataType: "jsonp",
-      data: {
-          url:escape(uri),
-          format: "json"
-      },
       success: function( response ) {
         $('.right').append('<h4><span class="glyphicon glyphicon-share" aria-hidden="true"></span> Share this bill!</h4><div class="alert alert-warning"><p><a target="_blank" href="'+response.shorturl+'">'+response.shorturl+'</a></p></div>');
-        console.log(response);
+          //console.log(response);
       },
       error: function(error) {
         console.log(error);
       }
     });
-    console.log(uri);
   }
 
   function drop_item(arr_data,itemtodrop){
