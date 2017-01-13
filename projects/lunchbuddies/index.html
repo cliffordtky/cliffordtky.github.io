@@ -556,12 +556,15 @@
   }
 
   function create_short_uri(uri){
+    if (uri == ''){
+      uri = window.location.href;
+    }
     $.ajax({
       url: "https://is.gd/create.php",
       jsonp: "callback",
       dataType: "jsonp",
       data: {
-          url: uri == '' ? window.location.href : uri,
+          url:uri,
           format: "json"
       },
       success: function( response ) {
