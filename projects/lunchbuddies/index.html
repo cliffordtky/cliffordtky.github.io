@@ -467,8 +467,7 @@
         if (items_eaten[u][v][2] == 'split'){
           split_tables += '<br/>';
           var sharing_eaters = items_eaten[u][v][3];
-          var se_count = sharing_eaters.length;
-          se_count = se_count+1;
+          var se_count = sharing_eaters.length + 1;
           split_tables += '<span class="small">(Cost split '+se_count+'-ways with '+sharing_eaters.join().toUpperCase()+")</span>";
         }
         split_tables += '</td>';
