@@ -557,13 +557,18 @@
 
   function create_short_uri(){
     uri = window.location.href;
+    
     $.getScript("https://is.gd/create.php?format=json&callback=short_uri&url="+encodeURI(uri)).done(function(){
       console.log(encodeURI(uri));
-    }); 
+    });
+    
+
   }
 
   function short_uri(uri_data){
     $('.right').append('<h4><span class="glyphicon glyphicon-share" aria-hidden="true"></span> Share this bill!</h4><div class="alert alert-warning"><p><a target="_blank" href="'+uri_data.shorturl+'">'+uri_data.shorturl+'</a></p></div>');    
+      console.log(uri_data.shorturl);
+      console.log(uri_data);
   }
 
   function drop_item(arr_data,itemtodrop){
