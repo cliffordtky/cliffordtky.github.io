@@ -556,10 +556,8 @@
     hide_bill();
   }
 
-  function create_short_uri(uri){
-    if (uri == ''){
-      uri = window.location;
-    }
+  function create_short_uri(){
+    uri = window.location.href;
     $.ajax({
       url: "https://is.gd/create.php",
       jsonp: "callback",
