@@ -31,6 +31,10 @@ body{
 	-webkit-transition: all .4s; /* Safari */
     transition: all .4s;	
 }
+.apptitle a{
+	color:#ffffff;
+	text-decoration:none;
+}
 .nlab{
 	font-weight:bold;
 	font-size:25px;
