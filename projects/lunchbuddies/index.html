@@ -21,7 +21,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="clear"></div><div class="clear"></div><div class="clear hidden-xs"></div>
-      <form class="calc" action="./index.html">
+      <form class="calc" action="https://cliffordtky.github.io/projects/lunchbuddies/">
         <div class="container-fluid">
           <div class="row">
             <div class="col-xs-1 col-sm-1"></div>
@@ -120,7 +120,7 @@
         </div>
         <div class="col-xs-5">
           <div class="bill-redo">
-            <a title="Re-start a new bill calculation" onclick="return confirm('Clear the form and re-start another bill calculation?');" href="index.html" class="btn btn-info pull-right" style="margin-left:6px;">
+            <a title="Re-start a new bill calculation" onclick="return confirm('Clear the form and re-start another bill calculation?');" href="https://cliffordtky.github.io/projects/lunchbuddies/" class="btn btn-info pull-right" style="margin-left:6px;">
               <span class="glyphicon glyphicon-repeat"></span><span style="margin-left:5px" class="hidden-xs">Redo</span>
             </a>
             <a title="Edit bill" href="javascript:;" onclick="edit_bill()" class="btn btn-default pull-right">
@@ -534,17 +534,25 @@
     show_bill();
   }
 
+  function show_main(){
+    $('.main').show();
+  }
+
+  function hide_main(){
+    $('.main').hide();
+  }
+
   function show_bill(){
     create_short_uri();
     $('.bill').show();
   }
   function hide_bill(){
+    show_main();
     $('.bill').hide();
   }
 
   function edit_bill(){
-    $('.bill').hide();
-    //$('#caneditmsg').modal('show');  
+    hide_bill();
   }
 
   function create_short_uri(uri){
