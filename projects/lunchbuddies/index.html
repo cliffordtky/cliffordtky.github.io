@@ -10,6 +10,10 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <title>Bill-splitting, for friends</title>
+  <script>
+    var ep = 'https://cliffordtky.github.io/projects/lunchbuddies/';
+    ep = 'index.html';
+  </script>
 </head>
 <body>  
 
@@ -21,7 +25,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="clear"></div><div class="clear"></div><div class="clear hidden-xs"></div>
-      <form class="calc" action="https://cliffordtky.github.io/projects/lunchbuddies/">
+      <form class="calc">
         <div class="container-fluid">
           <div class="row">
             <div class="col-xs-1 col-sm-1"></div>
@@ -120,7 +124,7 @@
         </div>
         <div class="col-xs-5">
           <div class="bill-redo">
-            <a title="Re-start a new bill calculation" onclick="return confirm('Clear the form and re-start another bill calculation?');" href="https://cliffordtky.github.io/projects/lunchbuddies/" class="btn btn-info pull-right" style="margin-left:6px;">
+            <a title="Re-start a new bill calculation" onclick="return confirm('Clear the form and re-start another bill calculation?');" href="#" class="btn btn-info pull-right recalc" style="margin-left:6px;">
               <span class="glyphicon glyphicon-repeat"></span><span style="margin-left:5px" class="hidden-xs">Re-Calculate</span>
             </a>
             <a title="Edit bill" href="javascript:;" onclick="edit_bill()" class="btn btn-default pull-right">
@@ -199,6 +203,18 @@
     }
   }
 
+  function contains_arr(item,arr){
+    for (var w=0; w<arr.length; w++){
+      var t = arr[w].toLowerCase();
+      item = item.toLowerCase();
+      if (t == item){
+        return true;
+        break;
+      }
+    }
+    return false;
+  }
+
   function addline(){
     var currnum = $('#tf').val();
     var nextnum = parseInt(currnum) + 1;
@@ -268,11 +284,13 @@
       /* Bill calculation magic happens here */
 
       /* Form unique name list */
+      allnames = format_eaters(allnames);
       allnames = allnames.substring(0, allnames.length-1).toLowerCase();
+      console.log(allnames);
       var namesarray = allnames.split(',');
       var eaters = [];
       for (var j=0; j<namesarray.length; j++){
-        var singlename = namesarray[j].trim();
+        var singlename = namesarray[j];
         if ($.inArray(singlename, eaters) ==  -1){
           eaters.push(singlename);
         }
@@ -286,6 +304,7 @@
         for (var l=1; l<=totitems; l++){
           var itemcollection = [];
           var thenames = getp('e'+l).toLowerCase();
+          thenames = format_eaters(thenames);
           var theitem = getp('f'+l);
           var ntype = 'individual';
           var pricing = money_it(getp('p'+l));
@@ -300,7 +319,7 @@
           }else{
             itemcollection.push(theitem,pricing,ntype,split_with);
           }
-          if (contains(eaters[k],thenames)){
+          if (contains_arr(eaters[k],thenames.split(','))){
             inditems.push(itemcollection);
           }
         }
@@ -406,7 +425,7 @@
 
     /* Totals, items and people check */
     //console.log(eaters+' - '+eaters.length);
-    //console.log(items_eaten);
+    console.log(items_eaten);
     //console.log(spending_totals);
     //console.log(grand_total_items);
     //console.log(grand_total_svc_chg);
@@ -558,8 +577,8 @@
   function create_short_uri(){
     uri = window.location.href;
     
-    $.getScript("https://is.gd/create.php?format=json&callback=short_uri&url="+encodeURI(uri)).done(function(){
-      console.log(encodeURI(uri));
+    $.getScript("https://is.gd/create.php?format=json&callback=short_uri&url="+encodeURIComponent(uri)).done(function(){
+      //console.log(encodeURIComponent(uri));
     });
     
 
@@ -567,8 +586,8 @@
 
   function short_uri(uri_data){
     $('.right').append('<h4><span class="glyphicon glyphicon-share" aria-hidden="true"></span> Share this bill!</h4><div class="alert alert-warning"><p><a target="_blank" href="'+uri_data.shorturl+'">'+uri_data.shorturl+'</a></p></div>');    
-      console.log(uri_data.shorturl);
-      console.log(uri_data);
+      //console.log(uri_data.shorturl);
+      //console.log(uri_data);
   }
 
   function drop_item(arr_data,itemtodrop){
@@ -581,6 +600,17 @@
 
   function money_it(fl){
     return parseFloat(Math.round(fl * 100) / 100).toFixed(2);
+  }
+
+  function format_eaters(str){
+    for (var x=0; x<=10; x++){
+      str = str.replace(", ",",").replace(" ,",",");  
+    }
+    return str;
+  }
+
+  function strip_spaces(str){ 
+   return str.replace(/ /g,"");      
   }
 
   $('.addline').click(function(){
@@ -607,6 +637,8 @@
   });  
 
   $(document).ready(function(){
+    $('.calc').attr('action',ep);
+    $('.recalc').attr('href',ep);
     if (getp('sm') == 1){
       process_form();
     }else{
