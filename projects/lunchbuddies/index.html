@@ -558,7 +558,7 @@
 
   function create_short_uri(uri){
     if (uri == ''){
-      uri = window.location.href;
+      uri = window.location;
     }
     $.ajax({
       url: "https://is.gd/create.php",
