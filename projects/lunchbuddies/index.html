@@ -564,7 +564,7 @@
       jsonp: "callback",
       dataType: "jsonp",
       data: {
-          url:uri,
+          url:escape(uri),
           format: "json"
       },
       success: function( response ) {
