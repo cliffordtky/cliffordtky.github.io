@@ -571,6 +571,7 @@
         $('.right').append('<h4><span class="glyphicon glyphicon-share" aria-hidden="true"></span> Share this bill!</h4><div class="alert alert-warning"><p><a target="_blank" href="'+response.shorturl+'">'+response.shorturl+'</a></p></div>');
       },
       error: function(error) {
+        console.log(uri);
         console.log(error);
       }
     });
