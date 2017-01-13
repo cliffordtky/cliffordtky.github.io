@@ -558,7 +558,7 @@
 
   function create_short_uri(){
     uri = window.location.href;
-    $.getScript("https://is.gd/create.php?cb=short_uri&format=json&url="+encodeURI(uri)).done(function(){}); 
+    $.getScript("https://is.gd/create.php?callback=short_uri&format=json&url="+encodeURI(uri)).done(function(){}); 
   }
 
   function short_uri(uri_data){
