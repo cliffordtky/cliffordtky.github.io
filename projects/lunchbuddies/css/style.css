@@ -5,6 +5,7 @@ body{
 	background: linear-gradient(to left, #517fa4 , #243949); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
 	color:#fefefe;     
 	min-width:310px;
+	overflow-x:scroll;
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #666666;
@@ -129,6 +130,8 @@ a.kill{
 	right:0;
 	background:#ffffff;
 	z-index:99;
+	min-width:310px;
+	overflow-x:scroll;	
 }
 .bill-header{	
 	width:100%;
@@ -147,6 +150,20 @@ a.kill{
 	font-family: 'Bungee Shade', cursive;
 	padding:10px 0px;
 	color:#fefefe;
+}
+.bill-logo a{
+	text-decoration:none;
+	color:#ffffff;
+}
+.bill-sm-logo{
+	display:none;
+}
+.bill-sm-logo a{
+	margin-top:10px;
+	text-decoration:none;
+	color:#ffffff;
+	font-size:25px;
+	display:block;
 }
 .bill-redo{
 	float:right;
@@ -227,8 +244,8 @@ a.kill{
 }
 @media screen and (max-width:400px){
 	.bill-logo{
-		padding-top: 8px;
-		font-size:21px;
+		padding-top: 12px;
+		font-size:17px;
 	}
 }
 @media screen and (max-width:350px){
