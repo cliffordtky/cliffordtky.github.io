@@ -45,6 +45,7 @@ body{
 	font-weight:bold;
 	font-size:25px;
 	color:#fefefe;
+	margin-left: -8px;
 }
 .sharebutt{
 	float:right;
@@ -59,14 +60,6 @@ form.calc input[type=text],form.calc input[type=number]{
 }
 form.calc input[type=text]:focus,form.calc input[type=number]:focus{
 	outline: none;
-}
-.cbwrap{
-	width:100%;
-	max-width:280px;
-	padding:0px;
-	padding-left:30px;
-	margin:auto;
-	margin-bottom:20px;
 }
 input[type='checkbox'] {
     -webkit-appearance:none;
