@@ -45,7 +45,6 @@ body{
 	font-weight:bold;
 	font-size:25px;
 	color:#fefefe;
-	margin-left: -8px;
 }
 .sharebutt{
 	float:right;
@@ -234,6 +233,9 @@ a.kill{
 	.eater{
 		font-size:20px;
 	}
+	.nlab{
+		margin-left: -8px;
+	}	
 }
 @media screen and (max-width:400px){
 	.bill-logo{
