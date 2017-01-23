@@ -70,12 +70,11 @@
             <div class="col-xs-4 col-sm-2">
               <input name="p1" type="number" placeholder="eg; 8.90" class="price" id="p1" step="0.01" required />
             </div>            
-            <div class="col-xs-5 col-sm-4">
+            <div class="col-xs-6 col-sm-4">
               <input name="e1" type="text" placeholder="eg; Raseena" class="eater" id="e1" required />
+              <a title="Clear this line" href="javascript:;" class="kill" id="k1"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>              
             </div>
-            <div class="col-xs-1 col-sm-1 text-center">
-              <a title="Clear this line" href="javascript:;" class="kill" id="k1"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-            </div>        
+            <div class="col-xs-1 col-sm-1 text-center"></div>        
           </div>
           <div class="row lineitem" id="2">
             <div class="clear visible-xs" style="border-top:1px solid #cccccc"></div>       
@@ -90,12 +89,11 @@
             <div class="col-xs-4 col-sm-2">
               <input name="p2" type="number" placeholder="eg; 10.90" class="price" id="p2" step="0.01"/>
             </div>            
-            <div class="col-xs-5 col-sm-4">
+            <div class="col-xs-6 col-sm-4">
               <input name="e2" type="text" placeholder="eg cost split; Kelly,Josh" class="eater" id="e2"/>
-            </div>
-            <div class="col-xs-1 col-sm-1 text-center">
               <a title="Clear this line" href="javascript:;" class="kill" id="k2"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-            </div>             
+            </div>
+            <div class="col-xs-1 col-sm-1 text-center"></div>             
           </div>          
         </div>
         <div class="clear"></div><div class="clear"></div>
@@ -249,7 +247,602 @@
 
 /* Clifford - Jan 2017 */  
 
-var _0x1a0b=["\x68\x72\x65\x66","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x5C\x24\x26","\x72\x65\x70\x6C\x61\x63\x65","\x5B\x3F\x26\x5D","\x28\x3D\x28\x5B\x5E\x26\x23\x5D\x2A\x29\x7C\x26\x7C\x23\x7C\x24\x29","\x65\x78\x65\x63","","\x20","\x69\x6E\x64\x65\x78\x4F\x66","\x6C\x65\x6E\x67\x74\x68","\x74\x6F\x4C\x6F\x77\x65\x72\x43\x61\x73\x65","\x76\x61\x6C","\x23\x74\x66","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x72\x6F\x77\x20\x6C\x69\x6E\x65\x69\x74\x65\x6D\x22\x20\x69\x64\x3D\x22","\x22\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6C\x65\x61\x72\x20\x76\x69\x73\x69\x62\x6C\x65\x2D\x78\x73\x22\x20\x73\x74\x79\x6C\x65\x3D\x22\x62\x6F\x72\x64\x65\x72\x2D\x74\x6F\x70\x3A\x31\x70\x78\x20\x73\x6F\x6C\x69\x64\x20\x23\x63\x63\x63\x63\x63\x63\x22\x3E\x3C\x2F\x64\x69\x76\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x31\x20\x63\x6F\x6C\x2D\x73\x6D\x2D\x31\x20\x74\x65\x78\x74\x2D\x6C\x65\x66\x74\x22\x3E","\x3C\x73\x70\x61\x6E\x20\x63\x6C\x61\x73\x73\x3D\x22\x6E\x6C\x61\x62\x22\x3E","\x3C\x2F\x73\x70\x61\x6E\x3E","\x3C\x2F\x64\x69\x76\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x31\x30\x20\x63\x6F\x6C\x2D\x73\x6D\x2D\x34\x22\x3E","\x3C\x69\x6E\x70\x75\x74\x20\x6E\x61\x6D\x65\x3D\x22\x66","\x22\x20\x74\x79\x70\x65\x3D\x22\x74\x65\x78\x74\x22\x20\x70\x6C\x61\x63\x65\x68\x6F\x6C\x64\x65\x72\x3D\x22\x65\x67\x3B\x20\x4D\x65\x65\x20\x68\x6F\x6F\x6E\x20\x73\x6F\x75\x70\x22\x20\x63\x6C\x61\x73\x73\x3D\x22\x66\x6F\x6F\x64\x69\x74\x65\x6D\x22\x20\x69\x64\x3D\x22\x66\x69","\x22\x2F\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6C\x65\x61\x72\x20\x76\x69\x73\x69\x62\x6C\x65\x2D\x78\x73\x22\x3E\x3C\x2F\x64\x69\x76\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x31\x20\x76\x69\x73\x69\x62\x6C\x65\x2D\x78\x73\x22\x3E\x3C\x2F\x64\x69\x76\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x34\x20\x63\x6F\x6C\x2D\x73\x6D\x2D\x32\x22\x3E","\x3C\x69\x6E\x70\x75\x74\x20\x6E\x61\x6D\x65\x3D\x22\x70","\x22\x20\x74\x79\x70\x65\x3D\x22\x6E\x75\x6D\x62\x65\x72\x22\x20\x70\x6C\x61\x63\x65\x68\x6F\x6C\x64\x65\x72\x3D\x22\x65\x67\x3B\x20\x33\x2E\x35\x30\x22\x20\x63\x6C\x61\x73\x73\x3D\x22\x70\x72\x69\x63\x65\x22\x20\x69\x64\x3D\x22\x70","\x22\x20\x73\x74\x65\x70\x3D\x22\x30\x2E\x30\x31\x22\x2F\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x35\x20\x63\x6F\x6C\x2D\x73\x6D\x2D\x34\x22\x3E","\x3C\x69\x6E\x70\x75\x74\x20\x6E\x61\x6D\x65\x3D\x22\x65","\x22\x20\x74\x79\x70\x65\x3D\x22\x74\x65\x78\x74\x22\x20\x70\x6C\x61\x63\x65\x68\x6F\x6C\x64\x65\x72\x3D\x22\x65\x67\x3B\x20\x52\x4A\x22\x20\x63\x6C\x61\x73\x73\x3D\x22\x65\x61\x74\x65\x72\x22\x20\x69\x64\x3D\x22\x65","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x31\x20\x63\x6F\x6C\x2D\x73\x6D\x2D\x31\x20\x74\x65\x78\x74\x2D\x63\x65\x6E\x74\x65\x72\x22\x3E","\x3C\x61\x20\x74\x69\x74\x6C\x65\x3D\x22\x43\x6C\x65\x61\x72\x20\x74\x68\x69\x73\x20\x6C\x69\x6E\x65\x22\x20\x68\x72\x65\x66\x3D\x22\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x3A\x3B\x22\x20\x63\x6C\x61\x73\x73\x3D\x22\x6B\x69\x6C\x6C\x22\x20\x69\x64\x3D\x22\x6B","\x22\x3E\x3C\x73\x70\x61\x6E\x20\x63\x6C\x61\x73\x73\x3D\x22\x67\x6C\x79\x70\x68\x69\x63\x6F\x6E\x20\x67\x6C\x79\x70\x68\x69\x63\x6F\x6E\x2D\x72\x65\x6D\x6F\x76\x65\x22\x20\x61\x72\x69\x61\x2D\x68\x69\x64\x64\x65\x6E\x3D\x22\x74\x72\x75\x65\x22\x3E\x3C\x2F\x73\x70\x61\x6E\x3E\x3C\x2F\x61\x3E","\x61\x70\x70\x65\x6E\x64","\x2E\x69\x74\x65\x6D\x73\x6C\x69\x73\x74","\x73\x6D","\x62\x6F\x73\x73","\x77\x68\x65\x72\x65","\x74\x66","\x66","\x65","\x70","\x23\x66\x69","\x23\x65","\x23\x70","\x76\x69\x73\x69\x62\x69\x6C\x69\x74\x79","\x76\x69\x73\x69\x62\x6C\x65","\x63\x73\x73","\x23\x6B","\x2C","\x73\x75\x62\x73\x74\x72\x69\x6E\x67","\x73\x70\x6C\x69\x74","\x69\x6E\x41\x72\x72\x61\x79","\x70\x75\x73\x68","\x73\x6F\x72\x74","\x69\x6E\x64\x69\x76\x69\x64\x75\x61\x6C","\x6E\x6F\x62\x6F\x64\x79","\x79\x73","\x79\x67","\x78","\x77","\x2E\x77\x68\x65\x72\x65","\x62","\x2E\x62\x6F\x73\x73","\x23\x73\x6D","\x31","\x63\x68\x65\x63\x6B\x65\x64","\x61\x74\x74\x72","\x2E\x79\x67","\x2E\x79\x73","\x2E\x78","\x50\x6C\x65\x61\x73\x65\x20\x70\x61\x79\x20\x3C\x62\x3E","\x3C\x2F\x62\x3E\x20\x66\x6F\x72\x20\x74\x68\x65\x20\x6D\x65\x61\x6C\x20\x40\x20\x3C\x62\x3E","\x3C\x2F\x62\x3E\x21","\x68\x74\x6D\x6C","\x2E\x62\x75\x64\x64\x69\x65\x73\x2D\x6D\x73\x67","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6C\x65\x61\x72\x22\x3E\x3C\x2F\x64\x69\x76\x3E\x3C\x70\x3E\x2A\x20\x4E\x6F\x74\x65\x20\x3A\x20\x54\x68\x69\x73\x20\x6D\x65\x61\x6C\x3A\x3C\x75\x6C\x3E","\x3C\x6C\x69\x3E\x49\x6E\x63\x6C\x75\x64\x65\x73\x20\x73\x65\x72\x76\x69\x63\x65\x20\x63\x68\x61\x72\x67\x65\x2E\x3C\x2F\x6C\x69\x3E","\x3C\x6C\x69\x3E\x44\x6F\x65\x73\x20\x6E\x6F\x74\x20\x69\x6E\x63\x6C\x75\x64\x65\x20\x73\x65\x72\x76\x69\x63\x65\x20\x63\x68\x61\x72\x67\x65\x2E\x3C\x2F\x6C\x69\x3E","\x3C\x6C\x69\x3E\x49\x6E\x63\x6C\x75\x64\x65\x73\x20\x47\x53\x54\x2E\x3C\x2F\x6C\x69\x3E","\x3C\x6C\x69\x3E\x44\x6F\x65\x73\x20\x6E\x6F\x74\x20\x69\x6E\x63\x6C\x75\x64\x65\x20\x47\x53\x54\x2E\x3C\x2F\x6C\x69\x3E","\x3C\x6C\x69\x3E\x53\x65\x72\x76\x69\x63\x65\x20\x63\x68\x61\x72\x67\x65\x20\x26\x20\x47\x53\x54\x20\x61\x72\x65\x20\x73\x70\x6C\x69\x74\x20\x61\x6D\x6F\x6E\x67\x20\x3C\x75\x3E","\x20\x70\x65\x6F\x70\x6C\x65\x3C\x2F\x75\x3E\x20\x65\x76\x65\x6E\x6C\x79\x2E\x3C\x2F\x6C\x69\x3E","\x3C\x6C\x69\x3E\x53\x65\x72\x76\x69\x63\x65\x20\x63\x68\x61\x72\x67\x65\x20\x69\x73\x20\x73\x70\x6C\x69\x74\x20\x61\x6D\x6F\x6E\x67\x20\x3C\x75\x3E","\x3C\x6C\x69\x3E\x47\x53\x54\x20\x69\x73\x20\x73\x70\x6C\x69\x74\x20\x61\x6D\x6F\x6E\x67\x20\x3C\x75\x3E","\x3C\x2F\x75\x6C\x3E\x3C\x2F\x70\x3E","\x2E\x6C\x65\x66\x74","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x72\x6F\x77\x22\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x73\x6D\x2D\x31\x32\x20\x63\x6F\x6C\x2D\x6D\x64\x2D\x33\x22\x3E","\x3C\x68\x33\x20\x63\x6C\x61\x73\x73\x3D\x22\x65\x61\x74\x65\x72\x22\x3E","\x74\x6F\x55\x70\x70\x65\x72\x43\x61\x73\x65","\x3C\x2F\x68\x33\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x73\x6D\x2D\x31\x32\x20\x63\x6F\x6C\x2D\x6D\x64\x2D\x39\x22\x3E","\x3C\x74\x61\x62\x6C\x65\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x61\x62\x6C\x65\x20\x74\x61\x62\x6C\x65\x2D\x63\x6F\x6E\x64\x65\x6E\x73\x65\x64\x22\x3E","\x3C\x74\x68\x65\x61\x64\x3E","\x3C\x74\x72\x20\x63\x6C\x61\x73\x73\x3D\x22\x61\x63\x74\x69\x76\x65\x22\x3E","\x3C\x74\x68\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x31\x22\x3E\x23\x3C\x2F\x74\x68\x3E","\x3C\x74\x68\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x39\x22\x3E\x46\x6F\x6F\x64\x20\x2F\x20\x42\x65\x76\x65\x72\x61\x67\x65\x3C\x2F\x74\x68\x3E","\x3C\x74\x68\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x32\x22\x3E\x50\x72\x69\x63\x65\x20\x28\x53\x24\x29\x3C\x2F\x74\x68\x3E","\x3C\x2F\x74\x72\x3E","\x3C\x2F\x74\x68\x65\x61\x64\x3E","\x3C\x74\x62\x6F\x64\x79\x3E","\x3C\x74\x72\x3E","\x3C\x74\x64\x3E","\x3C\x2F\x74\x64\x3E","\x3C\x62\x72\x2F\x3E","\x3C\x73\x70\x61\x6E\x20\x63\x6C\x61\x73\x73\x3D\x22\x73\x6D\x61\x6C\x6C\x22\x3E\x28\x43\x6F\x73\x74\x20\x73\x70\x6C\x69\x74\x20","\x2D\x77\x61\x79\x73\x20\x77\x69\x74\x68\x20","\x6A\x6F\x69\x6E","\x29\x3C\x2F\x73\x70\x61\x6E\x3E","\x3C\x74\x64\x3E\x24","\x3C\x74\x64\x3E\x3C\x2F\x74\x64\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x53\x75\x62\x2D\x74\x6F\x74\x61\x6C\x20\x3A\x20\x3C\x2F\x74\x64\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x53\x65\x72\x76\x69\x63\x65\x20\x43\x68\x67","\x20\x28\x31\x30\x25\x20","\x2D\x77\x61\x79\x20\x73\x70\x6C\x69\x74\x29","\x20\x28\x31\x30\x25\x29","\x20\x3A\x20\x3C\x2F\x74\x64\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x47\x53\x54","\x20\x28\x37\x25\x20","\x20\x28\x37\x25\x29","\x3C\x74\x72\x20\x73\x74\x79\x6C\x65\x3D\x22\x63\x6F\x6C\x6F\x72\x3A\x23\x30\x61\x61\x33\x64\x63\x22\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x54\x6F\x74\x61\x6C\x20\x50\x61\x79\x61\x62\x6C\x65\x20\x3A\x20\x3C\x2F\x74\x64\x3E","\x3C\x2F\x74\x62\x6F\x64\x79\x3E","\x3C\x2F\x74\x61\x62\x6C\x65\x3E","\x3C\x68\x72\x3E\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6C\x65\x61\x72\x22\x3E\x3C\x2F\x64\x69\x76\x3E","\x23\x62\x69\x6C\x6C\x5F\x74\x61\x62\x6C\x65\x73","\x3C\x74\x68\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x31\x22\x3E\x3C\x2F\x74\x68\x3E","\x3C\x74\x68\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x39\x22\x3E\x54\x6F\x74\x61\x6C\x20\x46\x6F\x72\x20\x45\x76\x65\x72\x79\x6F\x6E\x65\x3C\x2F\x74\x68\x3E","\x3C\x74\x68\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x32\x22\x3E\x3C\x2F\x74\x68\x3E","\x3C\x74\x72\x20\x73\x74\x79\x6C\x65\x3D\x22\x63\x6F\x6C\x6F\x72\x3A\x23\x30\x61\x61\x33\x64\x63\x3B\x66\x6F\x6E\x74\x2D\x77\x65\x69\x67\x68\x74\x3A\x62\x6F\x6C\x64\x3B\x22\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x54\x6F\x74\x61\x6C\x20\x49\x74\x65\x6D\x73\x20\x43\x6F\x73\x74\x20\x3A\x20\x3C\x2F\x74\x64\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x54\x6F\x74\x61\x6C\x20\x53\x65\x72\x76\x69\x63\x65\x20\x43\x68\x67\x20\x3A\x20\x3C\x2F\x74\x64\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x54\x6F\x74\x61\x6C\x20\x47\x53\x54\x20\x3A\x20\x3C\x2F\x74\x64\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x3C\x62\x3E\x47\x72\x61\x6E\x64\x20\x54\x6F\x74\x61\x6C\x3C\x2F\x62\x3E\x20\x3A\x20\x3C\x2F\x74\x64\x3E","\x3C\x74\x72\x20\x73\x74\x79\x6C\x65\x3D\x22\x63\x6F\x6C\x6F\x72\x3A\x23\x30\x61\x61\x33\x64\x63\x3B\x74\x65\x78\x74\x2D\x61\x6C\x69\x67\x6E\x3A\x72\x69\x67\x68\x74\x22\x3E","\x3C\x74\x64\x20\x63\x6F\x6C\x73\x70\x61\x6E\x3D\x22\x32\x22\x3E\x3C\x2F\x74\x64\x3E","\x42\x69\x6C\x6C\x20\x73\x70\x6C\x69\x74\x20\x2D\x20\x4C\x75\x6E\x63\x68\x20\x40\x20","\x74\x65\x78\x74","\x74\x69\x74\x6C\x65","\x73\x68\x6F\x77","\x2E\x6D\x61\x69\x6E","\x79\x2D\x73\x63\x72\x6F\x6C\x6C","\x61\x64\x64\x43\x6C\x61\x73\x73","\x62\x6F\x64\x79","\x68\x69\x64\x65","\x72\x65\x6D\x6F\x76\x65\x43\x6C\x61\x73\x73","\x2E\x62\x69\x6C\x6C","\x2E\x65\x64\x69\x74\x61\x6C\x65\x72\x74","\x73\x63\x72\x6F\x6C\x6C\x54\x6F","\x64\x6F\x6E\x65","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x69\x73\x2E\x67\x64\x2F\x63\x72\x65\x61\x74\x65\x2E\x70\x68\x70\x3F\x66\x6F\x72\x6D\x61\x74\x3D\x6A\x73\x6F\x6E\x26\x63\x61\x6C\x6C\x62\x61\x63\x6B\x3D\x73\x68\x6F\x72\x74\x5F\x75\x72\x69\x26\x75\x72\x6C\x3D","\x67\x65\x74\x53\x63\x72\x69\x70\x74","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x61\x6C\x65\x72\x74\x20\x61\x6C\x65\x72\x74\x2D\x69\x6E\x66\x6F\x22\x3E\x3C\x70\x3E\x3C\x61\x20\x74\x61\x72\x67\x65\x74\x3D\x22\x5F\x62\x6C\x61\x6E\x6B\x22\x20\x68\x72\x65\x66\x3D\x22","\x73\x68\x6F\x72\x74\x75\x72\x6C","\x3C\x2F\x61\x3E\x3C\x2F\x70\x3E\x3C\x2F\x64\x69\x76\x3E","\x23\x73\x68\x6F\x72\x74\x6C\x69\x6E\x6B","\x73\x70\x6C\x69\x63\x65","\x68\x61\x73\x4F\x77\x6E\x50\x72\x6F\x70\x65\x72\x74\x79","\x74\x6F\x46\x69\x78\x65\x64","\x72\x6F\x75\x6E\x64","\x20\x2C","\x2C\x20","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x67\x6F\x6F\x67\x6C\x65\x61\x70\x69\x73\x2E\x63\x6F\x6D\x2F\x79\x6F\x75\x74\x75\x62\x65\x2F\x76\x33\x2F\x76\x69\x64\x65\x6F\x73\x3F\x70\x61\x72\x74\x3D\x73\x6E\x69\x70\x70\x65\x74\x26\x63\x68\x61\x72\x74\x3D\x6D\x6F\x73\x74\x50\x6F\x70\x75\x6C\x61\x72\x26\x72\x65\x67\x69\x6F\x6E\x43\x6F\x64\x65\x3D\x53\x47\x26\x6D\x61\x78\x52\x65\x73\x75\x6C\x74\x73\x3D\x31\x31\x26\x6B\x65\x79\x3D","\x26\x63\x61\x6C\x6C\x62\x61\x63\x6B\x3D\x73\x68\x6F\x77\x5F\x76\x69\x64\x65\x6F\x73","\x69\x74\x65\x6D\x73","\x72\x61\x6E\x64\x6F\x6D","\x69\x64","\x63\x68\x61\x6E\x6E\x65\x6C\x54\x69\x74\x6C\x65","\x73\x6E\x69\x70\x70\x65\x74","\x63\x68\x61\x6E\x6E\x65\x6C\x49\x64","\x64\x65\x73\x63\x72\x69\x70\x74\x69\x6F\x6E","\x70\x75\x62\x6C\x69\x73\x68\x65\x64\x41\x74","\x75\x72\x6C","\x6D\x65\x64\x69\x75\x6D","\x74\x68\x75\x6D\x62\x6E\x61\x69\x6C\x73","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x76\x69\x64\x2D\x63\x6F\x6E\x74\x61\x69\x6E\x65\x72\x22\x3E","\x3C\x69\x66\x72\x61\x6D\x65\x20\x69\x64\x3D\x22\x76\x69\x64\x5F\x66\x72\x61\x6D\x65\x22\x20\x73\x72\x63\x3D\x22\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x79\x6F\x75\x74\x75\x62\x65\x2E\x63\x6F\x6D\x2F\x65\x6D\x62\x65\x64\x2F","\x3F\x72\x65\x6C\x3D\x30\x26\x73\x68\x6F\x77\x69\x6E\x66\x6F\x3D\x30\x26\x61\x75\x74\x6F\x68\x69\x64\x65\x3D\x31\x22\x20\x77\x69\x64\x74\x68\x3D\x22\x35\x36\x30\x22\x20\x68\x65\x69\x67\x68\x74\x3D\x22\x33\x31\x35\x22\x20\x66\x72\x61\x6D\x65\x62\x6F\x72\x64\x65\x72\x3D\x22\x30\x22\x3E\x3C\x2F\x69\x66\x72\x61\x6D\x65\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6E\x74\x61\x69\x6E\x65\x72\x2D\x66\x6C\x75\x69\x64\x22\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x31\x32\x22\x3E","\x3C\x68\x33\x3E","\x3C\x73\x70\x61\x6E\x20\x73\x74\x79\x6C\x65\x3D\x22\x63\x6F\x6C\x6F\x72\x3A\x23\x38\x38\x38\x38\x38\x38\x22\x3E\x56\x69\x61\x20\x3C\x61\x20\x74\x61\x72\x67\x65\x74\x3D\x22\x5F\x62\x6C\x61\x6E\x6B\x22\x20\x68\x72\x65\x66\x3D\x22\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x79\x6F\x75\x74\x75\x62\x65\x2E\x63\x6F\x6D\x2F\x63\x68\x61\x6E\x6E\x65\x6C\x2F","\x3C\x2F\x61\x3E\x20\x6F\x6E\x20","\x54","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6C\x65\x61\x72\x22\x3E\x3C\x2F\x64\x69\x76\x3E","\x23\x76\x69\x64\x65\x6F\x6C\x69\x73\x74","\x63\x6C\x69\x63\x6B","\x2E\x61\x64\x64\x6C\x69\x6E\x65","\x6D\x6F\x64\x61\x6C","\x23\x73\x68\x61\x72\x65\x6D\x6F\x64","\x2E\x73\x68\x61\x72\x65\x62\x75\x74\x74","\x2E\x6B\x69\x6C\x6C","\x6B","\x66\x6F\x63\x75\x73","\x68\x69\x64\x64\x65\x6E","\x6F\x6E","\x6B\x65\x79\x75\x70","\x2E\x66\x6F\x6F\x64\x69\x74\x65\x6D\x2C\x2E\x65\x61\x74\x65\x72\x2C\x2E\x70\x72\x69\x63\x65","\x23\x73\x61\x6D\x65\x65\x61\x74\x65\x72\x6D\x6F\x64","\x53\x61\x6D\x65\x20\x65\x61\x74\x65\x72\x21","\x6C\x6F\x67","\x2E\x65\x61\x74\x65\x72","\x61\x63\x74\x69\x6F\x6E","\x2E\x63\x61\x6C\x63","\x2E\x72\x65\x63\x61\x6C\x63","\x2E\x62\x69\x6C\x6C\x2D\x6C\x6F\x67\x6F\x20\x61\x2C\x2E\x62\x69\x6C\x6C\x2D\x73\x6D\x2D\x6C\x6F\x67\x6F\x20\x61","\x72\x65\x61\x64\x79"];function getp(_0x1890x2,_0x1890x3){if(!_0x1890x3){_0x1890x3= window[_0x1a0b[1]][_0x1a0b[0]]};_0x1890x2= _0x1890x2[_0x1a0b[3]](/[\[\]]/g,_0x1a0b[2]);var _0x1890x4= new RegExp(_0x1a0b[4]+ _0x1890x2+ _0x1a0b[5]),_0x1890x5=_0x1890x4[_0x1a0b[6]](_0x1890x3);if(!_0x1890x5){return null};if(!_0x1890x5[2]){return _0x1a0b[7]};return decodeURIComponent(_0x1890x5[2][_0x1a0b[3]](/\+/g,_0x1a0b[8]))}function contains(_0x1890x7,_0x1890x8){if(_0x1890x8[_0x1a0b[9]](_0x1890x7)>  -1){return true}else {return false}}function contains_arr(_0x1890xa,_0x1890xb){for(var _0x1890xc=0;_0x1890xc< _0x1890xb[_0x1a0b[10]];_0x1890xc++){var _0x1890xd=_0x1890xb[_0x1890xc][_0x1a0b[11]]();_0x1890xa= _0x1890xa[_0x1a0b[11]]();if(_0x1890xd== _0x1890xa){return true;break}};return false}function addline(){var _0x1890xf=$(_0x1a0b[13])[_0x1a0b[12]]();var _0x1890x10=parseInt(_0x1890xf)+ 1;var _0x1890x11=_0x1a0b[14]+ _0x1890x10+ _0x1a0b[15];_0x1890x11+= _0x1a0b[16];_0x1890x11+= _0x1a0b[17];_0x1890x11+= _0x1a0b[18]+ _0x1890x10+ _0x1a0b[19];_0x1890x11+= _0x1a0b[20];_0x1890x11+= _0x1a0b[21];_0x1890x11+= _0x1a0b[22]+ _0x1890x10+ _0x1a0b[23]+ _0x1890x10+ _0x1a0b[24];_0x1890x11+= _0x1a0b[20];_0x1890x11+= _0x1a0b[25];_0x1890x11+= _0x1a0b[26];_0x1890x11+= _0x1a0b[27];_0x1890x11+= _0x1a0b[28]+ _0x1890x10+ _0x1a0b[29]+ _0x1890x10+ _0x1a0b[30];_0x1890x11+= _0x1a0b[20];_0x1890x11+= _0x1a0b[31];_0x1890x11+= _0x1a0b[32]+ _0x1890x10+ _0x1a0b[33]+ _0x1890x10+ _0x1a0b[24];_0x1890x11+= _0x1a0b[20];_0x1890x11+= _0x1a0b[34];_0x1890x11+= _0x1a0b[35]+ _0x1890x10+ _0x1a0b[36];_0x1890x11+= _0x1a0b[20];_0x1890x11+= _0x1a0b[20];$(_0x1a0b[38])[_0x1a0b[37]](_0x1890x11);$(_0x1a0b[13])[_0x1a0b[12]](_0x1890x10)}function process_form(){if(getp(_0x1a0b[39])== 1&& getp(_0x1a0b[40])!= _0x1a0b[7]&& getp(_0x1a0b[41])!= _0x1a0b[7]){var _0x1890x13=parseInt(getp(_0x1a0b[42]));var _0x1890x14=_0x1a0b[7];for(var _0x1890x15=1;_0x1890x15<= _0x1890x13;_0x1890x15++){var _0x1890x16=_0x1a0b[7];if(_0x1890x15> 2){_0x1890x16+= _0x1a0b[14]+ _0x1890x15+ _0x1a0b[15];_0x1890x16+= _0x1a0b[16];_0x1890x16+= _0x1a0b[34];_0x1890x16+= _0x1a0b[18]+ _0x1890x15+ _0x1a0b[19];_0x1890x16+= _0x1a0b[20];_0x1890x16+= _0x1a0b[21];_0x1890x16+= _0x1a0b[22]+ _0x1890x15+ _0x1a0b[23]+ _0x1890x15+ _0x1a0b[24];_0x1890x16+= _0x1a0b[20];_0x1890x16+= _0x1a0b[25];_0x1890x16+= _0x1a0b[26];_0x1890x16+= _0x1a0b[27];_0x1890x16+= _0x1a0b[28]+ _0x1890x15+ _0x1a0b[29]+ _0x1890x15+ _0x1a0b[30];_0x1890x16+= _0x1a0b[20];_0x1890x16+= _0x1a0b[31];_0x1890x16+= _0x1a0b[32]+ _0x1890x15+ _0x1a0b[33]+ _0x1890x15+ _0x1a0b[24];_0x1890x16+= _0x1a0b[20];_0x1890x16+= _0x1a0b[34];_0x1890x16+= _0x1a0b[35]+ _0x1890x15+ _0x1a0b[36];_0x1890x16+= _0x1a0b[20];_0x1890x16+= _0x1a0b[20];$(_0x1a0b[38])[_0x1a0b[37]](_0x1890x16)};if(getp(_0x1a0b[43]+ _0x1890x15)!= _0x1a0b[7]&& getp(_0x1a0b[44]+ _0x1890x15)!= _0x1a0b[7]&& getp(_0x1a0b[45]+ _0x1890x15)!= _0x1a0b[7]){$(_0x1a0b[46]+ _0x1890x15)[_0x1a0b[12]](getp(_0x1a0b[43]+ _0x1890x15));$(_0x1a0b[47]+ _0x1890x15)[_0x1a0b[12]](getp(_0x1a0b[44]+ _0x1890x15));$(_0x1a0b[48]+ _0x1890x15)[_0x1a0b[12]](getp(_0x1a0b[45]+ _0x1890x15));$(_0x1a0b[52]+ _0x1890x15)[_0x1a0b[51]](_0x1a0b[49],_0x1a0b[50]);_0x1890x14+= getp(_0x1a0b[44]+ _0x1890x15)+ _0x1a0b[53]}};_0x1890x14= format_eaters(_0x1890x14);_0x1890x14= _0x1890x14[_0x1a0b[54]](0,_0x1890x14[_0x1a0b[10]]- 1)[_0x1a0b[11]]();var _0x1890x17=_0x1890x14[_0x1a0b[55]](_0x1a0b[53]);var _0x1890x18=[];for(var _0x1890x19=0;_0x1890x19< _0x1890x17[_0x1a0b[10]];_0x1890x19++){var _0x1890x1a=_0x1890x17[_0x1890x19];if($[_0x1a0b[56]](_0x1890x1a,_0x1890x18)==  -1){_0x1890x18[_0x1a0b[57]](_0x1890x1a)}};_0x1890x18[_0x1a0b[58]]();var _0x1890x1b=[];for(var _0x1890x1c=0;_0x1890x1c< _0x1890x18[_0x1a0b[10]];_0x1890x1c++){var _0x1890x1d=[];for(var _0x1890x1e=1;_0x1890x1e<= _0x1890x13;_0x1890x1e++){var _0x1890x1f=[];var _0x1890x20=getp(_0x1a0b[44]+ _0x1890x1e)[_0x1a0b[11]]();_0x1890x20= format_eaters(_0x1890x20);var _0x1890x21=getp(_0x1a0b[43]+ _0x1890x1e);var _0x1890x22=_0x1a0b[59];var _0x1890x23=money_it(getp(_0x1a0b[45]+ _0x1890x1e));var _0x1890x24=_0x1a0b[60];if(contains(_0x1a0b[53],_0x1890x20)){_0x1890x22= _0x1a0b[55];var _0x1890x25=_0x1890x20[_0x1a0b[55]](_0x1a0b[53])[_0x1a0b[10]];var _0x1890x26=_0x1890x23/ _0x1890x25;_0x1890x26= money_it(_0x1890x26);_0x1890x24= drop_item(_0x1890x20[_0x1a0b[55]](_0x1a0b[53]),_0x1890x18[_0x1890x1c]);_0x1890x1f[_0x1a0b[57]](_0x1890x21,_0x1890x26,_0x1890x22,_0x1890x24)}else {_0x1890x1f[_0x1a0b[57]](_0x1890x21,_0x1890x23,_0x1890x22,_0x1890x24)};if(contains_arr(_0x1890x18[_0x1890x1c],_0x1890x20[_0x1a0b[55]](_0x1a0b[53]))){_0x1890x1d[_0x1a0b[57]](_0x1890x1f)}};_0x1890x1b[_0x1a0b[57]](_0x1890x1d)};var _0x1890x27=0;var _0x1890x28=0;var _0x1890x29=0;for(var _0x1890x2a=1;_0x1890x2a<= _0x1890x13;_0x1890x2a++){if(getp(_0x1a0b[45]+ _0x1890x2a)!= _0x1a0b[7]){var _0x1890x2b=parseFloat(getp(_0x1a0b[45]+ _0x1890x2a));_0x1890x27+= parseFloat(_0x1890x2b)}};_0x1890x27= parseFloat(_0x1890x27);if(getp(_0x1a0b[61])== 1){_0x1890x28= parseFloat(_0x1890x27* 0.1)}else {_0x1890x28= parseFloat(_0x1890x28)};if(getp(_0x1a0b[62])== 1){_0x1890x29= parseFloat((_0x1890x27+ _0x1890x28)* 0.07)}else {_0x1890x29= parseFloat(_0x1890x29)};var _0x1890x2c=[];for(var _0x1890x2d=0;_0x1890x2d< _0x1890x1b[_0x1a0b[10]];_0x1890x2d++){var _0x1890x2e=_0x1890x1b[_0x1890x2d][_0x1a0b[10]];var _0x1890x2f=[];var _0x1890x30=0;if(_0x1890x2e> 1){for(var _0x1890x31=0;_0x1890x31< _0x1890x2e;_0x1890x31++){_0x1890x30= parseFloat(_0x1890x30)+ parseFloat(_0x1890x1b[_0x1890x2d][_0x1890x31][1])}}else {_0x1890x30= parseFloat(_0x1890x1b[_0x1890x2d][0][1])};_0x1890x30= money_it(_0x1890x30);var _0x1890x32=money_it(0);var _0x1890x33=money_it(0);var _0x1890x34=money_it(0);var _0x1890x35=money_it(0);if(getp(_0x1a0b[63])== 1){var _0x1890x36=_0x1890x18[_0x1a0b[10]];if(getp(_0x1a0b[61])== 1){_0x1890x33= parseFloat(_0x1890x28/ _0x1890x36);_0x1890x32= _0x1890x30+ _0x1890x33;_0x1890x33= money_it(_0x1890x33)};if(getp(_0x1a0b[62])== 1){if(_0x1890x32!= _0x1a0b[7]){_0x1890x35= parseFloat(_0x1890x29/ _0x1890x36);_0x1890x34= parseFloat(_0x1890x30)+ parseFloat(_0x1890x33)+ parseFloat(_0x1890x35);_0x1890x35= money_it(_0x1890x35);_0x1890x34= money_it(_0x1890x34)}else {_0x1890x34= parseFloat(_0x1890x30)+ parseFloat(_0x1890x35);_0x1890x34= money_it(_0x1890x34)}}}else {if(getp(_0x1a0b[61])== 1){_0x1890x32= money_it(_0x1890x30* 1.1);_0x1890x33= money_it(_0x1890x30* 0.1)}else {_0x1890x32= money_it(_0x1890x30)};if(getp(_0x1a0b[62])== 1){if(_0x1890x32!= _0x1a0b[7]){_0x1890x34= money_it(_0x1890x32* 1.07);_0x1890x35= money_it(_0x1890x32* 0.07)}else {_0x1890x34= money_it(_0x1890x30* 1.07);_0x1890x35= money_it(_0x1890x30* 0.07)}}else {_0x1890x34= _0x1890x32}};_0x1890x2f[_0x1a0b[57]]([_0x1890x30,_0x1890x33,_0x1890x35,_0x1890x34]);_0x1890x2c[_0x1a0b[57]](_0x1890x2f)};$(_0x1a0b[65])[_0x1a0b[12]](getp(_0x1a0b[64]));$(_0x1a0b[67])[_0x1a0b[12]](getp(_0x1a0b[66]));$(_0x1a0b[13])[_0x1a0b[12]](getp(_0x1a0b[42]));$(_0x1a0b[68])[_0x1a0b[12]](getp(_0x1a0b[39]))};if(getp(_0x1a0b[62])== _0x1a0b[69]){$(_0x1a0b[72])[_0x1a0b[71]](_0x1a0b[70],true)};if(getp(_0x1a0b[61])== _0x1a0b[69]){$(_0x1a0b[73])[_0x1a0b[71]](_0x1a0b[70],true)};if(getp(_0x1a0b[63])== _0x1a0b[69]){$(_0x1a0b[74])[_0x1a0b[71]](_0x1a0b[70],true)};var _0x1890x37=_0x1a0b[75]+ getp(_0x1a0b[66])+ _0x1a0b[76]+ getp(_0x1a0b[64])+ _0x1a0b[77];$(_0x1a0b[79])[_0x1a0b[78]](_0x1890x37);var _0x1890x38=_0x1a0b[7];_0x1890x38+= _0x1a0b[80];if(getp(_0x1a0b[61])== _0x1a0b[69]){_0x1890x38+= _0x1a0b[81]}else {_0x1890x38+= _0x1a0b[82]};if(getp(_0x1a0b[62])== _0x1a0b[69]){_0x1890x38+= _0x1a0b[83]}else {_0x1890x38+= _0x1a0b[84]};if(getp(_0x1a0b[63])== _0x1a0b[69]){if(getp(_0x1a0b[61])== _0x1a0b[69]&& getp(_0x1a0b[62])== _0x1a0b[69]){_0x1890x38+= _0x1a0b[85]+ _0x1890x18[_0x1a0b[10]]+ _0x1a0b[86]}else {if(getp(_0x1a0b[61])== _0x1a0b[69]&& getp(_0x1a0b[62])!= _0x1a0b[69]){_0x1890x38+= _0x1a0b[87]+ _0x1890x18[_0x1a0b[10]]+ _0x1a0b[86]}else {if(getp(_0x1a0b[61])!= _0x1a0b[69]&& getp(_0x1a0b[62])== _0x1a0b[69]){_0x1890x38+= _0x1a0b[88]+ _0x1890x18[_0x1a0b[10]]+ _0x1a0b[86]}}}};_0x1890x38+= _0x1a0b[89];$(_0x1a0b[90])[_0x1a0b[37]](_0x1890x38);for(var _0x1890x39=0;_0x1890x39< _0x1890x18[_0x1a0b[10]];_0x1890x39++){var _0x1890x3a=_0x1a0b[7];_0x1890x3a+= _0x1a0b[91];_0x1890x3a+= _0x1a0b[92];_0x1890x3a+= _0x1a0b[93]+ _0x1890x18[_0x1890x39][_0x1a0b[94]]()+ _0x1a0b[95];_0x1890x3a+= _0x1a0b[20];_0x1890x3a+= _0x1a0b[96];_0x1890x3a+= _0x1a0b[97];_0x1890x3a+= _0x1a0b[98];_0x1890x3a+= _0x1a0b[99];_0x1890x3a+= _0x1a0b[100];_0x1890x3a+= _0x1a0b[101];_0x1890x3a+= _0x1a0b[102];_0x1890x3a+= _0x1a0b[103];_0x1890x3a+= _0x1a0b[104];_0x1890x3a+= _0x1a0b[105];for(var _0x1890x3b=0;_0x1890x3b< _0x1890x1b[_0x1890x39][_0x1a0b[10]];_0x1890x3b++){_0x1890x3a+= _0x1a0b[106];_0x1890x3a+= _0x1a0b[107]+ (_0x1890x3b+ 1)+ _0x1a0b[108];_0x1890x3a+= _0x1a0b[107];_0x1890x3a+= _0x1890x1b[_0x1890x39][_0x1890x3b][0];if(_0x1890x1b[_0x1890x39][_0x1890x3b][2]== _0x1a0b[55]){_0x1890x3a+= _0x1a0b[109];var _0x1890x3c=_0x1890x1b[_0x1890x39][_0x1890x3b][3];var _0x1890x3d=_0x1890x3c[_0x1a0b[10]]+ 1;_0x1890x3a+= _0x1a0b[110]+ _0x1890x3d+ _0x1a0b[111]+ _0x1890x3c[_0x1a0b[112]]()[_0x1a0b[94]]()+ _0x1a0b[113]};_0x1890x3a+= _0x1a0b[108];_0x1890x3a+= _0x1a0b[114];_0x1890x3a+= _0x1890x1b[_0x1890x39][_0x1890x3b][1];_0x1890x3a+= _0x1a0b[108];_0x1890x3a+= _0x1a0b[103];if(_0x1890x3b== (_0x1890x1b[_0x1890x39][_0x1a0b[10]]- 1)){_0x1890x3a+= _0x1a0b[106];_0x1890x3a+= _0x1a0b[115];_0x1890x3a+= _0x1a0b[116];_0x1890x3a+= _0x1a0b[114];_0x1890x3a+= _0x1890x2c[_0x1890x39][0][0];_0x1890x3a+= _0x1a0b[108];_0x1890x3a+= _0x1a0b[103];if(getp(_0x1a0b[61])== _0x1a0b[69]){_0x1890x3a+= _0x1a0b[106];_0x1890x3a+= _0x1a0b[115];_0x1890x3a+= _0x1a0b[117];if(getp(_0x1a0b[63])== _0x1a0b[69]){_0x1890x3a+= _0x1a0b[118]+ _0x1890x18[_0x1a0b[10]]+ _0x1a0b[119]}else {_0x1890x3a+= _0x1a0b[120]};_0x1890x3a+= _0x1a0b[121];_0x1890x3a+= _0x1a0b[114];_0x1890x3a+= _0x1890x2c[_0x1890x39][0][1];_0x1890x3a+= _0x1a0b[108];_0x1890x3a+= _0x1a0b[103]};if(getp(_0x1a0b[62])== _0x1a0b[69]){_0x1890x3a+= _0x1a0b[106];_0x1890x3a+= _0x1a0b[115];_0x1890x3a+= _0x1a0b[122];if(getp(_0x1a0b[63])== _0x1a0b[69]){_0x1890x3a+= _0x1a0b[123]+ _0x1890x18[_0x1a0b[10]]+ _0x1a0b[119]}else {_0x1890x3a+= _0x1a0b[124]};_0x1890x3a+= _0x1a0b[121];_0x1890x3a+= _0x1a0b[114];_0x1890x3a+= _0x1890x2c[_0x1890x39][0][2];_0x1890x3a+= _0x1a0b[108];_0x1890x3a+= _0x1a0b[103]};_0x1890x3a+= _0x1a0b[125];_0x1890x3a+= _0x1a0b[115];_0x1890x3a+= _0x1a0b[126];_0x1890x3a+= _0x1a0b[114];_0x1890x3a+= _0x1890x2c[_0x1890x39][0][3];_0x1890x3a+= _0x1a0b[108];_0x1890x3a+= _0x1a0b[103]}};_0x1890x3a+= _0x1a0b[127];_0x1890x3a+= _0x1a0b[128];_0x1890x3a+= _0x1a0b[20];_0x1890x3a+= _0x1a0b[20];_0x1890x3a+= _0x1a0b[129];$(_0x1a0b[130])[_0x1a0b[37]](_0x1890x3a)};var _0x1890x3e=_0x1a0b[7];_0x1890x3e+= _0x1a0b[91];_0x1890x3e+= _0x1a0b[92];_0x1890x3e+= _0x1a0b[20];_0x1890x3e+= _0x1a0b[96];_0x1890x3e+= _0x1a0b[97];_0x1890x3e+= _0x1a0b[98];_0x1890x3e+= _0x1a0b[99];_0x1890x3e+= _0x1a0b[131];_0x1890x3e+= _0x1a0b[132];_0x1890x3e+= _0x1a0b[133];_0x1890x3e+= _0x1a0b[103];_0x1890x3e+= _0x1a0b[104];_0x1890x3e+= _0x1a0b[105];_0x1890x3e+= _0x1a0b[134];_0x1890x3e+= _0x1a0b[115];_0x1890x3e+= _0x1a0b[135];_0x1890x3e+= _0x1a0b[114];_0x1890x3e+= money_it(_0x1890x27);_0x1890x3e+= _0x1a0b[108];_0x1890x3e+= _0x1a0b[103];_0x1890x3e+= _0x1a0b[134];_0x1890x3e+= _0x1a0b[115];_0x1890x3e+= _0x1a0b[136];_0x1890x3e+= _0x1a0b[114];_0x1890x3e+= money_it(_0x1890x28);_0x1890x3e+= _0x1a0b[108];_0x1890x3e+= _0x1a0b[103];_0x1890x3e+= _0x1a0b[134];_0x1890x3e+= _0x1a0b[115];_0x1890x3e+= _0x1a0b[137];_0x1890x3e+= _0x1a0b[114];_0x1890x3e+= money_it(_0x1890x29);_0x1890x3e+= _0x1a0b[108];_0x1890x3e+= _0x1a0b[103];_0x1890x3e+= _0x1a0b[134];_0x1890x3e+= _0x1a0b[115];_0x1890x3e+= _0x1a0b[138];_0x1890x3e+= _0x1a0b[114];_0x1890x3e+= money_it(parseFloat(_0x1890x27)+ parseFloat(_0x1890x28)+ parseFloat(_0x1890x29));_0x1890x3e+= _0x1a0b[108];_0x1890x3e+= _0x1a0b[103];_0x1890x3e+= _0x1a0b[103];_0x1890x3e+= _0x1a0b[139];_0x1890x3e+= _0x1a0b[140];_0x1890x3e+= _0x1a0b[115];_0x1890x3e+= _0x1a0b[103];_0x1890x3e+= _0x1a0b[127];_0x1890x3e+= _0x1a0b[128];_0x1890x3e+= _0x1a0b[20];_0x1890x3e+= _0x1a0b[20];$(_0x1a0b[130])[_0x1a0b[37]](_0x1890x3e);$(_0x1a0b[143])[_0x1a0b[142]](_0x1a0b[141]+ getp(_0x1a0b[64])[_0x1a0b[94]]());show_bill()}function show_main(){$(_0x1a0b[145])[_0x1a0b[144]]();$(_0x1a0b[148])[_0x1a0b[147]](_0x1a0b[146])}function hide_main(){$(_0x1a0b[145])[_0x1a0b[149]]();$(_0x1a0b[148])[_0x1a0b[150]](_0x1a0b[146])}function show_bill(){create_short_uri();$(_0x1a0b[151])[_0x1a0b[144]]();reward_eaters();hide_main()}function hide_bill(){$(_0x1a0b[152])[_0x1a0b[144]]();show_main();window[_0x1a0b[153]](0,0);$(_0x1a0b[151])[_0x1a0b[149]]()}function edit_bill(){hide_bill()}function create_short_uri(){uri= window[_0x1a0b[1]][_0x1a0b[0]];$[_0x1a0b[156]](_0x1a0b[155]+ encodeURIComponent(uri))[_0x1a0b[154]](function(){})}function short_uri(_0x1890x46){$(_0x1a0b[160])[_0x1a0b[37]](_0x1a0b[157]+ _0x1890x46[_0x1a0b[158]]+ _0x1a0b[15]+ _0x1890x46[_0x1a0b[158]]+ _0x1a0b[159])}function drop_item(_0x1890x48,_0x1890x49){var _0x1890x4a=_0x1890x48[_0x1a0b[9]](_0x1890x49);if(_0x1890x4a>  -1){_0x1890x48[_0x1a0b[161]](_0x1890x4a,1)};return _0x1890x48}function arr_has(_0x1890xb,_0x1890x4c){return (_0x1890xb[_0x1a0b[9]](_0x1890x4c)!=  -1)}function no_dup(_0x1890x4e,_0x1890x4f){var _0x1890xb=_0x1890x4e&& _0x1890x4e[_0x1a0b[55]](_0x1890x4f|| _0x1a0b[53]),_0x1890x1e=_0x1890xb&& _0x1890xb[_0x1a0b[10]],_0x1890x50={};for(var _0x1890x15=0;_0x1890x15< _0x1890x1e;_0x1890x15++){if(_0x1890x50[_0x1a0b[162]](_0x1890xb[_0x1890x15])){return false}else {_0x1890x50[_0x1890xb[_0x1890x15]]= true}};return true}function money_it(_0x1890x52){return parseFloat(Math[_0x1a0b[164]](_0x1890x52* 100)/ 100)[_0x1a0b[163]](2)}function format_eaters(_0x1890x4e){for(var _0x1890x54=0;_0x1890x54<= 10;_0x1890x54++){_0x1890x4e= _0x1890x4e[_0x1a0b[3]](_0x1a0b[166],_0x1a0b[53])[_0x1a0b[3]](_0x1a0b[165],_0x1a0b[53])};return _0x1890x4e}function strip_spaces(_0x1890x4e){return _0x1890x4e[_0x1a0b[3]](/ /g,_0x1a0b[7])}function reward_eaters(){$[_0x1a0b[156]](_0x1a0b[167]+ ytk+ _0x1a0b[168])[_0x1a0b[154]](function(){})}function show_videos(_0x1890x58){var _0x1890x59=_0x1890x58[_0x1a0b[169]];var _0x1890x5a=_0x1a0b[7];var _0x1890x5b=parseInt(Math[_0x1a0b[170]]()* (10- 0)+ 0);for(var _0x1890x3b=0;_0x1890x3b< _0x1890x59[_0x1a0b[10]];_0x1890x3b++){var _0x1890x5c=_0x1890x59[_0x1890x3b][_0x1a0b[171]];var _0x1890x5d=_0x1890x59[_0x1890x3b][_0x1a0b[173]][_0x1a0b[172]];var _0x1890x5e=_0x1890x59[_0x1890x3b][_0x1a0b[173]][_0x1a0b[174]];var _0x1890x5f=_0x1890x59[_0x1890x3b][_0x1a0b[173]][_0x1a0b[143]];var _0x1890x60=_0x1890x59[_0x1890x3b][_0x1a0b[173]][_0x1a0b[175]];var _0x1890x61=_0x1890x59[_0x1890x3b][_0x1a0b[173]][_0x1a0b[176]];var _0x1890x62=_0x1890x59[_0x1890x3b][_0x1a0b[173]][_0x1a0b[179]][_0x1a0b[178]][_0x1a0b[177]];if(_0x1890x3b== _0x1890x5b){_0x1890x5a+= _0x1a0b[180];_0x1890x5a+= _0x1a0b[181]+ _0x1890x5c+ _0x1a0b[182];_0x1890x5a+= _0x1a0b[20];_0x1890x5a+= _0x1a0b[183];_0x1890x5a+= _0x1a0b[91];_0x1890x5a+= _0x1a0b[184];_0x1890x5a+= _0x1a0b[185]+ _0x1890x5f+ _0x1a0b[95];_0x1890x5a+= _0x1a0b[186]+ _0x1890x5e+ _0x1a0b[15]+ _0x1890x5d+ _0x1a0b[187]+ _0x1890x61[_0x1a0b[55]](_0x1a0b[188])[0]+ _0x1a0b[19];_0x1890x5a+= _0x1a0b[189];_0x1890x5a+= _0x1a0b[20];_0x1890x5a+= _0x1a0b[20];_0x1890x5a+= _0x1a0b[20];break}};$(_0x1a0b[190])[_0x1a0b[37]](_0x1890x5a)}$(_0x1a0b[192])[_0x1a0b[191]](function(){addline()});$(_0x1a0b[195])[_0x1a0b[191]](function(){$(_0x1a0b[194])[_0x1a0b[193]](_0x1a0b[144])});$(_0x1a0b[38])[_0x1a0b[200]](_0x1a0b[191],_0x1a0b[196],function(){var _0x1890x63=$(this)[_0x1a0b[71]](_0x1a0b[171])[_0x1a0b[3]](_0x1a0b[197],_0x1a0b[7]);$(_0x1a0b[47]+ _0x1890x63)[_0x1a0b[12]](_0x1a0b[7]);$(_0x1a0b[48]+ _0x1890x63)[_0x1a0b[12]](_0x1a0b[7]);$(_0x1a0b[46]+ _0x1890x63)[_0x1a0b[12]](_0x1a0b[7])[_0x1a0b[198]]();$(this)[_0x1a0b[51]](_0x1a0b[49],_0x1a0b[199])});$(_0x1a0b[38])[_0x1a0b[200]](_0x1a0b[201],_0x1a0b[202],function(){for(var _0x1890x64=1;_0x1890x64<= $(_0x1a0b[13])[_0x1a0b[12]]();_0x1890x64++){if($(_0x1a0b[46]+ _0x1890x64)[_0x1a0b[12]]()!= _0x1a0b[7]|| $(_0x1a0b[47]+ _0x1890x64)[_0x1a0b[12]]()!= _0x1a0b[7]|| $(_0x1a0b[48]+ _0x1890x64)[_0x1a0b[12]]()!= _0x1a0b[7]){$(_0x1a0b[52]+ _0x1890x64)[_0x1a0b[51]](_0x1a0b[49],_0x1a0b[50])}else {$(_0x1a0b[52]+ _0x1890x64)[_0x1a0b[51]](_0x1a0b[49],_0x1a0b[199])}}});$(_0x1a0b[206])[_0x1a0b[200]](_0x1a0b[201],function(){var _0x1890x65=false;if($(this)[_0x1a0b[12]]()!= _0x1a0b[7]){var _0x1890x66=$(this)[_0x1a0b[12]]()[_0x1a0b[11]]();if(!no_dup(_0x1890x66,_0x1a0b[53])){_0x1890x65= true}};if(_0x1890x65){$(_0x1a0b[203])[_0x1a0b[193]](_0x1a0b[144]);console[_0x1a0b[205]](_0x1a0b[204])}});$(document)[_0x1a0b[211]](function(){$(_0x1a0b[208])[_0x1a0b[71]](_0x1a0b[207],ep);$(_0x1a0b[209])[_0x1a0b[71]](_0x1a0b[0],ep);$(_0x1a0b[210])[_0x1a0b[71]](_0x1a0b[0],ep);if(getp(_0x1a0b[39])== 1){process_form()}})
+  function getp(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  function contains(shortstr,longstr){
+    if(longstr.indexOf(shortstr) > -1){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  function contains_arr(item,arr){
+    for (var w=0; w<arr.length; w++){
+      var t = arr[w].toLowerCase();
+      item = item.toLowerCase();
+      if (t == item){
+        return true;
+        break;
+      }
+    }
+    return false;
+  }
+
+  function addline(){
+    var currnum = $('#tf').val();
+    var nextnum = parseInt(currnum) + 1;
+    var html = '<div class="row lineitem" id="'+nextnum+'">';
+    html += '<div class="clear visible-xs" style="border-top:1px solid #cccccc"></div>';
+    html += '<div class="col-xs-1 col-sm-1 text-left">';
+    html += '<span class="nlab">'+nextnum+'</span>';
+    html += '</div>';
+    html += '<div class="col-xs-10 col-sm-4">';
+    html += '<input name="f'+nextnum+'" type="text" placeholder="eg; Mee hoon soup" class="fooditem" id="fi'+nextnum+'"/>';
+    html += '</div>';
+    html += '<div class="clear visible-xs"></div>';
+    html += '<div class="col-xs-1 visible-xs"></div>';
+    html += '<div class="col-xs-4 col-sm-2">';
+    html += '<input name="p'+nextnum+'" type="number" placeholder="eg; 3.50" class="price" id="p'+nextnum+'" step="0.01"/>';
+    html += '</div>';    
+    html += '<div class="col-xs-6 col-sm-4">';
+    html += '<input name="e'+nextnum+'" type="text" placeholder="eg; RJ" class="eater" id="e'+nextnum+'"/>';
+    html += '<a title="Clear this line" href="javascript:;" class="kill" id="k'+nextnum+'"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>';    
+    html += '</div>';
+    html += '<div class="col-xs-1 col-sm-1 text-center">';
+    html += '</div>';             
+    html += '</div>';
+    $('.itemslist').append(html);
+    $('#tf').val(nextnum);
+  }
+
+  function process_form(){
+    if (getp('sm') == 1 && getp('boss') != '' && getp('where') != ''){
+      var totitems = parseInt(getp('tf'));
+      var allnames = '';
+      for (var i=1; i<=totitems; i++){
+        var rowhtml = '';
+        if (i > 2){
+          rowhtml += '<div class="row lineitem" id="'+i+'">';
+          rowhtml += '<div class="clear visible-xs" style="border-top:1px solid #cccccc"></div>';
+          rowhtml += '<div class="col-xs-1 col-sm-1 text-center">';
+          rowhtml += '<span class="nlab">'+i+'</span>';
+          rowhtml += '</div>';
+          rowhtml += '<div class="col-xs-10 col-sm-4">';
+          rowhtml += '<input name="f'+i+'" type="text" placeholder="eg; Mee hoon soup" class="fooditem" id="fi'+i+'"/>';
+          rowhtml += '</div>';
+          rowhtml += '<div class="clear visible-xs"></div>';
+          rowhtml += '<div class="col-xs-1 visible-xs"></div>';          
+          rowhtml += '<div class="col-xs-4 col-sm-2">';
+          rowhtml += '<input name="p'+i+'" type="number" placeholder="eg; 3.50" class="price" id="p'+i+'" step="0.01"/>';
+          rowhtml += '</div>';    
+          rowhtml += '<div class="col-xs-6 col-sm-4">';
+          rowhtml += '<input name="e'+i+'" type="text" placeholder="eg; RJ" class="eater" id="e'+i+'"/>';
+          rowhtml += '<a title="Clear this line" href="javascript:;" class="kill" id="k'+i+'"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>';          
+          rowhtml += '</div>';
+          rowhtml += '<div class="col-xs-1 col-sm-1 text-center">';
+          rowhtml += '</div>';             
+          rowhtml += '</div>';
+          $('.itemslist').append(rowhtml);
+        }
+        if (getp('f'+i) !='' && getp('e'+i) !='' && getp('p'+i) !=''){
+          $('#fi'+i).val(getp('f'+i));
+          $('#e'+i).val(getp('e'+i));
+          $('#p'+i).val(getp('p'+i));
+          $('#k'+i).css('visibility','visible');
+                  
+          allnames += getp('e'+i) + ',';
+        }
+      }
+
+      /* Bill calculation magic happens here */
+
+      /* Form unique name list */
+      allnames = format_eaters(allnames);
+      allnames = allnames.substring(0, allnames.length-1).toLowerCase();
+      //console.log(allnames);
+      var namesarray = allnames.split(',');
+      var eaters = [];
+      for (var j=0; j<namesarray.length; j++){
+        var singlename = namesarray[j];
+        if ($.inArray(singlename, eaters) ==  -1){
+          eaters.push(singlename);
+        }
+      }
+      eaters.sort();
+
+      /* Assign items to individual names */
+      var items_eaten = [];
+      for (var k=0; k<eaters.length; k++){
+        var inditems = [];
+        for (var l=1; l<=totitems; l++){
+          var itemcollection = [];
+          var thenames = getp('e'+l).toLowerCase();
+          thenames = format_eaters(thenames);
+          var theitem = getp('f'+l);
+          var ntype = 'individual';
+          var pricing = money_it(getp('p'+l));
+          var split_with = 'nobody';
+          if (contains(',',thenames)){
+            ntype = 'split';
+            var numnames = thenames.split(',').length;
+            var split_pricing = pricing / numnames;
+            split_pricing = money_it(split_pricing);
+            split_with = drop_item(thenames.split(','),eaters[k]);
+            itemcollection.push(theitem,split_pricing,ntype,split_with);
+          }else{
+            itemcollection.push(theitem,pricing,ntype,split_with);
+          }
+          if (contains_arr(eaters[k],thenames.split(','))){
+            inditems.push(itemcollection);
+          }
+        }
+        items_eaten.push(inditems);
+      }
+
+      /* Calculate grand totals */
+      
+      var grand_total_items = 0;
+      var grand_total_svc_chg = 0;
+      var grand_total_gst = 0;
+
+      for (var c=1; c<=totitems; c++){
+        if (getp('p'+c) != ''){
+          var grand_summer = parseFloat(getp('p'+c));
+          grand_total_items += parseFloat(grand_summer);  
+        }
+      }
+      grand_total_items = parseFloat(grand_total_items);
+      if (getp('ys') == 1){
+        grand_total_svc_chg = parseFloat(grand_total_items*0.1);
+      }else{
+        grand_total_svc_chg = parseFloat(grand_total_svc_chg);
+      }
+      if (getp('yg') == 1){
+        grand_total_gst = parseFloat((grand_total_items+grand_total_svc_chg)*0.07);     
+      }else{
+        grand_total_gst = parseFloat(grand_total_gst);
+      }
+
+      /* Calculate total spending per person */
+      var spending_totals = [];
+      for (var m=0; m<items_eaten.length; m++){
+        var numitems = items_eaten[m].length;
+        var totholder = [];
+        var adder = 0;
+        if (numitems > 1){
+          for (var n=0; n<numitems; n++){
+            adder = parseFloat(adder) + parseFloat(items_eaten[m][n][1]);
+          }
+        }else{
+          adder = parseFloat(items_eaten[m][0][1]);
+        }
+        adder = money_it(adder);
+
+        var totsvc = money_it(0);
+        var svc = money_it(0);
+        var totgst = money_it(0);
+        var gst = money_it(0);
+
+        if (getp('x') == 1){
+          // split gst & svc evenly
+          var pplcount = eaters.length;
+          if (getp('ys') == 1){
+            svc = parseFloat(grand_total_svc_chg / pplcount);
+            totsvc = adder+svc;
+            svc = money_it(svc);
+          }
+          if (getp('yg') == 1){
+            if (totsvc != ''){          
+              gst = parseFloat(grand_total_gst / pplcount);
+              totgst = parseFloat(adder) + parseFloat(svc) + parseFloat(gst);
+              gst = money_it(gst);
+              totgst = money_it(totgst);              
+            }else{
+              totgst = parseFloat(adder) + parseFloat(gst);
+              totgst = money_it(totgst);              
+            }
+          }
+
+        }else{
+          // everyone pays his/her own gst & svc chg
+          if (getp('ys') == 1){
+            totsvc = money_it(adder*1.1);
+            svc = money_it(adder*0.1);
+          }else{
+            totsvc = money_it(adder);
+          }
+          if (getp('yg') == 1){
+            if (totsvc != ''){
+              totgst = money_it(totsvc*1.07);  
+              gst = money_it(totsvc*0.07);
+            }else{
+              totgst = money_it(adder*1.07);  
+              gst = money_it(adder*0.07);
+            }
+          }else{
+            totgst = totsvc;
+          }     
+        }
+        totholder.push([adder,svc,gst,totgst]);
+        spending_totals.push(totholder);
+      }
+      
+      /* Filling up other mandatory info */
+      $('.where').val(getp('w'));
+      $('.boss').val(getp('b'));
+      $('#tf').val(getp('tf'));
+      $('#sm').val(getp('sm'));
+    }
+    if (getp('yg') == '1'){
+      $('.yg').attr('checked', true);
+    }
+    if (getp('ys') == '1'){
+      $('.ys').attr('checked', true);
+    }
+    if (getp('x') == '1'){
+      $('.x').attr('checked', true);
+    }
+
+    /* Totals, items and people check */
+    //console.log(eaters+' - '+eaters.length);
+    //console.log(items_eaten);
+    //console.log(spending_totals);
+    //console.log(grand_total_items);
+    //console.log(grand_total_svc_chg);
+    //console.log(grand_total_gst);
+
+    /* Draw Bill */
+    var buddies_msg = 'Please pay <b>'+getp('b')+'</b> for the meal @ <b>'+getp('w')+'</b>!';
+    $('.buddies-msg').html(buddies_msg);
+
+    var meal_chg_msg = '';
+    meal_chg_msg += '<div class="clear"></div><p>* Note : This meal:<ul>';
+    if (getp('ys') == '1'){
+      meal_chg_msg += '<li>Includes service charge.</li>';    
+    }else{
+      meal_chg_msg += '<li>Does not include service charge.</li>';
+    }      
+    if (getp('yg') == '1'){
+      meal_chg_msg += '<li>Includes GST.</li>';
+    }else{
+      meal_chg_msg += '<li>Does not include GST.</li>';
+    }      
+    if (getp('x') == '1'){ 
+      if (getp('ys') == '1' && getp('yg') == '1'){
+        meal_chg_msg += '<li>Service charge & GST are split among <u>'+eaters.length+' people</u> evenly.</li>';
+      }else if (getp('ys') == '1' && getp('yg') != '1'){
+        meal_chg_msg += '<li>Service charge is split among <u>'+eaters.length+' people</u> evenly.</li>';
+      }else if (getp('ys') != '1' && getp('yg') == '1'){
+        meal_chg_msg += '<li>GST is split among <u>'+eaters.length+' people</u> evenly.</li>';
+      }
+    }
+    meal_chg_msg += '</ul></p>';
+    $('.left').append(meal_chg_msg);
+
+    /* Draw the split bill tables */
+    
+    for (var u=0; u<eaters.length; u++){
+      var split_tables = '';
+      split_tables += '<div class="row">';
+      split_tables += '<div class="col-sm-12 col-md-3">';
+      split_tables += '<h3 class="eater">'+eaters[u].toUpperCase()+'</h3>';
+      split_tables += '</div>';
+      split_tables += '<div class="col-sm-12 col-md-9">';
+      split_tables += '<table class="table table-condensed">';
+      split_tables += '<thead>';
+      split_tables += '<tr class="active">';
+      split_tables += '<th class="col-xs-1">#</th>';
+      split_tables += '<th class="col-xs-9">Food / Beverage</th>';
+      split_tables += '<th class="col-xs-2">Price (S$)</th>';      
+      split_tables += '</tr>';
+      split_tables += '</thead>';
+      split_tables += '<tbody>';
+      // loop items
+      for (var v=0; v<items_eaten[u].length; v++){
+        split_tables += '<tr>';
+        split_tables += '<td>'+(v+1)+'</td>';
+        split_tables += '<td>';
+        split_tables += items_eaten[u][v][0];
+        if (items_eaten[u][v][2] == 'split'){
+          split_tables += '<br/>';
+          var sharing_eaters = items_eaten[u][v][3];
+          var se_count = sharing_eaters.length + 1;
+          split_tables += '<span class="small">(Cost split '+se_count+'-ways with '+sharing_eaters.join().toUpperCase()+")</span>";
+        }
+        split_tables += '</td>';
+        split_tables += '<td>$';
+        split_tables += items_eaten[u][v][1];
+        split_tables += '</td>';
+        split_tables += '</tr>';        
+        if (v == (items_eaten[u].length-1)){
+          // last item for the eater; put in totals
+          split_tables += '<tr>';
+          split_tables += '<td></td>';
+          split_tables += '<td class="text-right">Sub-total : </td>';
+          split_tables += '<td>$';
+          split_tables += spending_totals[u][0][0];        
+          split_tables += '</td>';
+          split_tables += '</tr>';        
+          if (getp('ys') == '1'){
+            split_tables += '<tr>';
+            split_tables += '<td></td>';
+            split_tables += '<td class="text-right">Service Chg';
+            if (getp('x') == '1'){
+              split_tables += ' (10% '+eaters.length+'-way split)';
+            }else{
+              split_tables += ' (10%)';  
+            }
+            split_tables += ' : </td>';
+            split_tables += '<td>$';
+            split_tables += spending_totals[u][0][1];        
+            split_tables += '</td>';
+            split_tables += '</tr>';    
+          }  
+          if (getp('yg') == '1'){
+            split_tables += '<tr>';
+            split_tables += '<td></td>';
+            split_tables += '<td class="text-right">GST';
+            if (getp('x') == '1'){
+              split_tables += ' (7% '+eaters.length+'-way split)';
+            }else{
+              split_tables += ' (7%)';  
+            }
+            split_tables += ' : </td>';
+            split_tables += '<td>$';
+            split_tables += spending_totals[u][0][2];        
+            split_tables += '</td>';
+            split_tables += '</tr>';    
+          } 
+          split_tables += '<tr style="color:#0aa3dc">';
+          split_tables += '<td></td>';
+          split_tables += '<td class="text-right">Total Payable : </td>';
+          split_tables += '<td>$';
+          split_tables += spending_totals[u][0][3];        
+          split_tables += '</td>';
+          split_tables += '</tr>';
+        }
+      }      
+      split_tables += '</tbody>';
+      split_tables += '</table>';                
+      split_tables += '</div>';
+      split_tables += '</div>';
+      split_tables += '<hr><div class="clear"></div>';
+      $('#bill_tables').append(split_tables); 
+    }
+
+    var gtotals = '';    
+    gtotals += '<div class="row">';
+    gtotals += '<div class="col-sm-12 col-md-3">';
+    gtotals += '</div>';
+    gtotals += '<div class="col-sm-12 col-md-9">';
+    gtotals += '<table class="table table-condensed">';
+    gtotals += '<thead>';
+    gtotals += '<tr class="active">';
+    gtotals += '<th class="col-xs-1"></th>';
+    gtotals += '<th class="col-xs-9">Total For Everyone</th>';
+    gtotals += '<th class="col-xs-2"></th>';      
+    gtotals += '</tr>';
+    gtotals += '</thead>';    
+    gtotals += '<tbody>';
+    gtotals += '<tr style="color:#0aa3dc;font-weight:bold;">';
+    gtotals += '<td></td>';
+    gtotals += '<td class="text-right">Total Items Cost : </td>';
+    gtotals += '<td>$';
+    gtotals += money_it(grand_total_items);        
+    gtotals += '</td>';
+    gtotals += '</tr>';        
+    gtotals += '<tr style="color:#0aa3dc;font-weight:bold;">';
+    gtotals += '<td></td>';
+    gtotals += '<td class="text-right">Total Service Chg : </td>';
+    gtotals += '<td>$';
+    gtotals += money_it(grand_total_svc_chg);        
+    gtotals += '</td>';
+    gtotals += '</tr>';  
+    gtotals += '<tr style="color:#0aa3dc;font-weight:bold;">';
+    gtotals += '<td></td>';
+    gtotals += '<td class="text-right">Total GST : </td>';
+    gtotals += '<td>$';
+    gtotals += money_it(grand_total_gst);        
+    gtotals += '</td>';
+    gtotals += '</tr>'; 
+    gtotals += '<tr style="color:#0aa3dc;font-weight:bold;">';
+    gtotals += '<td></td>';
+    gtotals += '<td class="text-right"><b>Grand Total</b> : </td>';
+    gtotals += '<td>$';
+    gtotals += money_it(parseFloat(grand_total_items)+parseFloat(grand_total_svc_chg)+parseFloat(grand_total_gst));        
+    gtotals += '</td>';
+    gtotals += '</tr>';      
+    gtotals += '</tr>'; 
+    gtotals += '<tr style="color:#0aa3dc;text-align:right">';
+    gtotals += '<td colspan="2"></td>';
+    gtotals += '<td></td>';
+    gtotals += '</tr>';          
+    gtotals += '</tbody>';
+    gtotals += '</table>';                
+    gtotals += '</div>';
+    gtotals += '</div>';
+    $('#bill_tables').append(gtotals); 
+
+    $('title').text('Bill split - Lunch @ '+getp('w').toUpperCase());
+    show_bill();
+  }
+
+  function show_main(){
+    $('.main').show();
+    $('body').addClass('y-scroll');
+  }
+
+  function hide_main(){
+    $('.main').hide();
+    $('body').removeClass('y-scroll');
+  }
+
+  function show_bill(){
+    create_short_uri();
+    $('.bill').show();
+    reward_eaters();
+    hide_main();
+  }
+  function hide_bill(){
+    //$('.editalert').show().delay(5000).fadeOut();
+    $('.editalert').show();
+    show_main();
+    window.scrollTo(0,0);
+    $('.bill').hide();
+  }
+
+  function edit_bill(){
+    hide_bill();
+  }
+
+  function create_short_uri(){
+    uri = window.location.href;
+    $.getScript("https://is.gd/create.php?format=json&callback=short_uri&url="+encodeURIComponent(uri)).done(function(){});
+  }
+
+  function short_uri(uri_data){
+    $('#shortlink').append('<div class="alert alert-info"><p><a target="_blank" href="'+uri_data.shorturl+'">'+uri_data.shorturl+'</a></p></div>');    
+  }
+
+  function drop_item(arr_data,itemtodrop){
+    var index = arr_data.indexOf(itemtodrop);
+    if (index > -1) {
+      arr_data.splice(index, 1);
+    }
+    return arr_data;
+  }
+
+  function arr_has(arr,obj) {
+    return (arr.indexOf(obj) != -1);
+  }
+
+  function no_dup(str, separator) {
+      var arr = str && str.split(separator || ","),
+          l = arr && arr.length,
+          o = {}; 
+
+      for (var i = 0; i < l; i++) {
+          if (o.hasOwnProperty( arr[i] )) {
+              return false;
+          } else {
+              o[ arr[i] ] = true;
+          }
+      }
+      return true;
+  }
+
+  function money_it(fl){
+    return parseFloat(Math.round(fl * 100) / 100).toFixed(2);
+  }
+
+  function format_eaters(str){
+    for (var x=0; x<=10; x++){
+      str = str.replace(", ",",").replace(" ,",",");  
+    }
+    return str;
+  }
+
+  function strip_spaces(str){ 
+   return str.replace(/ /g,"");      
+  }
+
+  function reward_eaters(){
+    $.getScript("https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&regionCode=SG&maxResults=11&key="+ytk+"&callback=show_videos").done(function(){});
+  }
+
+  function show_videos(videos){
+    var videolist = videos.items;
+    var videohtml = '';
+    var rn = parseInt(Math.random() * (10 - 0) + 0);
+    for (var v=0; v<videolist.length; v++){
+      var video_id = videolist[v].id;
+      var video_channel = videolist[v].snippet.channelTitle;
+      var video_channelId = videolist[v].snippet.channelId;
+      var video_title = videolist[v].snippet.title;
+      var video_desc = videolist[v].snippet.description;
+      var video_pubd = videolist[v].snippet.publishedAt;
+      var video_thumb = videolist[v].snippet.thumbnails.medium.url;
+      //console.log('v='+v);
+      //console.log('rn='+rn);      
+      if (v == rn){
+        videohtml += '<div class="vid-container">';
+        videohtml += '<iframe id="vid_frame" src="https://www.youtube.com/embed/'+video_id+'?rel=0&showinfo=0&autohide=1" width="560" height="315" frameborder="0"></iframe>';
+        videohtml += '</div>';
+        videohtml += '<div class="container-fluid">';
+        videohtml += '<div class="row">';
+        videohtml += '<div class="col-xs-12">';
+        videohtml += '<h3>'+video_title+'</h3>';
+        videohtml += '<span style="color:#888888">Via <a target="_blank" href="https://www.youtube.com/channel/'+video_channelId+'">'+video_channel+'</a> on '+video_pubd.split('T')[0]+'</span>';
+        videohtml += '<div class="clear"></div>';
+        //videohtml += '<p class="small" style="font-size:15px">'+video_desc+'</p>';
+        videohtml += '</div>';
+        videohtml += '</div>';
+        videohtml += '</div>';
+        break;
+      }    
+    }
+    $('#videolist').append(videohtml);
+  }
+
+  $('.addline').click(function(){
+    addline();
+  });
+
+  $('.sharebutt').click(function(){
+    $('#sharemod').modal('show');
+  });
+
+  $('.itemslist').on('click', '.kill' ,function(){
+    var idn = $(this).attr('id').replace('k','');
+    $('#e'+idn).val('');
+    $('#p'+idn).val('');
+    $('#fi'+idn).val('').focus();
+    $(this).css('visibility','hidden');
+  });    
+    
+  $('.itemslist').on('keyup', '.fooditem,.eater,.price' ,function(){
+    for (var a=1; a<=$('#tf').val(); a++){
+      if ($('#fi'+a).val() != '' || $('#e'+a).val() != '' || $('#p'+a).val() != ''){
+        $('#k'+a).css('visibility','visible');
+      }else{
+        $('#k'+a).css('visibility','hidden');
+      }         
+    }
+  });  
+
+  $('.eater').on('keyup',function(){
+    var has_repeated = false;
+    if ($(this).val() != ''){
+      var eaterlist = $(this).val().toLowerCase();
+      if (!no_dup(eaterlist,',')){
+        has_repeated = true;
+      }
+    }
+    if (has_repeated){
+      $('#sameeatermod').modal('show');
+      console.log('Same eater!');
+    }
+  });
+
+  $(document).ready(function(){
+    $('.calc').attr('action',ep);
+    $('.recalc').attr('href',ep);
+    $('.bill-logo a,.bill-sm-logo a').attr('href',ep);
+    if (getp('sm') == 1){
+      process_form();
+    }
+  });
 
 </script>
 </body>
