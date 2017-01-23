@@ -5,7 +5,10 @@ body{
 	background: linear-gradient(to left, #517fa4 , #243949); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
 	color:#fefefe;     
 	min-width:310px;
-	overflow-x:scroll;
+}
+.y-scroll{
+	overflow-y:scroll;
+	overflow-x:hidden;
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #666666;
