@@ -94,6 +94,16 @@ a.kill{
 	display:block;
 	visibility:hidden;
 }
+.itemslist a{
+    text-decoration: none;
+    color: #fefefe;
+    font-size: 20px;
+    font-weight: light;
+    margin-top: -30px;
+    display: block;
+    float: right;
+    margin-right: -35px;
+}
 .addline{
 	background:#ffffff;
 	color:#517fa4;
@@ -224,6 +234,9 @@ a.kill{
 	.bill-logo{
 		font-size:20px;
 		padding-top:13px;
+	}
+	.options-right {
+    	max-width: 310px;
 	}
 }
 
