@@ -81,6 +81,11 @@ form label{
 	font-weight:normal;
 	float:left;
 }
+form select.disct{
+	color:#555555;
+	padding:7px 4px;
+	float:left;
+}
 .lineitem{
 	margin-bottom:20px;
 }
@@ -234,8 +239,12 @@ a.kill{
 		font-size:20px;
 		padding-top:13px;
 	}
-	.options-right {
+	.options-right,.options-left {
     	max-width: 310px;
+    	margin:auto;
+	}
+	.options-left{
+		padding-left:16px;
 	}
 }
 
