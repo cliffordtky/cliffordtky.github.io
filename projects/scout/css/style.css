@@ -12,6 +12,7 @@ body{
   z-index: 999;
   background:#ffffff;
   border:1px solid #e1e1e1;
+  margin-left: -1px;
 }
 .tt-cursor{
   background:#eeeeee;
