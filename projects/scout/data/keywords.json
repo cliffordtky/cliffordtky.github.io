@@ -1,6 +1,10 @@
 [
      {"kw":"*store > Shop online at StarHub"},
+     {"kw":"*phones > Browse phones & tablets on online store"},
+     {"kw":"*fibre > Browse Fibre Broadband page"},
+     {"kw":"*mobile > Go to mobile page"},
      {"kw":"*msa-android > Download My StarHub App for Android"},
+     {"kw":"*msa-apple > Download My StarHub App for Apple"},
 
      {"kw":"3G plans"},
      {"kw":"4G mobile plans"},
