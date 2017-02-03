@@ -99,7 +99,7 @@
         if (searchterm.startsWith('*')){
           /* Put shortcuts logic here */
           var query_norm = searchterm.replace('*','').toLowerCase();
-          query_norm = query_norm.split('|')[0].trim();
+          query_norm = query_norm.split('>')[0].trim();
           if (query_norm == 'personal' || query_norm == 'consumer' || query_norm == 'for-me'){
             redirect('http://www.starhub.com/personal.html');
           }
