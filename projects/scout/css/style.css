@@ -19,8 +19,8 @@ body{
 }
 .tt-suggestion{
   padding:5px 10px;
-  font-size:16px;
-  color:#333333;
+  font-size:15px;
+  color:#555555;
 }
 .backhome, .backhome:hover{
   font-family: 'Righteous', cursive;
@@ -39,25 +39,26 @@ body{
   display: block;
   margin:10px auto;
   text-align:center;
-  text-shadow: 0px 2px 1px #777;
+  /*text-shadow: 0px 2px 1px #888888;*/
 }
 .start{
-  position:fixed;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  background:#eeeeee;
+  position:relative;
+  /*background:#eeeeee;*/
+  background: #abbaab;
+  background: -webkit-linear-gradient(to left, #abbaab , #ffffff);
+  background: linear-gradient(to left, #abbaab , #ffffff);
   z-index:9999;
   border-top:2px solid #73c20e;
   overflow-y:scroll;
+  width:100%;
+  height:100%;
 }
 .start_wrap{
   margin:0 auto;
-  margin-top: 9%;
+  margin-top: 6%;
   max-width: 650px;
 }
-#starhub_start{
+#scout_start{
     float:left;
     width:100%;
     background:#ffffff;
@@ -65,17 +66,18 @@ body{
     box-sizing: border-box;
     border: 1px solid #cccccc;
 }
-#starhub_start .query{
+#scout_start .query{
   border:none;
   width:100%;
   float:left;
   padding: 10px;
-  font-size: 20px;
+  font-size: 16px;
+  color:#666666;
 }
-#starhub_start .query:focus{
+#scout_start .query:focus{
   outline: none;
 }
-#starhub_start a{
+#scout_start a{
   display:none;
   text-decoration: none;
   color: #333333;
@@ -122,7 +124,7 @@ body{
   clear:both;
   height:60px;
 }
-#starhub_sform{
+#scout_sform{
   float:left;
   margin-top:9px;
   max-width:600px;
@@ -131,17 +133,18 @@ body{
   padding:0px;
   box-sizing: border-box;
 }
-#starhub_sform .query{
+#scout_sform .query{
   border:none;
   width:100%;
   float:left;
   padding:10px;
   font-size:16px;
+  color:#666666;
 }
-#starhub_sform .query:focus{
+#scout_sform .query:focus{
   outline: none;
 }
-#starhub_sform a{
+#scout_sform a{
   display:none;
   text-decoration: none;
   color: #333333;
@@ -152,6 +155,54 @@ body{
   display: block;
   text-align:right;
   padding-right:12px;
+}
+
+/* Info screens */
+.info-screen-fuzzy{
+  background: #56ab2f;
+  background: -webkit-linear-gradient(to left, #56ab2f , #a8e063);
+  background: linear-gradient(to left, #56ab2f , #a8e063);
+}
+.info-screen-shortcuts{
+  background: #FFB75E;
+  background: -webkit-linear-gradient(to left, #FFB75E , #ED8F03);
+  background: linear-gradient(to left, #FFB75E , #ED8F03);
+}
+.info-screen{
+  width:100%;
+  padding:0;  
+  min-height:650px;
+}
+.info-screen h2{
+  color:#ffffff;
+  font-size:50px;
+}
+.info-screen p{
+  color:#ffffff;
+  font-size:21px;
+  font-weight: lighter;
+}
+.info-wrapper{
+  padding:30px;
+  max-width:980px;
+  width:100%;
+  margin:auto;
+  text-align:center;
+}
+
+
+
+
+/* End info screens */
+
+.serps{
+  display:none;
+}
+
+.serp-wrapper{
+  padding:20px 0px;
+  max-width:600px;
+  width:100%;
 }
 
 .gs-result{
@@ -258,6 +309,10 @@ body{
 
 @media screen and (max-width:767px){
   .backhome, .backhome:hover{
-    margin-top:5px;
+    margin-top:10px;
+    font-size:35px;
+  }
+  .mainlogo, .mainlogo:hover{
+    font-size:65px;
   }
 }
