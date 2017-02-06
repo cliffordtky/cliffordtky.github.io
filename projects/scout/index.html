@@ -20,7 +20,8 @@
       //var home_uri = 'https://cliffordtky.github.io/projects/scout/';
       var kw_assist_uri = 'https://cliffordtky.github.io/projects/scout/data/keywords.json';
       //var kw_assist_uri = 'data/keywords.json';
-
+      var sc_assist_uri = 'https://cliffordtky.github.io/projects/scout/data/shortcuts.json';
+      //var sc_assist_uri = 'data/shortcuts.json';
 
 
       function qs(name, url){
@@ -184,14 +185,6 @@
           jQuery('.tt-input').focus();
         }
 
-        jQuery('.query,.tt-input').keyup(function(){
-          if (jQuery(this).val() != ''){
-            jQuery('#scout_sform a,#scout_start a').show();
-          }else{
-            jQuery('#scout_sform a,#scout_start a').hide();
-          }
-        });
-
         var keys = new Bloodhound({
           datumTokenizer: Bloodhound.tokenizers.obj.whitespace('kw'),
           queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -205,16 +198,29 @@
           hint: true,
           highlight: true,
           minLength: 1
-        },
+         },
         {
           name: 'keys',
           displayKey: 'kw',
           source: keys.ttAdapter()
         })
         .on('typeahead:selected',function(e,data){
-          //jQuery('#scout_sform a,#scout_start a').show();
-          window.location.href = home_uri+'?q='+$('.tt-input').val();
-        });        
+          window.location.href = home_uri+'?q='+data.kw;
+          //console.log(data);
+          //console.log(e);
+        }); 
+
+
+        jQuery('.query,.tt-input').keyup(function(){
+          if (jQuery(this).val() != ''){
+            jQuery('#scout_sform a,#scout_start a').show();
+          }else{
+            jQuery('#scout_sform a,#scout_start a').hide();
+          }
+        });
+
+        
+
 
         $('.tt-input').keypress(function (e) {
           if (e.which == 13) {

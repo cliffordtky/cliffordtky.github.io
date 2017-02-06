@@ -53,5 +53,12 @@
      {"kw":"TV promotions"},
      {"kw":"TV streaming"},
      {"kw":"Youth plans"},
-     {"kw":"Youth programmes"}
+     {"kw":"Youth programmes"},
+     
+     {"kw":"*store","hint":"Shop online"},
+     {"kw":"*phones","hint":"Browse phones and tablets"},
+     {"kw":"*fibre","hint":"Browse Fibre Broadband"},
+     {"kw":"*mobile","hint":"Browse mobile products"},
+     {"kw":"*msa-android","hint":"Download My StarHub App for Android"},
+     {"kw":"*msa-apple","hint":"Download My StarHub App for Apple"}     
 ]
