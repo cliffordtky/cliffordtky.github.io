@@ -15,7 +15,7 @@ body{
   margin-left: -1px;
 }
 .tt-cursor{
-  background:#eeeeee;
+  background:#eeeeee !important;
 }
 .tt-suggestion{
   padding:5px 10px;
