@@ -95,6 +95,7 @@
       if (queried()){
         var searchterm = qs('q').trim();
         if (searchterm.startsWith('*')){
+
           /* Put shortcuts logic here */
           var query_norm = searchterm.replace('*','').toLowerCase();
           query_norm = query_norm.split('>')[0].trim();
@@ -144,47 +145,66 @@
       }
 
       function check_height(){
-        var new_windowheight = jQuery(window).height();
-        jQuery('.start,.info-screen').height(new_windowheight);        
+        var new_windowheight = $(window).height();
+        $('.start,.info-screen').height(new_windowheight);        
       }
 
-      jQuery(window).resize(function(){
-        var dy_height = jQuery(this).height();
+      $(window).resize(function(){
+        var dy_height = $(this).height();
         if (dy_height < 650){
-          jQuery('.info-screen').hide();
+          $('.info-screen').hide();
+          $('.cta-first').hide();
         }else{
           if (!queried()){
-            jQuery('.info-screen').show();  
+            $('.info-screen').show();  
+            $('.cta-first').show();
           }
           check_height();
         }
       });      
 
-      jQuery(document).ready(function(){
+      $(document).ready(function(){
 
-        jQuery('.backhome,.mainlogo').click(function(){
+        $('.cta-try-search,.cta-try-search-1').click(function(){
+          $('body').animate({scrollTop:0}, '500');
+          $('.query').focus();
+        });
+
+        $(".cta-shortcuts").click(function() {
+            $('html, body').animate({
+                scrollTop: $(".info-screen-shortcuts").offset().top
+            }, 500);
+        });
+
+        $(".cta-first").click(function() {
+            $('html, body').animate({
+                scrollTop: $(".info-screen-fuzzy").offset().top
+            }, 500);
+        });                
+          
+        $('.backhome,.mainlogo').click(function(){
           window.location.href = home_uri;
         });
 
         check_height();
 
         if (queried()){
-          jQuery('.res_clearance').show();
-          jQuery('.res_header').show();
-          jQuery('.serps').show();
-          jQuery('.start').hide();
-          jQuery('.info-screen').hide();
-          jQuery('#scout_sform a').show();
-          jQuery('.query,.tt-input').val(qs('q'));
+          $('.res_clearance').show();
+          $('.res_header').show();
+          $('.serps').show();
+          $('.start').hide();
+          $('.info-screen').hide();
+          $('#scout_sform a').show();
+          $('.query,.tt-input').val(qs('q'));
         }else{
-          jQuery('.res_clearance').hide();
-          jQuery('.res_header').hide();
-          jQuery('.serps').hide();
-          jQuery('.start').show();
-          jQuery('.info-screen').show();
-          jQuery('#scout_sform a').hide();
-          jQuery('.query').focus();
-          //jQuery('.tt-input').focus();
+          $('.res_clearance').hide();
+          $('.res_header').hide();
+          $('.serps').hide();
+          $('.start').show();
+          $('.info-screen').show();
+          $('#scout_sform a').hide();
+          $('.query').focus();
+          //$('.tt-input').focus();
         }
 
         var keys = new Bloodhound({
@@ -224,16 +244,13 @@
         }); 
 
 
-        jQuery('.query,.tt-input').keyup(function(){
-          if (jQuery(this).val() != ''){
-            jQuery('#scout_sform a,#scout_start a').show();
+        $('.query,.tt-input').keyup(function(){
+          if ($(this).val() != ''){
+            $('#scout_sform a,#scout_start a').show();
           }else{
-            jQuery('#scout_sform a,#scout_start a').hide();
+            $('#scout_sform a,#scout_start a').hide();
           }
         });
-
-        
-
 
         $('.tt-input').keypress(function (e) {
           if (e.which == 13) {
@@ -242,14 +259,13 @@
           }
         });
 
-        jQuery('#scout_sform a,#scout_start a').click(function(){
+        $('#scout_sform a,#scout_start a').click(function(){
           $('.query').typeahead('close');
           $('.query').typeahead('val', '').focus();
-          jQuery(this).hide();
+          $(this).hide();
         });
 
       });
-
 
     </script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -460,7 +476,7 @@
 
           <div class="container-fluid">
             <div class="row">
-              <div class="col-md-6 col-sm-12">   
+              <div class="col-sm-6 col-xs-12">   
                 <p>Try fuzzy searches:</p>
                 <ol>
                   <li><a href="?q=mobile line no contract">mobile line no contract</a></li>
@@ -468,7 +484,7 @@
                 </ol>
                 
               </div>
-              <div class="col-md-6 col-sm-12">
+              <div class="col-sm-6 col-xs-12">
                 <p>Try * shortcuts:</p>
                 <ol>
                   <li>Type <em><b>*msa-android</b></em></li>
@@ -476,6 +492,14 @@
                 </ol>          
               </div>
             </div>
+            <div class="row">
+              <div class="col-xs-12">   
+                <p>&nbsp;</p>
+                <p class="text-center">
+                  <a href="javascript:;" class="cta-first"><i class="fa fa-chevron-down"></i></a>
+                </p>
+              </div>
+            </div>            
          </div>
 
         </div>
@@ -489,14 +513,26 @@
   <div class="info-screen-fuzzy info-screen">
     <div class="info-wrapper">
       <h2>Find stuff fast...and easy.</h2>
-      <p>Search with Scout like how you would with Google.</p>
+      <p>Search freely with Scout, like how you would with Google.</p>
+      <br/>
+      <p>
+          <a href="javascript:;" class="cta-try-search">Try a search</a>
+          <a href="javascript:;" class="cta-shortcuts hidden-xs">Search with shortcuts</a>
+      </p>
       <p>&nbsp;</p>
-      <p><img src="img/google.png" style="max-width:90%"/></p>
+      <p><img src="img/google.png"/></p>
     </div>
   </div>
 
   <div class="info-screen-shortcuts info-screen">
-    <p>test shortcuts</p>
+    <div class="info-wrapper">
+      <h2>Or get fancy with search shortcuts.</h2>
+      <p>Jump to key pages or content directly with simple * shortcuts.</p>
+      <br/>
+      <p><a href="javascript:;" class="cta-try-search-1">Try a search</a></p>
+      <p>&nbsp;</p>
+      <p><img src="img/star-shortcuts.png"/></p>
+    </div>
   </div>
 <!--//end info screens-->
 
