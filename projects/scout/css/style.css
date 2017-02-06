@@ -157,6 +157,32 @@ body{
   padding-right:12px;
 }
 
+/* Auto-complete style */
+.auto_wrap{
+  width:100%;
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+}
+.auto_shortcut{
+  padding: 7px 9px;
+  display: block;
+  float:left;
+  width:30%;
+}
+.auto_hint{
+  padding: 7px 9px;
+  display: block;
+  float:left;
+  width:70%;
+  font-size:12px;
+  color:#999999;
+}
+.auto_keyword{
+  padding: 7px 9px;
+  display: block;
+}
+
 /* Info screens */
 .info-screen-fuzzy{
   background: #56ab2f;
@@ -314,5 +340,11 @@ body{
   }
   .mainlogo, .mainlogo:hover{
     font-size:65px;
+  }
+}
+
+@media screen and (max-height:650px){
+  .info-screen{
+    display:none;
   }
 }

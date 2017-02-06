@@ -202,6 +202,17 @@
         {
           name: 'keys',
           displayKey: 'kw',
+          templates: {
+            suggestion: function(data){
+              var hint_html = '';
+              if (data.hint != 'undefined' && data.hint != null && data.hint != ''){
+                hint_html = '<div class="auto_wrap"><span class="auto_shortcut">' + data.kw + '</span><span class="auto_hint">' + data.hint + '</span></div>';
+              }else{
+                hint_html = '<div class="auto_wrap"><span class="auto_keyword">' + data.kw + '</span></div>';
+              }
+              return hint_html;
+            }
+          },
           source: keys.ttAdapter()
         })
         .on('typeahead:selected',function(e,data){
