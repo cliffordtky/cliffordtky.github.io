@@ -415,6 +415,9 @@ body{
 }
 
 @media screen and (max-width:767px){
+  .start{
+    background:#efefef;
+  }
   .backhome, .backhome:hover{
     margin-top:10px;
     font-size:35px;
