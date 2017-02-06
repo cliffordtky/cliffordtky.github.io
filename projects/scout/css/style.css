@@ -336,6 +336,12 @@ body{
   margin-top:8px;
 }
 
+@media screen and (max-height:650px){
+  .info-screen{
+    display:none;
+  }
+}
+
 @media screen and (max-width:767px){
   .backhome, .backhome:hover{
     margin-top:10px;
@@ -353,8 +359,3 @@ body{
   }
 }
 
-@media screen and (max-height:650px){
-  .info-screen{
-    display:none;
-  }
-}
