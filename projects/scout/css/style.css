@@ -95,11 +95,10 @@ body{
 #scout_start a{
   display:none;
   text-decoration: none;
-  color: #333333;
+  color: #999999;
   width: 8%;
   float: left;
-  font-size: 20px;
-  margin-top: 10px;
+  font-size: 27px;
   text-align:right;
   padding-right: 12px;
 }
@@ -162,11 +161,10 @@ body{
 #scout_sform a{
   display:none;
   text-decoration: none;
-  color: #333333;
+  color: #999999;
   width: 8%;
   float: left;
-  font-size: 20px;
-  margin-top: 6px;
+  font-size: 27px;
   display: block;
   text-align:right;
   padding-right:12px;
@@ -423,14 +421,17 @@ body{
     font-size:35px;
   }
   .mainlogo, .mainlogo:hover{
-    font-size:65px;
+    font-size:55px;
   }
   .auto_shortcut{
     width:100%;
+    padding: 3px 9px;
   }
   .auto_hint{
     width:100%;
     border-bottom:1px solid #ececec;
+    margin-top:0px;
+    padding: 3px 9px;
   }
   .info-screen h2{
     font-size:38px;

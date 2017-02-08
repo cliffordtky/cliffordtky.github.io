@@ -72,6 +72,32 @@
         window.location.href = uri;
       }
 
+      function do_quicklinks(data){
+        for (var i=0; i<=data.query.results.ul.length; i++){
+          var serpurl = $('.quicklinks span').html();
+          var navurl = '';
+          if (data.query.results.ul[i].name != 'undefined' && data.query.results.ul[i].name != null){
+            navurl = data.query.results.ul[i].name;
+            navurl = navurl.replace('/content/starhub1/en','');
+            navurl = 'www.starhub.com'+navurl+'.html';
+          }
+          if (navurl == serpurl){
+            //extract links and display
+            $('.quicklinks')[i].html('Matched!');
+          }
+        }
+      }
+
+      function add_nav(){
+        if ($('#nav').length == 0){
+          var js = document.createElement("script");
+          js.type = "text/javascript";
+          js.src = "data/nav.js";
+          js.id = "nav";
+          document.body.appendChild(js);
+        } 
+      }
+
       function google_search(term){
           google.load('search', '1');
           google.setOnLoadCallback(function() {
@@ -86,61 +112,151 @@
                 $('title').html('Search : '+term);
                 customSearchControl.setSearchCompleteCallback(
                   this,
-                  function() {}
+                  function() {
+                    add_nav();
+                  }
                 );
               }          
           }, true);        
       }
 
-      if (queried()){
-        var searchterm = qs('q').trim();
-        if (searchterm.startsWith('*')){
-
-          /* Put shortcuts logic here */
-          var query_norm = searchterm.replace('*','').toLowerCase();
-          query_norm = query_norm.split('>')[0].trim();
-          if (query_norm == 'personal' || query_norm == 'consumer' || query_norm == 'for-me'){
-            redirect('http://www.starhub.com/personal.html');
+      function is_mobile(platform){
+        var isMobile = {
+            Android: function() {
+                return navigator.userAgent.match(/Android/i);
+            },
+            BlackBerry: function() {
+                return navigator.userAgent.match(/BlackBerry/i);
+            },
+            iOS: function() {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            },
+            Opera: function() {
+                return navigator.userAgent.match(/Opera Mini/i);
+            },
+            Windows: function() {
+                return navigator.userAgent.match(/IEMobile/i);
+            },
+            any: function() {
+                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+            }
+        };
+        if (platform == 'android'){
+          if (isMobile.Android()){
+            return true;
+          }else{
+            return false;
           }
-
-          else if (query_norm == 'msa' || query_norm == 'download-msa' || query_norm == 'download-my-starhub-app'){
-            redirect('http://www.starhub.com/personal/starhub-apps/my-starhub-app.html');
+        }else if (platform == 'ios'){
+          if (isMobile.iOS()){
+            return true;
+          }else{
+            return false;
           }
+        }
+      }
 
-          else if (query_norm == 'download-msa-apple' || query_norm == 'download-my-starhub-app-apple' || query_norm == 'msa-apple'){
-            redirect('https://itunes.apple.com/sg/app/my-starhub/id470460379?mt=8');
-          }          
+      function star_shortcut(){
+        var msa_spec = '';
+        if (is_mobile('android')){
+          msa_spec = 'https://play.google.com/store/apps/details?id=com.starhub.csselfhelp';
+        }else if (is_mobile('ios')){
+          msa_spec = 'https://itunes.apple.com/sg/app/my-starhub/id470460379?mt=8';
+        }else{
+          msa_spec = 'http://www.starhub.com/personal/starhub-apps/my-starhub-app.html';
+        }
+        var shortcuts = {
+          "personal":"http://www.starhub.com/personal.html",
+          "consumer":"http://www.starhub.com/personal.html",
+          "for-me":"http://www.starhub.com/personal.html",
+          "app":msa_spec,
+          "msa":msa_spec,
+          "download-msa":msa_spec,
+          "android":"https://play.google.com/store/apps/details?id=com.starhub.csselfhelp",
+          "ios":"https://itunes.apple.com/sg/app/my-starhub/id470460379?mt=8",
+          "apple":"http://www.starhub.com/apple",
+          "samsung":"http://www.starhub.com/samsung",
+          "oppo":"http://www.starhub.com/personal/store/mobile/browse/oppo.html",
+          "huawei":"http://www.starhub.com/personal/store/mobile/browse/huawei.html",
+          "hw":"http://www.starhub.com/personal/store/mobile/browse/huawei.html",
+          "lg":"http://www.starhub.com/personal/store/mobile/browse/lg.html",
+          "starhubgo":"http://www.starhub.com/personal/mobile/mobile-tv/no-data-charges-stream-shows.html",
+          "shgo":"http://www.starhub.com/personal/mobile/mobile-tv/no-data-charges-stream-shows.html",
+          "mobile-tv":"http://www.starhub.com/personal/mobile/mobile-tv/no-data-charges-stream-shows.html",
+          "bundle":"http://www.starhub.com/personal/bundles/homehub-go.html",
+          "promo":"http://www.starhub.com/personal/promotions.html",
+          "promotion":"http://www.starhub.com/personal/promotions.html",
+          "promotions":"http://www.starhub.com/personal/promotions.html",
+          "deal":"http://www.starhub.com/personal/promotions.html",
+          "deals":"http://www.starhub.com/personal/promotions.html",
+          "online-deals":"http://www.starhub.com/personal/promotions/online-exclusive-deals.html",
+          "oe":"http://www.starhub.com/personal/promotions/online-exclusive-deals.html",
+          "exclusive":"http://www.starhub.com/personal/promotions/online-exclusive-deals.html",
+          "cis":"http://www.starhub.com/business/epp/store/index.html",
+          "cis-perks":"https://www.starhub.com/business/mobile/corporate-individual-scheme/welcome-pack-perks.html",
 
-          else if (query_norm == 'download-msa-android' || query_norm == 'download-my-starhub-app-android' || query_norm == 'msa-android'){
-            redirect('https://play.google.com/store/apps/details?id=com.starhub.csselfhelp');
-          }   
+          "apps":"http://www.starhub.com/personal/starhub-apps.html",
+          "mobile":"http://www.starhub.com/personal/mobile.html",
+          "store":"http://www.starhub.com/store",
+          "shop-online":"http://www.starhub.com/store",
+          "online-store":"http://www.starhub.com/store",
+          "phones":"http://www.starhub.com/personal/store/mobile/browse.html",
+          "tablets":"http://www.starhub.com/personal/store/mobile/browse.html",
+          "shops":"http://www.starhub.com/personal/support/locate-us/starhub-shops.html",
+          "shop":"http://www.starhub.com/personal/support/locate-us/starhub-shops.html",
+          "broadband":"http://www.starhub.com/personal/home/home-broadband/fibre-broadband-plans.html",
+          "fibre":"http://www.starhub.com/personal/home/home-broadband/fibre-broadband-plans.html",
+          "account":"https://secure.starhub.com/myaccountmgr/",
+          "mam":"https://secure.starhub.com/myaccountmgr/",
+          "hubid":"https://login.starhubgee.com.sg/sso/HubIdRegisterSelected",
+          "help":"http://www.starhub.com/personal/support.html",
+          "support":"http://www.starhub.com/personal/support.html",
+          "1633":"http://www.starhub.com/personal/support.html",
 
-          else if (query_norm == 'mobile'){
-            redirect('http://www.starhub.com/personal/mobile.html');
-          }
+          "biz":"http://www.starhub.com/business.html",
+          "business":"http://www.starhub.com/business.html",
+          "enterprise":"http://www.starhub.com/business.html",
+          "sme":"http://www.starhub.com/business.html",
 
-          else if (query_norm == 'online-store' || query_norm == 'store' || query_norm == 'shop-online'){
-            redirect('http://www.starhub.com/store');
-          }
+          "community":"http://community.starhub.com",
+          "fb":"https://www.facebook.com/StarHub/",
+          "facebook":"https://www.facebook.com/StarHub/",
+          "twitter":"https://twitter.com/StarHub",
+          "instagram":"https://www.instagram.com/starhub/",
+          "ig":"https://www.instagram.com/starhub/",
+          "youtube":"https://www.youtube.com/user/StarHub",
+          "yt":"https://www.youtube.com/user/StarHub",
+          "linkedin":"https://www.linkedin.com/company/starhub",
+          "google":"https://plus.google.com/+StarHub",
+                    
+        };
+        if (queried()){
+          var searchterm = qs('q').trim();
+          if (searchterm.startsWith('*')){
 
-          else if (query_norm == 'phones' || query_norm == 'tablets'){
-            redirect('http://www.starhub.com/personal/store/mobile/browse.html');
-          }
+            /* Put shortcuts logic here */
+            var query_norm = searchterm.replace('*','').toLowerCase();
+            query_norm = query_norm.split('>')[0].trim();
 
-          else if (query_norm == 'starhub-shops' || query_norm == 'starhub-shop'){
-            redirect('http://www.starhub.com/personal/support/locate-us/starhub-shops.html');
-          }          
+            var is_shortcut = false;
 
-          else if (query_norm == 'broadband' || query_norm == 'fibre'){
-            redirect('http://www.starhub.com/personal/home/home-broadband/fibre-broadband-plans.html');
-          }
+            for (var k in shortcuts){
+              if (shortcuts.hasOwnProperty(k)){
+                if (k == query_norm){
+                  is_shortcut = true;
+                  redirect(shortcuts[k]);
+                  break;
+                }
+              }
+            }
 
-          else{
+            if (!is_shortcut){
+              google_search(qs('q'));
+            }
+
+          }else{
             google_search(qs('q'));
           }
-
-        }else{
-          google_search(qs('q'));
         }
       }
 
@@ -161,7 +277,9 @@
           }
           check_height();
         }
-      });      
+      });     
+
+      star_shortcut(); 
 
       $(document).ready(function(){
 
@@ -187,7 +305,6 @@
           $('.info-screen').show();
           $('#scout_sform a').hide();
           $('.query').focus();
-          //$('.tt-input').focus();
         }
 
         var keys = new Bloodhound({
@@ -256,6 +373,7 @@
         $('.cta-try-search-1').click(function(){
           $('body').animate({scrollTop:0}, '500');
           $('.query').typeahead('val', '*').focus();
+          $('#scout_start a').show();
         });        
 
         $(".cta-shortcuts").click(function() {
@@ -451,8 +569,13 @@
                 </div> 
 
                 <div data-if="Vars.richSnippet && unescapedUrl.indexOf('www.starhub.com/personal/store.html') > -1" class="gs-generic-store" data-body="render('store_generic',richSnippet)">
-                </div>                        
+                </div>      
 
+                <!--// Quick links -->
+
+                <div class="quicklinks"><span data-body="longUrl()" style="display:none"></span></div>      
+
+                <!--// End quick links -->
               </div>
               <!--<p id="stringy" data-body="JSON.stringify(richSnippet)"></p>-->
       </div>
@@ -467,7 +590,7 @@
           <a class="mainlogo" href="javascript:;"><span style="font-size:45px;display: inline-block;" class="glyphicon glyphicon-screenshot"></span> scout</a>
           <form id="scout_start">
             <input placeholder="What are you looking for?" class="query" name="q" type="text"/>
-            <a href="javascript:;">X</a>
+            <a href="javascript:;">&times;</a>
           </form>
         </div>
       </div>
@@ -523,7 +646,7 @@
       <br/>
       <p>
           <a href="javascript:;" class="cta-try-search">Try a search</a>
-          <a href="javascript:;" class="cta-shortcuts hidden-xs">Search with shortcuts</a>
+          <a href="javascript:;" class="cta-shortcuts hidden-xs">See * shortcuts</a>
       </p>
       <p>&nbsp;</p>
       <p><img src="img/google.png"/></p>
@@ -533,9 +656,9 @@
   <div class="info-screen-shortcuts info-screen">
     <div class="info-wrapper">
       <h2>Or get fancy with search shortcuts.</h2>
-      <p>Jump to key pages or content directly with simple * shortcuts.</p>
+      <p>Jump to key pages or sections directly with simple * shortcuts.</p>
       <br/>
-      <p><a href="javascript:;" class="cta-try-search-1">Try a search</a></p>
+      <p><a href="javascript:;" class="cta-try-search-1">Try a * shortcut</a></p>
       <p>&nbsp;</p>
       <p><img src="img/star-shortcuts.png"/></p>
     </div>
@@ -553,7 +676,7 @@
       <div class="col-xs-10">
         <form id="scout_sform">
           <input placeholder="Type your search.." class="query" name="q" type="text"/>
-          <a href="javascript:;">X</a>
+          <a href="javascript:;">&times;</a>
         </form>
       </div>
     </div>

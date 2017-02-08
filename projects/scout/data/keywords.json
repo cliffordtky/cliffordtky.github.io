@@ -1,5 +1,5 @@
 [
-     {"kw":"3G plans"},
+     {"kw":"2G cessation"},
      {"kw":"4G mobile plans"},
      {"kw":"4G plans"},
      {"kw":"Apple Watch 2"},
@@ -56,9 +56,18 @@
      {"kw":"Youth programmes"},
      
      {"kw":"*store","hint":"Shop online"},
+     {"kw":"*oromo","hint":"See great, hot deals!"},
      {"kw":"*phones","hint":"Browse phones and tablets"},
-     {"kw":"*fibre","hint":"Browse Fibre Broadband"},
-     {"kw":"*mobile","hint":"Browse mobile products"},
-     {"kw":"*msa-android","hint":"Download My StarHub App for Android"},
-     {"kw":"*msa-apple","hint":"Download My StarHub App for Apple"}     
+     {"kw":"*broadband","hint":"See Fibre Broadband"},
+     {"kw":"*mobile","hint":"See mobile products"},
+     {"kw":"*msa","hint":"Download My StarHub App"},
+     {"kw":"*help","hint":"Get help and support"},
+     {"kw":"*account","hint":"Login to My Account Manager"},
+     {"kw":"*hubid","hint":"Sign up for Hub ID"},
+     {"kw":"*community","hint":"Visit StarHub Community"},
+     {"kw":"*fb","hint":"Visit StarHub Facebook page"},
+     {"kw":"*twitter","hint":"Visit StarHub Twitter profile"},
+     {"kw":"*instagram","hint":"Visit StarHub Instagram page"},
+     {"kw":"*youtube","hint":"Visit StarHub Youtube channel"},
+     {"kw":"*google","hint":"Visit StarHub Google+ page"},
 ]
