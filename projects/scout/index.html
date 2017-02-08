@@ -18,7 +18,7 @@
 
       var home_uri = 'index.html';
       //var home_uri = 'https://cliffordtky.github.io/projects/scout/';
-      var kw_assist_uri = 'https://cliffordtky.github.io/projects/scout/data/keywords.json';
+      var kw_assist_uri = 'https://cliffordtky.github.io/projects/scout/data/keywords1.json';
       //var kw_assist_uri = 'data/keywords.json';
       var sc_assist_uri = 'https://cliffordtky.github.io/projects/scout/data/shortcuts.json';
       //var sc_assist_uri = 'data/shortcuts.json';
@@ -73,29 +73,31 @@
       }
 
       function do_quicklinks(data){
-        for (var i=0; i<=data.query.results.ul.length; i++){
-          var serpurl = $('.quicklinks span').html();
+        for (var i=0; i<data.query.results.ul.length; i++){
+          var serpurl = $('.quicklinks:eq('+i+')').find('span').html();
           var navurl = '';
           if (data.query.results.ul[i].name != 'undefined' && data.query.results.ul[i].name != null){
             navurl = data.query.results.ul[i].name;
             navurl = navurl.replace('/content/starhub1/en','');
             navurl = 'www.starhub.com'+navurl+'.html';
           }
+          //console.log(data.query.results.ul[i].name);
           if (navurl == serpurl){
             //extract links and display
-            $('.quicklinks')[i].html('Matched!');
+            $('.quicklinks:eq('+i+')').html('Matched!');
           }
         }
       }
 
       function add_nav(){
-        if ($('#nav').length == 0){
+        //if ($('#nav').length == 0){
+          $('#nav').remove();
           var js = document.createElement("script");
           js.type = "text/javascript";
           js.src = "data/nav.js";
           js.id = "nav";
           document.body.appendChild(js);
-        } 
+        //} 
       }
 
       function google_search(term){
@@ -114,6 +116,7 @@
                   this,
                   function() {
                     add_nav();
+                    $('#spin').hide();
                   }
                 );
               }          
@@ -690,12 +693,15 @@
     <div class="row">
       <div class="col-md-8 col-sm-12">
         <div class="serp-wrapper">
+          <h4 class="text-center" id="spin"><br/><i style="color:#999999" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></h4>
           <div id="cse"></div>
         </div>
       </div>
-      <div class="col-md-4 hidden-sm">
-        <br/>
-        <p>test</p>
+      <div class="col-md-4 hidden-sm hidden-xs">
+        <br/><br/>
+        <div class="well">
+          <h6>Possible place for S&P banners</h6>
+        </div>
       </div>
     </div>
   </div>
