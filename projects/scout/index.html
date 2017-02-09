@@ -73,18 +73,22 @@
       }
 
       function do_quicklinks(data){
-        for (var i=0; i<data.query.results.ul.length; i++){
-          var serpurl = $('.quicklinks:eq('+i+')').find('span').html();
+        var serpurl = $('.quicklinks').first().html().trim();
+        for (var i=0; i<data.query.results.a.length; i++){
           var navurl = '';
-          if (data.query.results.ul[i].name != 'undefined' && data.query.results.ul[i].name != null){
-            navurl = data.query.results.ul[i].name;
-            navurl = navurl.replace('/content/starhub1/en','');
-            navurl = 'www.starhub.com'+navurl+'.html';
+          var navanchor = '';
+          if (data.query.results.a[i].content != 'undefined' && data.query.results.a[i].content != null &&  data.query.results.a[i].content != ''){
+            navurl = data.query.results.a[i].href;
+            navurl = navurl.replace('-redirect','');
+            navurl = 'www.starhub.com'+navurl;
           }
-          //console.log(data.query.results.ul[i].name);
-          if (navurl == serpurl){
+          console.log('SERP URL : '+serpurl.replace('.html',''));
+          console.log('Nav URL : '+navurl);
+          if (contains(serpurl.replace('.html',''),navurl)){
             //extract links and display
-            $('.quicklinks:eq('+i+')').html('Matched!');
+            $('.quicklinks:eq(0)').html('Matched!');
+
+            break;
           }
         }
       }
@@ -99,6 +103,27 @@
           document.body.appendChild(js);
         //} 
       }
+
+      function do_promos(data){
+        var p_html = '';
+        for (var i=0; i<data.query.results.div.length; i++){
+          var img = data.query.results.div[i].div[0].img.src;
+          var uri = data.query.results.div[i].a.href;
+          var tit = data.query.results.div[i].h5.content;
+          var desc = data.query.results.div[i].div[1].div.content;
+          p_html += '<p>'+tit+'</p>';
+        }
+        $('#gs-promos').html(p_html);
+      }
+
+      function add_promos(){
+        $('#cbg_promos').remove();
+        var jscbg = document.createElement("script");
+        jscbg.type = "text/javascript";
+        jscbg.src = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%20%3D%20'http%3A%2F%2Fwww.starhub.com%2Fpersonal%2Fpromotions.html'%20and%20xpath%3D'%2F%2Fdiv%5B%40class%3D%22eq-ht-cont%20cards%20material%20%22%5D'&format=json&callback=do_promos";
+        jscbg.id = "cbg_promos";
+        document.body.appendChild(jscbg);
+      }      
 
       function google_search(term){
           google.load('search', '1');
@@ -115,7 +140,7 @@
                 customSearchControl.setSearchCompleteCallback(
                   this,
                   function() {
-                    add_nav();
+                    add_promos();
                     $('#spin').hide();
                   }
                 );
@@ -270,7 +295,7 @@
 
       $(window).resize(function(){
         var dy_height = $(this).height();
-        if (dy_height < 650){
+        if (dy_height < 600){
           $('.info-screen').hide();
           $('.cta-first').hide();
         }else{
@@ -342,8 +367,6 @@
         })
         .on('typeahead:selected',function(e,data){
           window.location.href = home_uri+'?q='+data.kw;
-          //console.log(data);
-          //console.log(e);
         }); 
 
 
@@ -511,6 +534,10 @@
             return i < 1 ? visibleUrl : unescapedUrl.substring(i);
           }}"> 
 
+              <div id="gs-promos-wrapper" data-if="unescapedUrl.indexOf('www.starhub.com/personal/promotions.html') > -1">
+                <div id="gs-promos"></div>
+              </div>  
+
               <div class="gs-res-right">
                 <div data-if="Vars.richSnippet" data-attr="0" data-body="render('thumbnail',richSnippet,{url:unescapedUrl,target:target})"></div>
                 <div class="gs-title">
@@ -590,7 +617,7 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="start_wrap">
-          <a class="mainlogo" href="javascript:;"><span style="font-size:45px;display: inline-block;" class="glyphicon glyphicon-screenshot"></span> scout</a>
+          <a class="mainlogo" href="javascript:;"><span class="logotext">scout</span></a>
           <form id="scout_start">
             <input placeholder="What are you looking for?" class="query" name="q" type="text"/>
             <a href="javascript:;">&times;</a>
@@ -607,20 +634,8 @@
 
           <div class="container-fluid">
             <div class="row">
-              <div class="col-sm-6 col-xs-12">   
-                <p>Try fuzzy searches:</p>
-                <ol>
-                  <li><a href="?q=mobile line no contract">mobile line no contract</a></li>
-                  <li><a href="?q=starhub mobile app">starhub mobile app</a></li>
-                </ol>
-                
-              </div>
-              <div class="col-sm-6 col-xs-12">
-                <p>Try * shortcuts:</p>
-                <ol>
-                  <li>Type <em><b>*msa-android</b></em></li>
-                  <li>Type <em><b>*phones</b></em></li>
-                </ol>          
+              <div class="col-xs-12">
+                <p class="grey_para text-center">Tip: try a * shortcut. Type <em><b>*msa</b></em> or <em><b>*phones</b></em> in the search box above.</p>     
               </div>
             </div>
             <div class="row">

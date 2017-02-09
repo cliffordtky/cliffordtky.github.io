@@ -3,6 +3,12 @@ body{
   padding:0px;
   margin:0px;
 }
+.grey_para{
+  line-height: 24px;
+  font-size: 16px !important;
+  color: #777777;
+  letter-spacing: 1px;
+}
 .twitter-typeahead{
   width:92%;
   float:left;
@@ -40,6 +46,10 @@ body{
   margin:10px auto;
   text-align:center;
   /*text-shadow: 0px 2px 1px #888888;*/
+}
+.logosymbol{
+  font-size:55px;
+  display: inline-block;
 }
 .start{
   position:relative;
@@ -136,7 +146,7 @@ body{
 .res_clearance{
   display:none;
   clear:both;
-  height:60px;
+  height:50px;
 }
 #scout_sform{
   float:left;
@@ -216,7 +226,7 @@ body{
 .info-screen{
   width:100%;
   padding:0;  
-  min-height:650px;
+  min-height:600px;
   overflow:hidden;
 }
 .info-screen h2{
@@ -319,10 +329,7 @@ body{
 .gs-res-right{
   vertical-align:top;
   float:left;
-}
-
-.gs-res-right{
-  width:100%;
+  width:100%;  
 }
 
 .gs-title,.gs-snippet,.gs-visibleUrl{
@@ -339,10 +346,12 @@ body{
 
 .gsc-cursor-page{
   display:inline-block;
-  padding:3px 8px;
+  padding: 9px 12px;
   background:#73c20e;
   color:#ffffff !important;
   text-decoration:none !important;
+  font-size:16px;
+  border-radius: 3px;
 }
 
 .gsc-cursor-page:hover{
@@ -370,9 +379,12 @@ body{
 
 .gsc-control-cse .gs-spelling, .gsc-control-cse .gs-result .gs-title, .gsc-control-cse .gs-result .gs-title *{
   color:#333333 !important;
+  text-decoration: none;
+  font-size: 18px;
 }
+
 .gs-snippet{
-  color:#444444 !important;
+  color:#666666 !important;
 }
 
 .gs-result a.gs-visibleUrl, .gs-result .gs-visibleUrl{
@@ -388,7 +400,7 @@ body{
 }
 
 .gs-store-browse{
-  color:#386be4 !important;
+  color:#272ad2 !important;
 }
 
 
@@ -403,7 +415,7 @@ body{
   margin-top:8px;
 }
 
-@media screen and (max-height:650px){
+@media screen and (max-height:600px){
   .info-screen{
     display:none;
   }
@@ -422,6 +434,10 @@ body{
   }
   .mainlogo, .mainlogo:hover{
     font-size:55px;
+  }
+  .logosymbol{
+    font-size:45px;
+    display: inline-block;
   }
   .auto_shortcut{
     width:100%;
@@ -442,6 +458,10 @@ body{
   }
   .info-screen-fuzzy img,.info-screen-shortcuts img{
     max-width:100%;
+  }
+  .gs-res-right{
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 20px;
   }
 }
 
