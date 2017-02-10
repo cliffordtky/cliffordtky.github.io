@@ -20,10 +20,7 @@
       //var home_uri = 'https://cliffordtky.github.io/projects/scout/';
       var kw_assist_uri = 'https://cliffordtky.github.io/projects/scout/data/keywords1.json';
       //var kw_assist_uri = 'data/keywords.json';
-      var sc_assist_uri = 'https://cliffordtky.github.io/projects/scout/data/shortcuts.json';
-      //var sc_assist_uri = 'data/shortcuts.json';
-
-
+    
       function qs(name, url){
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, "\\$&");
@@ -87,7 +84,6 @@
           if (contains(serpurl.replace('.html',''),navurl)){
             //extract links and display
             $('.quicklinks:eq(0)').html('Matched!');
-
             break;
           }
         }
@@ -106,14 +102,25 @@
 
       function do_promos(data){
         var p_html = '';
-        for (var i=0; i<data.query.results.div.length; i++){
+        var counter = 0;
+        for (var i=0; i<data.query.results.div.length; i++){          
           var img = data.query.results.div[i].div[0].img.src;
           var uri = data.query.results.div[i].a.href;
           var tit = data.query.results.div[i].h5.content;
           var desc = data.query.results.div[i].div[1].div.content;
-          p_html += '<p>'+tit+'</p>';
+          p_html += '<div class="promotions">';
+          p_html += '<div class="promo_img">';
+          p_html += '<a href="http://www.starhub.com'+uri+'"><img src="https://www.starhub.com'+img+'"/></a>';
+          p_html += '</div>';
+          p_html += '<div class="promo_details">';
+          p_html += '<h4><a href="http://www.starhub.com'+uri+'">'+tit+'</a></h4>';
+          p_html += '<p>'+desc+'</p>';
+          p_html += '</div>';
+          p_html += '</div>';
+          counter++;
         }
-        $('#gs-promos').html(p_html);
+        $('#gs-promos').css('width',(counter*180)+'px').html(p_html);
+        $('#gs-promos-wrapper').show();
       }
 
       function add_promos(){
@@ -124,6 +131,7 @@
         jscbg.id = "cbg_promos";
         document.body.appendChild(jscbg);
       }      
+
 
       function google_search(term){
           google.load('search', '1');
@@ -140,7 +148,6 @@
                 customSearchControl.setSearchCompleteCallback(
                   this,
                   function() {
-                    add_promos();
                     $('#spin').hide();
                   }
                 );
@@ -262,7 +269,7 @@
           var searchterm = qs('q').trim();
           if (searchterm.startsWith('*')){
 
-            /* Put shortcuts logic here */
+            /* Resolve shortcuts logic here */
             var query_norm = searchterm.replace('*','').toLowerCase();
             query_norm = query_norm.split('>')[0].trim();
 
@@ -294,24 +301,16 @@
       }
 
       $(window).resize(function(){
-        var dy_height = $(this).height();
-        if (dy_height < 600){
-          $('.info-screen').hide();
-          $('.cta-first').hide();
-        }else{
-          if (!queried()){
-            $('.info-screen').show();  
-            $('.cta-first').show();
-          }
           check_height();
-        }
       });     
 
       star_shortcut(); 
 
       $(document).ready(function(){
 
-        $('.backhome,.mainlogo').click(function(){
+        var w_height = $(window).height();
+
+        $('.backhome,.mainlogo,.smalllogo').click(function(){
           window.location.href = home_uri;
         });
 
@@ -330,7 +329,12 @@
           $('.res_header').hide();
           $('.serps').hide();
           $('.start').show();
-          $('.info-screen').show();
+          if (w_height < 500){
+            $('.info-screen').hide();
+          }else{
+            $('.info-screen').show();
+          }
+          
           $('#scout_sform a').hide();
           $('.query').focus();
         }
@@ -412,16 +416,17 @@
             $('html, body').animate({
                 scrollTop: $(".info-screen-fuzzy").offset().top
             }, 500);
-        });            
+        });   
 
+        if($("#gs-promos").length > 0) {
+          setTimeout(add_promos(), 1000);
+        }
       });
 
     </script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>  
-
-
 
   <div style="display:none">
 
@@ -536,6 +541,7 @@
 
               <div id="gs-promos-wrapper" data-if="unescapedUrl.indexOf('www.starhub.com/personal/promotions.html') > -1">
                 <div id="gs-promos"></div>
+                <div class="deals">StarHub Deals</div>
               </div>  
 
               <div class="gs-res-right">
@@ -618,6 +624,7 @@
       <div class="col-xs-12">
         <div class="start_wrap">
           <a class="mainlogo" href="javascript:;"><span class="logotext">scout</span></a>
+          <a class="smalllogo" href="javascript:;"><span class="glyphicon glyphicon-screenshot"></span></a>
           <form id="scout_start">
             <input placeholder="What are you looking for?" class="query" name="q" type="text"/>
             <a href="javascript:;">&times;</a>
@@ -688,8 +695,8 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-2">
-        <a class="backhome hidden-xs" href="javascript:;" title="scout :: modern search">scout</a>
-        <a class="backhome visible-xs" href="javascript:;" title="scout :: modern search"><span class="glyphicon glyphicon-screenshot"></span></a>
+        <a class="backhome hidden-xs" href="javascript:;" title="Scout search">scout</a>
+        <a class="backhome visible-xs" href="javascript:;" title="Scout search"><span class="glyphicon glyphicon-screenshot"></span></a>
       </div>
       <div class="col-xs-10">
         <form id="scout_sform">
@@ -714,7 +721,7 @@
       </div>
       <div class="col-md-4 hidden-sm hidden-xs">
         <br/><br/>
-        <div class="well">
+        <div class="well pull-right">
           <h6>Possible place for S&P banners</h6>
         </div>
       </div>
