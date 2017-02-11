@@ -313,8 +313,25 @@ body{
 /* End info screens */
 
 /* Promo carousel */
-#gs-promos-wrapper{
+.deals-wrapper{
   display:none;
+  width:100%;
+  float:left;
+  padding:0;
+  margin:0;
+  position:relative !important;
+}
+.deals{
+  background:#93cc4b;
+  color:#ffffff;
+  font-size:13px;
+  font-weight:bold;
+  position: absolute !important;
+  bottom:15px;
+  right:0;
+  padding:5px 8px;
+}
+#gs-promos-wrapper{
   width:100%;
   padding:0;
   margin:0;
@@ -323,16 +340,6 @@ body{
   position:relative;
   overflow-x:auto;
   background:#efefef;
-}
-.deals{
-  background:#93cc4b;
-  color:#ffffff;
-  font-size:13px;
-  font-weight:bold;
-  position: absolute !important;
-  bottom:0;
-  right:0;
-  padding:5px 8px;
 }
 #gs-promos{
   float:left;
@@ -365,7 +372,7 @@ body{
 }
 .promo_details{
   float:left;
-  padding:15px 10px;
+  padding:3px 10px 15px 10px;
   width:100%;
 }
 .promo_details h4{
@@ -548,6 +555,9 @@ body{
   }
   .promo_details p{
     display:none;
+  }
+  .promo_details h4{
+    padding-bottom:15px;
   }
 }
 

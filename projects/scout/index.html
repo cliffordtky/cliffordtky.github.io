@@ -106,6 +106,7 @@
         for (var i=0; i<data.query.results.div.length; i++){          
           var img = data.query.results.div[i].div[0].img.src;
           var uri = data.query.results.div[i].a.href;
+          uri = uri.replace('https//','https://').replace('http//','http://')
           var tit = data.query.results.div[i].h5.content;
           var desc = data.query.results.div[i].div[1].div.content;
           p_html += '<div class="promotions">';
@@ -124,7 +125,7 @@
           counter++;
         }
         $('#gs-promos').css('width',(counter*180)+'px').html(p_html);
-        $('#gs-promos-wrapper').show();
+        $('.deals-wrapper').show();
       }
 
       function add_promos(){
@@ -543,10 +544,12 @@
             return i < 1 ? visibleUrl : unescapedUrl.substring(i);
           }}"> 
 
-              <div id="gs-promos-wrapper" data-if="unescapedUrl.indexOf('www.starhub.com/personal/promotions.html') > -1">
-                <div id="gs-promos"></div>
+              <div class="deals-wrapper" data-if="unescapedUrl.indexOf('www.starhub.com/personal/promotions.html') > -1">
+                <div id="gs-promos-wrapper">
+                  <div id="gs-promos"></div>
+                </div>  
                 <div class="deals">StarHub Deals</div>
-              </div>  
+              </div>
 
               <div class="gs-res-right">
                 <div data-if="Vars.richSnippet" data-attr="0" data-body="render('thumbnail',richSnippet,{url:unescapedUrl,target:target})"></div>
