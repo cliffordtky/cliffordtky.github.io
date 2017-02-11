@@ -110,10 +110,14 @@
           var desc = data.query.results.div[i].div[1].div.content;
           p_html += '<div class="promotions">';
           p_html += '<div class="promo_img">';
-          p_html += '<a href="http://www.starhub.com'+uri+'"><img src="https://www.starhub.com'+img+'"/></a>';
+          var s_uri = '';
+          if (!contains('http://www.starhub.com',uri)){
+            uri = 'http://www.starhub.com'+uri;
+          }
+          p_html += '<a href="'+uri+'"><img src="https://www.starhub.com'+img+'"/></a>';
           p_html += '</div>';
           p_html += '<div class="promo_details">';
-          p_html += '<h4><a href="http://www.starhub.com'+uri+'">'+tit+'</a></h4>';
+          p_html += '<h4><a href="'+uri+'">'+tit+'</a></h4>';
           p_html += '<p>'+desc+'</p>';
           p_html += '</div>';
           p_html += '</div>';
