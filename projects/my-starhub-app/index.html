@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+<meta name="Keywords" content="starhub"/>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<title>My StarHub app widget</title>
+<style>
+.clear10{
+	clear:both;
+	height:10px;
+}
+.clear30{
+	clear:both;
+	height:30px;
+}
+.sub-files{
+	display:block;
+	padding-left:30px;
+	clear:both;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1 class="text-center">My StarHub app widget demo</h1>
+			<div class="clear30"></div>
+			<div class="alert alert-success" role="alert">
+				<h4>Widget Files</h4><br/>
+				img/<br/>
+				<span class="sub-files">badge-app-store.png</span>
+				<span class="sub-files">badge-google-play.png</span>
+				<span class="sub-files">icon-msa.png</span>
+				<div class="clear10"></div>
+				index.html <em>(You are here)</em><br/>
+				msa_widget.css<br/>
+				msa_widget.js<br/>
+			</div>
+			<div class="clear30"></div>
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">Usage</h3>
+			  </div>
+			  <div class="panel-body">
+			    <pre class="text-left">
+// Include script within &lt;head> or before &lt;/body>
+
+&lt;script src="msa_widget.js">&lt;/script>
+
+&lt;script>
+
+// Create new widget instance
+
+var app = new msa_widget();
+
+/*	...and optionally change some messages
+
+	available properties are :
+	=> app.messages.widget_tooltip
+	=> app.messages.widget_headline
+	=> app.messages.widget_cta_headline_universal
+	=> app.messages.widget_cta_headline_ios
+	=> app.messages.widget_cta_headline_android
+	=> app.messages.widget_cta_description
+
+	...or some settings.
+
+	available settings are : 
+	=> app.settings.android_link
+	=> app.settings.ios_link
+	=> app.settings.youtube_video
+	=> app.settings.msa_image
+*/
+
+// Finally, run it.
+
+app.run();
+
+&lt;/script>
+			    </pre>
+			  </div>
+			</div>			
+		</div>
+	</div>
+</div>
+
+<script src="msa_widget.js"></script>
+<script>
+    var app = new msa_widget();
+    app.run();
+</script>
+
+</body>
+</html>
