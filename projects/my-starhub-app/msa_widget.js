@@ -176,7 +176,7 @@ var msa_widget = function(){
                 }
             }else{
                 html += '<a href="'+ios_link+'" target="_blank"><img src="img/badge-app-store.png"/></a> ';
-                html += '<a href="'+android_link+'"><img src="img/badge-google-play.png"/></a>';
+                html += '<a href="'+android_link+'" target="_blank"><img src="img/badge-google-play.png"/></a>';
             }
             html += '</p>';
             html += '</div>';
