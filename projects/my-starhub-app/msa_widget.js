@@ -9,7 +9,7 @@ var msa_widget = function(){
             'widget_cta_description' : 'Now you can easily manage all your StarHub services in one place! Get our free My StarHub app today to track mobile usage, pay bills, redeem rewards, check your contract status and more. You can even personalise it to have your favourite features on the home screen.<br/><br/>Download My StarHub app on your phone now!'
         },
         settings : {
-            'use_store_link' : true;
+            'use_store_link' : true,
             'android_link' : 'http://www.starhub.com/personal/redirect.html?product=msa-android&campaign=generic-floating-box',
             'ios_link' : 'http://www.starhub.com/personal/redirect.html?product=msa-ios&campaign=generic-floating-box',
             'android_store_link' : 'market://details?id=com.starhub.csselfhelp',
@@ -136,12 +136,6 @@ var msa_widget = function(){
             html += '</a>';        
             html += '</div>';
             return html;
-        },
-        app_download : function(){
-            var android_link = widget.settings.android_link;
-            var ios_link = widget.settings.ios_link;
-            var android_device_link = 
-            if (widget.is_mobile('android')){
         },
         msa_full : function(){
             var html = '';
