@@ -9,7 +9,7 @@ body{max-width:100%;overflow-x:hidden !important;}
 .msa-mask{display:none;position:fixed;top:0;bottom:0;right:0;left:0;background:#000000;opacity:.7}
 .msa-video{position:fixed;top:0;bottom:0;left:-3280px;right:3280px;background:#222222;z-index:101;-webkit-transition: right 1.5s;transition: right 1.5s;}
 .msa-full{position:fixed;right:-500px;top:0px;bottom:0px;max-width:280px;background:#fbfbfb;padding:0;box-sizing:border-box;-webkit-transition: all .8s;transition: all .8s;overflow-y:auto;z-index:100;}
-.msa-close{position:absolute;top:0px;right:0px;font-size:24px;padding:0px 5px;background:transparent;}
+.msa-close{position:absolute;top:0px;right:5px;font-size:35px;padding:0px 5px;background:transparent;}
 .msa-close a,.msa-close a:hover{text-decoration:none !important;color:#ffffff !important;}
 .msa-dismiss{position:absolute;top:4px;right:4px;font-size:20px;z-index:99;-webkit-transition: all .8s !important;transition: all .8s !important;}
 .msa-dismiss a,.msa-dismiss a:hover{text-decoration:none !important;color:#999999 !important;}

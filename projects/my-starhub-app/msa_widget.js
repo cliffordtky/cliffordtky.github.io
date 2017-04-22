@@ -9,8 +9,11 @@ var msa_widget = function(){
             'widget_cta_description' : 'Now you can easily manage all your StarHub services in one place! Get our free My StarHub app today to track mobile usage, pay bills, redeem rewards, check your contract status and more. You can even personalise it to have your favourite features on the home screen.<br/><br/>Download My StarHub app on your phone now!'
         },
         settings : {
-            'android_link' : 'http://www.starhub.com/personal/redirect.html?product=msa-ios&campaign=generic-floating-box',
-            'ios_link' : 'http://www.starhub.com/personal/redirect.html?product=msa-android&campaign=generic-floating-box',
+            'use_store_link' : true;
+            'android_link' : 'http://www.starhub.com/personal/redirect.html?product=msa-android&campaign=generic-floating-box',
+            'ios_link' : 'http://www.starhub.com/personal/redirect.html?product=msa-ios&campaign=generic-floating-box',
+            'android_store_link' : 'market://details?id=com.starhub.csselfhelp',
+            'ios_store_link' : 'itms://itunes.apple.com/sg/app/my-starhub/id470460379?mt=8',
             'youtube_video' : 'https://www.youtube.com/embed/QOsER-Pw2EQ?autoplay=1',
             'msa_image' : 'https://www.starhub.com/content/dam/edm/library/img/featured-my-starhub-app.jpg'
         },              
@@ -134,6 +137,12 @@ var msa_widget = function(){
             html += '</div>';
             return html;
         },
+        app_download : function(){
+            var android_link = widget.settings.android_link;
+            var ios_link = widget.settings.ios_link;
+            var android_device_link = 
+            if (widget.is_mobile('android')){
+        },
         msa_full : function(){
             var html = '';
             html += '<div class="msa-video">';
@@ -157,10 +166,20 @@ var msa_widget = function(){
             html += '<p>';
             var android_link = widget.settings.android_link;
             var ios_link = widget.settings.ios_link;
+            var android_store_link = widget.settings.android_store_link;
+            var ios_store_link = widget.settings.ios_store_link;
             if (widget.is_mobile('android')){
-                html += '<a href="'+android_link+'"><img src="img/badge-google-play.png"/></a>';
+                if (widget.settings.use_store_link){
+                    html += '<a href="'+android_store_link+'" target="_top"><img src="img/badge-google-play.png"/></a>';    
+                }else{
+                    html += '<a href="'+android_link+'" target="_blank"><img src="img/badge-google-play.png"/></a>';    
+                }
             }else if (widget.is_mobile('ios')){
-                html += '<a href="'+ios_link+'" target="_blank"><img src="img/badge-app-store.png"/></a>';
+                if (widget.settings.use_store_link){
+                    html += '<a href="'+ios_store_link+'" target="_top"><img src="img/badge-app-store.png"/></a>';
+                }else{                
+                    html += '<a href="'+ios_link+'" target="_blank"><img src="img/badge-app-store.png"/></a>';
+                }
             }else{
                 html += '<a href="'+ios_link+'" target="_blank"><img src="img/badge-app-store.png"/></a> ';
                 html += '<a href="'+android_link+'"><img src="img/badge-google-play.png"/></a>';
