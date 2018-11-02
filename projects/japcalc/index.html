@@ -76,6 +76,8 @@
     if ($(this).val() > 0){
       var tgt_amt = Math.round(($(this).val()) / exr * 100) / 100;
       $('.curr-amt').html(tgt_amt);
+    }else{
+      $('.curr-amt').html(' _');
     }
   });
 </script>
