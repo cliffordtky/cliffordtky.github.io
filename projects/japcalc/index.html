@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="robots" content="NOINDEX, NOFOLLOW" />
+  <meta name="theme-color" content="#333333">
+  <link rel="icon" href="img/favicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>JPY-SGD Calculator</title>
+  <script>
+    var ep = 'https://cliffordtky.github.io/projects/lunchbuddies/';
+    //ep = 'index.html';
+    var ytk = 'AIzaSyA9yf1oSLTnwociXBAroJYlInqj1KfTAPA';
+  </script>
+</head>
+<body>  
+
+<div class="main">
+
+<div class="clear"></div>
+<h1 class="apptitle"><a title="Lunch Buddies - Bill splitting for friends" href="https://cliffordtky.github.io/projects/lunchbuddies/">Lunch <span class="logobreaker"></span>Buddies</a></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="clear"></div><div class="clear"></div><div class="clear hidden-xs"></div>
+
+      <div class="container editalert">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="alert alert-info">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <p><strong>Editing?</strong> Make changes to the bill and click the "Calculate" button. Or <a style="text-decoration:underline" href="javascript:;" onclick="window.location.reload();">check the bill again</a>. =)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="calc">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-1 col-sm-1"></div>
+            <div class="col-xs-10 col-sm-6">
+              <input type="text" style="background:#73c20e" placeholder="Where did you go for lunch?" name="w" class="where" required />
+            </div>
+            <div class="col-xs-1"></div>
+            <div class="clear visible-xs"></div>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-10 col-sm-4">
+              <input type="text" style="background:#73c20e" placeholder="Who paid?" name="b" class="boss" required />
+            </div>
+            <div class="col-xs-1 col-sm-1"></div>
+          </div>            
+        </div>
+        <div class="clear"></div><div class="clear"></div>
+        <div class="container-fluid itemslist">
+          <div class="row lineitem" id="1">
+            <div class="clear visible-xs" style="border-top:1px solid #cccccc"></div>        
+            <div class="col-xs-1 col-sm-1 text-center">
+              <span class="nlab">1</span>
+            </div>
+            <div class="col-xs-10 col-sm-4">
+              <input name="f1" type="text" placeholder="eg; Nasi Lemak" class="fooditem" id="fi1" required />
+            </div>
+            <div class="clear visible-xs"></div>
+            <div class="col-xs-1 visible-xs"></div>
+            <div class="col-xs-4 col-sm-2">
+              <input name="p1" type="number" placeholder="eg; 8.90" class="price" id="p1" step="0.01" required />
+            </div>            
+            <div class="col-xs-6 col-sm-4">
+              <input name="e1" type="text" placeholder="eg; Raseena" class="eater" id="e1" required />
+              <a title="Clear this line" href="javascript:;" class="kill" id="k1"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>              
+            </div>
+            <div class="col-xs-1 col-sm-1 text-center"></div>        
+          </div>
+          <div class="row lineitem" id="2">
+            <div class="clear visible-xs" style="border-top:1px solid #cccccc"></div>       
+            <div class="col-xs-1 col-sm-1 text-center">
+              <span class="nlab">2</span>
+            </div>
+            <div class="col-xs-10 col-sm-4">
+              <input name="f2" type="text" placeholder="eg; Hor Fun - sauce separate" class="fooditem" id="fi2"/>
+            </div>
+            <div class="clear visible-xs"></div>
+            <div class="col-xs-1 visible-xs"></div>            
+            <div class="col-xs-4 col-sm-2">
+              <input name="p2" type="number" placeholder="eg; 10.90" class="price" id="p2" step="0.01"/>
+            </div>            
+            <div class="col-xs-6 col-sm-4">
+              <input name="e2" type="text" placeholder="eg cost split; Kelly,Josh" class="eater" id="e2"/>
+              <a title="Clear this line" href="javascript:;" class="kill" id="k2"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+            </div>
+            <div class="col-xs-1 col-sm-1 text-center"></div>             
+          </div>          
+        </div>
+        <div class="clear"></div><div class="clear"></div>
+        <div class="container-fluid">          
+          <div class="row">
+            <div class="col-xs-11 text-right">
+              <button title="Add 1 more line item" class="addline" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add a line</button>
+            </div>
+            <div class="col-xs-1"></div>
+          </div>           
+          <div class="row">
+            <div class="col-xs-12 col-sm-1 text-center"></div>
+            <div class="col-xs-12 col-sm-5 text-center">
+              <div class="clear"></div><div class="clear"></div>
+              <div class="options-left">
+                <label>Choose discount type</label>
+                <div style="clear:both"></div>
+                <select name="od" class="disct">
+                  <option value="none">No discount</option>
+                  <option value="percentage">Percentage (%)</option>
+                  <option value="amount">Amount ($)</option>
+                </select>
+                <div class="clear"></div>
+                <label>Enter discount value ($ or %)</label>
+                <div style="clear:both"></div>
+                <input name="da" type="number" placeholder="eg; 10" class="price" id="da" step="0.01" style="padding:5px;max-width:200px;float:left"/>
+                <div class="clear"></div>
+                <label>Enter discount description</label>
+                <div style="clear:both"></div>
+                <input name="dd" type="text" placeholder="eg; Mastercard promo" class="price" id="dd" style="padding:5px;max-width:200px;float:left"/>                
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-5 text-center">
+              <div class="clear"></div><div class="clear"></div>
+              <div class="container-fluid options-right">
+                <div class="row">
+                  <div class="col-xs-2">
+                    <input type="checkbox" class="ys" name="ys" value="1"/>
+                  </div>
+                  <div class="col-xs-10 text-left">
+                    <label>Include service chg (10%)?</label>
+                  </div>
+                </div>
+                <div style="clear:both;height:10px"></div>
+                <div class="row">
+                  <div class="col-xs-2">
+                    <input type="checkbox" class="yg" name="yg" value="1"/>
+                  </div>
+                  <div class="col-xs-10 text-left">
+                    <label>Include GST (7%)?</label>
+                  </div>
+                </div>
+                <div style="clear:both;height:10px"></div>
+                <div class="row">
+                  <div class="col-xs-2">
+                    <input type="checkbox" class="x" name="x" value="1"/>
+                  </div>
+                  <div class="col-xs-10 text-left">
+                    <label>Split GST/svc chg evenly?</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-1 text-center"></div>
+          </div>    
+          <div class="clear"></div><div class="clear"></div>      
+          <div class="row">
+            <div class="col-xs-12 text-center">
+              <button title="Calculate" class="calculate" type="submit"><span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span> Calculate</button>
+            </div>
+          </div>
+        </div> 
+        <input type="hidden" id="sm" name="sm" value="1">
+        <input type="hidden" id="tf" name="tf" value="2">
+      </form>
+      <div class="clear"></div><div class="clear"></div>
+    </div>
+  </div>
+</div>
+
+</div>
+<!--//main-->
+
+<div class="bill">
+  <div class="bill-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-7">
+          <div class="bill-logo hidden-xs"><a title="Bill-splitting for friends" href="https://cliffordtky.github.io/projects/lunchbuddies/">Lunch Buddies</a></div>
+          <div class="bill-sm-logo visible-xs"><a title="Bill-splitting for friends" href="https://cliffordtky.github.io/projects/lunchbuddies/"><i class="fa fa-calculator"></i></a></div>
+        </div>
+        <div class="col-xs-5">
+          <div class="bill-redo">
+            <a title="Re-start a new bill calculation" onclick="return confirm('Clear the form and re-start another bill calculation?');" href="#" class="btn btn-info pull-right recalc" style="margin-left:6px;">
+              <span class="glyphicon glyphicon-repeat"></span><span style="margin-left:5px" class="hidden-xs">Start Over</span>
+            </a>
+            <a title="Edit bill" href="javascript:;" onclick="edit_bill()" class="btn btn-default pull-right">
+              <span class="glyphicon glyphicon-pencil"></span><span style="margin-left:5px" class="hidden-xs">Edit</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bill-body">
+    <div class="clear hidden-xs hidden-sm"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-12 left">
+                  <a class="sharebutt btn btn-primary" href="javascript:;"><i class="fa fa-share-alt"></i> Share this bill</a>
+                  <h3>Hey <em>buddies</em>,</h3><br/>
+                  <p class="buddies-msg"></p>
+                </div>
+              </div>
+            </div>
+            <div class="container-fluid" id="bill_tables">
+              <hr>
+            </div>
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+            <div class="clear"></div>
+            <h2 class="text-center"><span class="hidden-xs">Paid? Good. </span>Now, watch a video.</h2>
+            <div class="clear"></div><div class="clear"></div>
+            <div id="videolist"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="sharemod" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" style="color:#777777">Share the bill..</h4>
+      </div>
+      <div class="modal-body">
+        <p style="color:#777777">Copy and send this link to friends who need to pay for the meal. =)</p>
+        <p id="shortlink"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal"><i class="fa fa-hand-peace-o"></i> OK, got it.</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="sameeatermod" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" style="color:#777777">Check your items..</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger">
+          <strong>Duplicates!</strong> You have entered repeated names on the same line item!
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal"><i class="fa fa-hand-peace-o"></i> OK, got it.</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+
+/* Clifford - Jan 2017 */  
+
+var _0x4a69=["\x68\x72\x65\x66","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x5C\x24\x26","\x72\x65\x70\x6C\x61\x63\x65","\x5B\x3F\x26\x5D","\x28\x3D\x28\x5B\x5E\x26\x23\x5D\x2A\x29\x7C\x26\x7C\x23\x7C\x24\x29","\x65\x78\x65\x63","","\x20","\x69\x6E\x64\x65\x78\x4F\x66","\x6C\x65\x6E\x67\x74\x68","\x74\x6F\x4C\x6F\x77\x65\x72\x43\x61\x73\x65","\x76\x61\x6C","\x23\x74\x66","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x72\x6F\x77\x20\x6C\x69\x6E\x65\x69\x74\x65\x6D\x22\x20\x69\x64\x3D\x22","\x22\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6C\x65\x61\x72\x20\x76\x69\x73\x69\x62\x6C\x65\x2D\x78\x73\x22\x20\x73\x74\x79\x6C\x65\x3D\x22\x62\x6F\x72\x64\x65\x72\x2D\x74\x6F\x70\x3A\x31\x70\x78\x20\x73\x6F\x6C\x69\x64\x20\x23\x63\x63\x63\x63\x63\x63\x22\x3E\x3C\x2F\x64\x69\x76\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x31\x20\x63\x6F\x6C\x2D\x73\x6D\x2D\x31\x20\x74\x65\x78\x74\x2D\x63\x65\x6E\x74\x65\x72\x22\x3E","\x3C\x73\x70\x61\x6E\x20\x63\x6C\x61\x73\x73\x3D\x22\x6E\x6C\x61\x62\x22\x3E","\x3C\x2F\x73\x70\x61\x6E\x3E","\x3C\x2F\x64\x69\x76\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x31\x30\x20\x63\x6F\x6C\x2D\x73\x6D\x2D\x34\x22\x3E","\x3C\x69\x6E\x70\x75\x74\x20\x6E\x61\x6D\x65\x3D\x22\x66","\x22\x20\x74\x79\x70\x65\x3D\x22\x74\x65\x78\x74\x22\x20\x70\x6C\x61\x63\x65\x68\x6F\x6C\x64\x65\x72\x3D\x22\x65\x67\x3B\x20\x4D\x65\x65\x20\x68\x6F\x6F\x6E\x20\x73\x6F\x75\x70\x22\x20\x63\x6C\x61\x73\x73\x3D\x22\x66\x6F\x6F\x64\x69\x74\x65\x6D\x22\x20\x69\x64\x3D\x22\x66\x69","\x22\x2F\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6C\x65\x61\x72\x20\x76\x69\x73\x69\x62\x6C\x65\x2D\x78\x73\x22\x3E\x3C\x2F\x64\x69\x76\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x31\x20\x76\x69\x73\x69\x62\x6C\x65\x2D\x78\x73\x22\x3E\x3C\x2F\x64\x69\x76\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x34\x20\x63\x6F\x6C\x2D\x73\x6D\x2D\x32\x22\x3E","\x3C\x69\x6E\x70\x75\x74\x20\x6E\x61\x6D\x65\x3D\x22\x70","\x22\x20\x74\x79\x70\x65\x3D\x22\x6E\x75\x6D\x62\x65\x72\x22\x20\x70\x6C\x61\x63\x65\x68\x6F\x6C\x64\x65\x72\x3D\x22\x65\x67\x3B\x20\x33\x2E\x35\x30\x22\x20\x63\x6C\x61\x73\x73\x3D\x22\x70\x72\x69\x63\x65\x22\x20\x69\x64\x3D\x22\x70","\x22\x20\x73\x74\x65\x70\x3D\x22\x30\x2E\x30\x31\x22\x2F\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x36\x20\x63\x6F\x6C\x2D\x73\x6D\x2D\x34\x22\x3E","\x3C\x69\x6E\x70\x75\x74\x20\x6E\x61\x6D\x65\x3D\x22\x65","\x22\x20\x74\x79\x70\x65\x3D\x22\x74\x65\x78\x74\x22\x20\x70\x6C\x61\x63\x65\x68\x6F\x6C\x64\x65\x72\x3D\x22\x65\x67\x3B\x20\x52\x4A\x22\x20\x63\x6C\x61\x73\x73\x3D\x22\x65\x61\x74\x65\x72\x22\x20\x69\x64\x3D\x22\x65","\x3C\x61\x20\x74\x69\x74\x6C\x65\x3D\x22\x43\x6C\x65\x61\x72\x20\x74\x68\x69\x73\x20\x6C\x69\x6E\x65\x22\x20\x68\x72\x65\x66\x3D\x22\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x3A\x3B\x22\x20\x63\x6C\x61\x73\x73\x3D\x22\x6B\x69\x6C\x6C\x22\x20\x69\x64\x3D\x22\x6B","\x22\x3E\x3C\x73\x70\x61\x6E\x20\x63\x6C\x61\x73\x73\x3D\x22\x67\x6C\x79\x70\x68\x69\x63\x6F\x6E\x20\x67\x6C\x79\x70\x68\x69\x63\x6F\x6E\x2D\x72\x65\x6D\x6F\x76\x65\x22\x20\x61\x72\x69\x61\x2D\x68\x69\x64\x64\x65\x6E\x3D\x22\x74\x72\x75\x65\x22\x3E\x3C\x2F\x73\x70\x61\x6E\x3E\x3C\x2F\x61\x3E","\x61\x70\x70\x65\x6E\x64","\x2E\x69\x74\x65\x6D\x73\x6C\x69\x73\x74","\x73\x6D","\x62\x6F\x73\x73","\x77\x68\x65\x72\x65","\x74\x66","\x66","\x65","\x70","\x23\x66\x69","\x23\x65","\x23\x70","\x76\x69\x73\x69\x62\x69\x6C\x69\x74\x79","\x76\x69\x73\x69\x62\x6C\x65","\x63\x73\x73","\x23\x6B","\x6F\x64","\x2E\x64\x69\x73\x63\x74","\x64\x61","\x23\x64\x61","\x64\x64","\x23\x64\x64","\x2C","\x73\x75\x62\x73\x74\x72\x69\x6E\x67","\x73\x70\x6C\x69\x74","\x69\x6E\x41\x72\x72\x61\x79","\x70\x75\x73\x68","\x73\x6F\x72\x74","\x69\x6E\x64\x69\x76\x69\x64\x75\x61\x6C","\x6E\x6F\x62\x6F\x64\x79","\x70\x65\x72\x63\x65\x6E\x74\x61\x67\x65","\x61\x6D\x6F\x75\x6E\x74","\x79\x73","\x79\x67","\x78","\x77","\x2E\x77\x68\x65\x72\x65","\x62","\x2E\x62\x6F\x73\x73","\x23\x73\x6D","\x31","\x63\x68\x65\x63\x6B\x65\x64","\x61\x74\x74\x72","\x2E\x79\x67","\x2E\x79\x73","\x2E\x78","\x50\x6C\x65\x61\x73\x65\x20\x70\x61\x79\x20\x3C\x62\x3E","\x3C\x2F\x62\x3E\x20\x66\x6F\x72\x20\x74\x68\x65\x20\x6D\x65\x61\x6C\x20\x40\x20\x3C\x62\x3E","\x3C\x2F\x62\x3E\x21","\x68\x74\x6D\x6C","\x2E\x62\x75\x64\x64\x69\x65\x73\x2D\x6D\x73\x67","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6C\x65\x61\x72\x22\x3E\x3C\x2F\x64\x69\x76\x3E\x3C\x70\x3E\x2A\x20\x4E\x6F\x74\x65\x20\x3A\x20\x54\x68\x69\x73\x20\x6D\x65\x61\x6C\x3A\x3C\x75\x6C\x3E","\x3C\x6C\x69\x3E\x49\x6E\x63\x6C\x75\x64\x65\x73\x20\x73\x65\x72\x76\x69\x63\x65\x20\x63\x68\x61\x72\x67\x65\x2E\x3C\x2F\x6C\x69\x3E","\x3C\x6C\x69\x3E\x44\x6F\x65\x73\x20\x6E\x6F\x74\x20\x69\x6E\x63\x6C\x75\x64\x65\x20\x73\x65\x72\x76\x69\x63\x65\x20\x63\x68\x61\x72\x67\x65\x2E\x3C\x2F\x6C\x69\x3E","\x3C\x6C\x69\x3E\x49\x6E\x63\x6C\x75\x64\x65\x73\x20\x47\x53\x54\x2E\x3C\x2F\x6C\x69\x3E","\x3C\x6C\x69\x3E\x44\x6F\x65\x73\x20\x6E\x6F\x74\x20\x69\x6E\x63\x6C\x75\x64\x65\x20\x47\x53\x54\x2E\x3C\x2F\x6C\x69\x3E","\x3C\x6C\x69\x3E\x53\x65\x72\x76\x69\x63\x65\x20\x63\x68\x61\x72\x67\x65\x20\x26\x20\x47\x53\x54\x20\x61\x72\x65\x20\x73\x70\x6C\x69\x74\x20\x61\x6D\x6F\x6E\x67\x20\x3C\x75\x3E","\x20\x70\x65\x6F\x70\x6C\x65\x3C\x2F\x75\x3E\x20\x65\x76\x65\x6E\x6C\x79\x2E\x3C\x2F\x6C\x69\x3E","\x3C\x6C\x69\x3E\x53\x65\x72\x76\x69\x63\x65\x20\x63\x68\x61\x72\x67\x65\x20\x69\x73\x20\x73\x70\x6C\x69\x74\x20\x61\x6D\x6F\x6E\x67\x20\x3C\x75\x3E","\x3C\x6C\x69\x3E\x47\x53\x54\x20\x69\x73\x20\x73\x70\x6C\x69\x74\x20\x61\x6D\x6F\x6E\x67\x20\x3C\x75\x3E","\x3C\x2F\x75\x6C\x3E\x3C\x2F\x70\x3E","\x2E\x6C\x65\x66\x74","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x72\x6F\x77\x22\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x73\x6D\x2D\x31\x32\x20\x63\x6F\x6C\x2D\x6D\x64\x2D\x33\x22\x3E","\x3C\x68\x33\x20\x63\x6C\x61\x73\x73\x3D\x22\x65\x61\x74\x65\x72\x22\x3E","\x74\x6F\x55\x70\x70\x65\x72\x43\x61\x73\x65","\x3C\x2F\x68\x33\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x73\x6D\x2D\x31\x32\x20\x63\x6F\x6C\x2D\x6D\x64\x2D\x39\x22\x3E","\x3C\x74\x61\x62\x6C\x65\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x61\x62\x6C\x65\x20\x74\x61\x62\x6C\x65\x2D\x63\x6F\x6E\x64\x65\x6E\x73\x65\x64\x22\x3E","\x3C\x74\x68\x65\x61\x64\x3E","\x3C\x74\x72\x20\x63\x6C\x61\x73\x73\x3D\x22\x61\x63\x74\x69\x76\x65\x22\x3E","\x3C\x74\x68\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x31\x22\x3E\x23\x3C\x2F\x74\x68\x3E","\x3C\x74\x68\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x39\x22\x3E\x46\x6F\x6F\x64\x20\x2F\x20\x42\x65\x76\x65\x72\x61\x67\x65\x3C\x2F\x74\x68\x3E","\x3C\x74\x68\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x32\x20\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x50\x72\x69\x63\x65\x20\x28\x53\x24\x29\x3C\x2F\x74\x68\x3E","\x3C\x2F\x74\x72\x3E","\x3C\x2F\x74\x68\x65\x61\x64\x3E","\x3C\x74\x62\x6F\x64\x79\x3E","\x3C\x74\x72\x3E","\x3C\x74\x64\x3E","\x3C\x2F\x74\x64\x3E","\x3C\x62\x72\x2F\x3E","\x3C\x73\x70\x61\x6E\x20\x63\x6C\x61\x73\x73\x3D\x22\x73\x6D\x61\x6C\x6C\x22\x3E\x28\x43\x6F\x73\x74\x20\x73\x70\x6C\x69\x74\x20","\x2D\x77\x61\x79\x73\x20\x77\x69\x74\x68\x20","\x6A\x6F\x69\x6E","\x29\x3C\x2F\x73\x70\x61\x6E\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x24","\x3C\x74\x64\x3E\x3C\x2F\x74\x64\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x4C\x65\x73\x73\x20\x64\x69\x73\x63\x6F\x75\x6E\x74","\x20\x28","\x25\x29\x20\x3A","\x20\x3A","\x75\x6E\x64\x65\x66\x69\x6E\x65\x64","\x3C\x62\x72\x2F\x3E\x28","\x29","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x53\x75\x62\x2D\x74\x6F\x74\x61\x6C\x20\x3A\x20\x3C\x2F\x74\x64\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x53\x65\x72\x76\x69\x63\x65\x20\x43\x68\x67","\x20\x28\x31\x30\x25\x20","\x2D\x77\x61\x79\x20\x73\x70\x6C\x69\x74\x29","\x20\x28\x31\x30\x25\x29","\x20\x3A\x20\x3C\x2F\x74\x64\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x47\x53\x54","\x20\x28\x37\x25\x20","\x20\x28\x37\x25\x29","\x3C\x74\x72\x20\x73\x74\x79\x6C\x65\x3D\x22\x63\x6F\x6C\x6F\x72\x3A\x23\x30\x61\x61\x33\x64\x63\x22\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x54\x6F\x74\x61\x6C\x20\x50\x61\x79\x61\x62\x6C\x65\x20\x3A\x20\x3C\x2F\x74\x64\x3E","\x3C\x2F\x74\x62\x6F\x64\x79\x3E","\x3C\x2F\x74\x61\x62\x6C\x65\x3E","\x3C\x68\x72\x3E\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6C\x65\x61\x72\x22\x3E\x3C\x2F\x64\x69\x76\x3E","\x23\x62\x69\x6C\x6C\x5F\x74\x61\x62\x6C\x65\x73","\x3C\x74\x68\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x31\x22\x3E\x3C\x2F\x74\x68\x3E","\x3C\x74\x68\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x39\x22\x3E\x54\x6F\x74\x61\x6C\x20\x46\x6F\x72\x20\x45\x76\x65\x72\x79\x6F\x6E\x65\x3C\x2F\x74\x68\x3E","\x3C\x74\x68\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x32\x22\x3E\x3C\x2F\x74\x68\x3E","\x3C\x74\x72\x20\x73\x74\x79\x6C\x65\x3D\x22\x63\x6F\x6C\x6F\x72\x3A\x23\x30\x61\x61\x33\x64\x63\x3B\x66\x6F\x6E\x74\x2D\x77\x65\x69\x67\x68\x74\x3A\x62\x6F\x6C\x64\x3B\x22\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x54\x6F\x74\x61\x6C\x20\x49\x74\x65\x6D\x73\x20\x43\x6F\x73\x74\x20\x3A\x20\x3C\x2F\x74\x64\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x4C\x65\x73\x73\x20\x44\x69\x73\x63\x6F\x75\x6E\x74","\x25\x29","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x54\x6F\x74\x61\x6C\x20\x41\x66\x74\x65\x72\x20\x44\x69\x73\x63\x6F\x75\x6E\x74","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x54\x6F\x74\x61\x6C\x20\x53\x65\x72\x76\x69\x63\x65\x20\x43\x68\x67\x20\x3A\x20\x3C\x2F\x74\x64\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x54\x6F\x74\x61\x6C\x20\x47\x53\x54\x20\x3A\x20\x3C\x2F\x74\x64\x3E","\x3C\x74\x64\x20\x63\x6C\x61\x73\x73\x3D\x22\x74\x65\x78\x74\x2D\x72\x69\x67\x68\x74\x22\x3E\x3C\x62\x3E\x47\x72\x61\x6E\x64\x20\x54\x6F\x74\x61\x6C\x3C\x2F\x62\x3E\x20\x3A\x20\x3C\x2F\x74\x64\x3E","\x3C\x74\x72\x20\x73\x74\x79\x6C\x65\x3D\x22\x63\x6F\x6C\x6F\x72\x3A\x23\x30\x61\x61\x33\x64\x63\x3B\x74\x65\x78\x74\x2D\x61\x6C\x69\x67\x6E\x3A\x72\x69\x67\x68\x74\x22\x3E","\x3C\x74\x64\x20\x63\x6F\x6C\x73\x70\x61\x6E\x3D\x22\x32\x22\x3E\x3C\x2F\x74\x64\x3E","\x42\x69\x6C\x6C\x20\x73\x70\x6C\x69\x74\x20\x2D\x20\x4D\x65\x61\x6C\x20\x40\x20","\x74\x65\x78\x74","\x74\x69\x74\x6C\x65","\x73\x68\x6F\x77","\x2E\x6D\x61\x69\x6E","\x79\x2D\x73\x63\x72\x6F\x6C\x6C","\x61\x64\x64\x43\x6C\x61\x73\x73","\x62\x6F\x64\x79","\x68\x69\x64\x65","\x72\x65\x6D\x6F\x76\x65\x43\x6C\x61\x73\x73","\x2E\x62\x69\x6C\x6C","\x2E\x65\x64\x69\x74\x61\x6C\x65\x72\x74","\x73\x63\x72\x6F\x6C\x6C\x54\x6F","\x64\x6F\x6E\x65","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x69\x73\x2E\x67\x64\x2F\x63\x72\x65\x61\x74\x65\x2E\x70\x68\x70\x3F\x66\x6F\x72\x6D\x61\x74\x3D\x6A\x73\x6F\x6E\x26\x63\x61\x6C\x6C\x62\x61\x63\x6B\x3D\x73\x68\x6F\x72\x74\x5F\x75\x72\x69\x26\x75\x72\x6C\x3D","\x67\x65\x74\x53\x63\x72\x69\x70\x74","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x61\x6C\x65\x72\x74\x20\x61\x6C\x65\x72\x74\x2D\x69\x6E\x66\x6F\x22\x3E\x3C\x70\x3E\x3C\x61\x20\x74\x61\x72\x67\x65\x74\x3D\x22\x5F\x62\x6C\x61\x6E\x6B\x22\x20\x68\x72\x65\x66\x3D\x22","\x73\x68\x6F\x72\x74\x75\x72\x6C","\x3C\x2F\x61\x3E\x3C\x2F\x70\x3E\x3C\x2F\x64\x69\x76\x3E","\x23\x73\x68\x6F\x72\x74\x6C\x69\x6E\x6B","\x73\x70\x6C\x69\x63\x65","\x68\x61\x73\x4F\x77\x6E\x50\x72\x6F\x70\x65\x72\x74\x79","\x74\x6F\x46\x69\x78\x65\x64","\x72\x6F\x75\x6E\x64","\x20\x2C","\x2C\x20","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x67\x6F\x6F\x67\x6C\x65\x61\x70\x69\x73\x2E\x63\x6F\x6D\x2F\x79\x6F\x75\x74\x75\x62\x65\x2F\x76\x33\x2F\x76\x69\x64\x65\x6F\x73\x3F\x70\x61\x72\x74\x3D\x73\x6E\x69\x70\x70\x65\x74\x26\x63\x68\x61\x72\x74\x3D\x6D\x6F\x73\x74\x50\x6F\x70\x75\x6C\x61\x72\x26\x72\x65\x67\x69\x6F\x6E\x43\x6F\x64\x65\x3D\x53\x47\x26\x6D\x61\x78\x52\x65\x73\x75\x6C\x74\x73\x3D\x31\x31\x26\x6B\x65\x79\x3D","\x26\x63\x61\x6C\x6C\x62\x61\x63\x6B\x3D\x73\x68\x6F\x77\x5F\x76\x69\x64\x65\x6F\x73","\x69\x74\x65\x6D\x73","\x72\x61\x6E\x64\x6F\x6D","\x69\x64","\x63\x68\x61\x6E\x6E\x65\x6C\x54\x69\x74\x6C\x65","\x73\x6E\x69\x70\x70\x65\x74","\x63\x68\x61\x6E\x6E\x65\x6C\x49\x64","\x64\x65\x73\x63\x72\x69\x70\x74\x69\x6F\x6E","\x70\x75\x62\x6C\x69\x73\x68\x65\x64\x41\x74","\x75\x72\x6C","\x6D\x65\x64\x69\x75\x6D","\x74\x68\x75\x6D\x62\x6E\x61\x69\x6C\x73","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x76\x69\x64\x2D\x63\x6F\x6E\x74\x61\x69\x6E\x65\x72\x22\x3E","\x3C\x69\x66\x72\x61\x6D\x65\x20\x69\x64\x3D\x22\x76\x69\x64\x5F\x66\x72\x61\x6D\x65\x22\x20\x73\x72\x63\x3D\x22\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x79\x6F\x75\x74\x75\x62\x65\x2E\x63\x6F\x6D\x2F\x65\x6D\x62\x65\x64\x2F","\x3F\x72\x65\x6C\x3D\x30\x26\x73\x68\x6F\x77\x69\x6E\x66\x6F\x3D\x30\x26\x61\x75\x74\x6F\x68\x69\x64\x65\x3D\x31\x22\x20\x77\x69\x64\x74\x68\x3D\x22\x35\x36\x30\x22\x20\x68\x65\x69\x67\x68\x74\x3D\x22\x33\x31\x35\x22\x20\x66\x72\x61\x6D\x65\x62\x6F\x72\x64\x65\x72\x3D\x22\x30\x22\x3E\x3C\x2F\x69\x66\x72\x61\x6D\x65\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6E\x74\x61\x69\x6E\x65\x72\x2D\x66\x6C\x75\x69\x64\x22\x3E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6C\x2D\x78\x73\x2D\x31\x32\x22\x3E","\x3C\x68\x33\x3E","\x3C\x73\x70\x61\x6E\x20\x73\x74\x79\x6C\x65\x3D\x22\x63\x6F\x6C\x6F\x72\x3A\x23\x38\x38\x38\x38\x38\x38\x22\x3E\x56\x69\x61\x20\x3C\x61\x20\x74\x61\x72\x67\x65\x74\x3D\x22\x5F\x62\x6C\x61\x6E\x6B\x22\x20\x68\x72\x65\x66\x3D\x22\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x79\x6F\x75\x74\x75\x62\x65\x2E\x63\x6F\x6D\x2F\x63\x68\x61\x6E\x6E\x65\x6C\x2F","\x3C\x2F\x61\x3E\x20\x6F\x6E\x20","\x54","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6C\x65\x61\x72\x22\x3E\x3C\x2F\x64\x69\x76\x3E","\x23\x76\x69\x64\x65\x6F\x6C\x69\x73\x74","\x63\x6C\x69\x63\x6B","\x2E\x61\x64\x64\x6C\x69\x6E\x65","\x6D\x6F\x64\x61\x6C","\x23\x73\x68\x61\x72\x65\x6D\x6F\x64","\x2E\x73\x68\x61\x72\x65\x62\x75\x74\x74","\x2E\x6B\x69\x6C\x6C","\x6B","\x66\x6F\x63\x75\x73","\x68\x69\x64\x64\x65\x6E","\x6F\x6E","\x6B\x65\x79\x75\x70","\x2E\x66\x6F\x6F\x64\x69\x74\x65\x6D\x2C\x2E\x65\x61\x74\x65\x72\x2C\x2E\x70\x72\x69\x63\x65","\x23\x73\x61\x6D\x65\x65\x61\x74\x65\x72\x6D\x6F\x64","\x53\x61\x6D\x65\x20\x65\x61\x74\x65\x72\x21","\x6C\x6F\x67","\x2E\x65\x61\x74\x65\x72","\x61\x63\x74\x69\x6F\x6E","\x2E\x63\x61\x6C\x63","\x2E\x72\x65\x63\x61\x6C\x63","\x2E\x62\x69\x6C\x6C\x2D\x6C\x6F\x67\x6F\x20\x61\x2C\x2E\x62\x69\x6C\x6C\x2D\x73\x6D\x2D\x6C\x6F\x67\x6F\x20\x61","\x72\x65\x61\x64\x79"];function getp(_0xff4fx2,_0xff4fx3){if(!_0xff4fx3){_0xff4fx3= window[_0x4a69[1]][_0x4a69[0]]};_0xff4fx2= _0xff4fx2[_0x4a69[3]](/[\[\]]/g,_0x4a69[2]);var _0xff4fx4= new RegExp(_0x4a69[4]+ _0xff4fx2+ _0x4a69[5]),_0xff4fx5=_0xff4fx4[_0x4a69[6]](_0xff4fx3);if(!_0xff4fx5){return null};if(!_0xff4fx5[2]){return _0x4a69[7]};return decodeURIComponent(_0xff4fx5[2][_0x4a69[3]](/\+/g,_0x4a69[8]))}function contains(_0xff4fx7,_0xff4fx8){if(_0xff4fx8[_0x4a69[9]](_0xff4fx7)>  -1){return true}else {return false}}function contains_arr(_0xff4fxa,_0xff4fxb){for(var _0xff4fxc=0;_0xff4fxc< _0xff4fxb[_0x4a69[10]];_0xff4fxc++){var _0xff4fxd=_0xff4fxb[_0xff4fxc][_0x4a69[11]]();_0xff4fxa= _0xff4fxa[_0x4a69[11]]();if(_0xff4fxd== _0xff4fxa){return true;break}};return false}function addline(){var _0xff4fxf=$(_0x4a69[13])[_0x4a69[12]]();var _0xff4fx10=parseInt(_0xff4fxf)+ 1;var _0xff4fx11=_0x4a69[14]+ _0xff4fx10+ _0x4a69[15];_0xff4fx11+= _0x4a69[16];_0xff4fx11+= _0x4a69[17];_0xff4fx11+= _0x4a69[18]+ _0xff4fx10+ _0x4a69[19];_0xff4fx11+= _0x4a69[20];_0xff4fx11+= _0x4a69[21];_0xff4fx11+= _0x4a69[22]+ _0xff4fx10+ _0x4a69[23]+ _0xff4fx10+ _0x4a69[24];_0xff4fx11+= _0x4a69[20];_0xff4fx11+= _0x4a69[25];_0xff4fx11+= _0x4a69[26];_0xff4fx11+= _0x4a69[27];_0xff4fx11+= _0x4a69[28]+ _0xff4fx10+ _0x4a69[29]+ _0xff4fx10+ _0x4a69[30];_0xff4fx11+= _0x4a69[20];_0xff4fx11+= _0x4a69[31];_0xff4fx11+= _0x4a69[32]+ _0xff4fx10+ _0x4a69[33]+ _0xff4fx10+ _0x4a69[24];_0xff4fx11+= _0x4a69[34]+ _0xff4fx10+ _0x4a69[35];_0xff4fx11+= _0x4a69[20];_0xff4fx11+= _0x4a69[17];_0xff4fx11+= _0x4a69[20];_0xff4fx11+= _0x4a69[20];$(_0x4a69[37])[_0x4a69[36]](_0xff4fx11);$(_0x4a69[13])[_0x4a69[12]](_0xff4fx10)}function process_form(){if(getp(_0x4a69[38])== 1&& getp(_0x4a69[39])!= _0x4a69[7]&& getp(_0x4a69[40])!= _0x4a69[7]){var _0xff4fx13=parseInt(getp(_0x4a69[41]));var _0xff4fx14=_0x4a69[7];for(var _0xff4fx15=1;_0xff4fx15<= _0xff4fx13;_0xff4fx15++){var _0xff4fx16=_0x4a69[7];if(_0xff4fx15> 2){_0xff4fx16+= _0x4a69[14]+ _0xff4fx15+ _0x4a69[15];_0xff4fx16+= _0x4a69[16];_0xff4fx16+= _0x4a69[17];_0xff4fx16+= _0x4a69[18]+ _0xff4fx15+ _0x4a69[19];_0xff4fx16+= _0x4a69[20];_0xff4fx16+= _0x4a69[21];_0xff4fx16+= _0x4a69[22]+ _0xff4fx15+ _0x4a69[23]+ _0xff4fx15+ _0x4a69[24];_0xff4fx16+= _0x4a69[20];_0xff4fx16+= _0x4a69[25];_0xff4fx16+= _0x4a69[26];_0xff4fx16+= _0x4a69[27];_0xff4fx16+= _0x4a69[28]+ _0xff4fx15+ _0x4a69[29]+ _0xff4fx15+ _0x4a69[30];_0xff4fx16+= _0x4a69[20];_0xff4fx16+= _0x4a69[31];_0xff4fx16+= _0x4a69[32]+ _0xff4fx15+ _0x4a69[33]+ _0xff4fx15+ _0x4a69[24];_0xff4fx16+= _0x4a69[34]+ _0xff4fx15+ _0x4a69[35];_0xff4fx16+= _0x4a69[20];_0xff4fx16+= _0x4a69[17];_0xff4fx16+= _0x4a69[20];_0xff4fx16+= _0x4a69[20];$(_0x4a69[37])[_0x4a69[36]](_0xff4fx16)};if(getp(_0x4a69[42]+ _0xff4fx15)!= _0x4a69[7]&& getp(_0x4a69[43]+ _0xff4fx15)!= _0x4a69[7]&& getp(_0x4a69[44]+ _0xff4fx15)!= _0x4a69[7]){$(_0x4a69[45]+ _0xff4fx15)[_0x4a69[12]](getp(_0x4a69[42]+ _0xff4fx15));$(_0x4a69[46]+ _0xff4fx15)[_0x4a69[12]](getp(_0x4a69[43]+ _0xff4fx15));$(_0x4a69[47]+ _0xff4fx15)[_0x4a69[12]](getp(_0x4a69[44]+ _0xff4fx15));$(_0x4a69[51]+ _0xff4fx15)[_0x4a69[50]](_0x4a69[48],_0x4a69[49]);$(_0x4a69[53])[_0x4a69[12]](getp(_0x4a69[52]));$(_0x4a69[55])[_0x4a69[12]](getp(_0x4a69[54]));$(_0x4a69[57])[_0x4a69[12]](getp(_0x4a69[56]));_0xff4fx14+= getp(_0x4a69[43]+ _0xff4fx15)+ _0x4a69[58]}};_0xff4fx14= format_eaters(_0xff4fx14);_0xff4fx14= _0xff4fx14[_0x4a69[59]](0,_0xff4fx14[_0x4a69[10]]- 1)[_0x4a69[11]]();var _0xff4fx17=_0xff4fx14[_0x4a69[60]](_0x4a69[58]);var _0xff4fx18=[];for(var _0xff4fx19=0;_0xff4fx19< _0xff4fx17[_0x4a69[10]];_0xff4fx19++){var _0xff4fx1a=_0xff4fx17[_0xff4fx19];if($[_0x4a69[61]](_0xff4fx1a,_0xff4fx18)==  -1){_0xff4fx18[_0x4a69[62]](_0xff4fx1a)}};_0xff4fx18[_0x4a69[63]]();var _0xff4fx1b=[];for(var _0xff4fx1c=0;_0xff4fx1c< _0xff4fx18[_0x4a69[10]];_0xff4fx1c++){var _0xff4fx1d=[];for(var _0xff4fx1e=1;_0xff4fx1e<= _0xff4fx13;_0xff4fx1e++){var _0xff4fx1f=[];var _0xff4fx20=getp(_0x4a69[43]+ _0xff4fx1e)[_0x4a69[11]]();_0xff4fx20= format_eaters(_0xff4fx20);var _0xff4fx21=getp(_0x4a69[42]+ _0xff4fx1e);var _0xff4fx22=_0x4a69[64];var _0xff4fx23=money_it(getp(_0x4a69[44]+ _0xff4fx1e));var _0xff4fx24=_0x4a69[65];if(contains(_0x4a69[58],_0xff4fx20)){_0xff4fx22= _0x4a69[60];var _0xff4fx25=_0xff4fx20[_0x4a69[60]](_0x4a69[58])[_0x4a69[10]];var _0xff4fx26=_0xff4fx23/ _0xff4fx25;_0xff4fx26= money_it(_0xff4fx26);_0xff4fx24= drop_item(_0xff4fx20[_0x4a69[60]](_0x4a69[58]),_0xff4fx18[_0xff4fx1c]);_0xff4fx1f[_0x4a69[62]](_0xff4fx21,_0xff4fx26,_0xff4fx22,_0xff4fx24)}else {_0xff4fx1f[_0x4a69[62]](_0xff4fx21,_0xff4fx23,_0xff4fx22,_0xff4fx24)};if(contains_arr(_0xff4fx18[_0xff4fx1c],_0xff4fx20[_0x4a69[60]](_0x4a69[58]))){_0xff4fx1d[_0x4a69[62]](_0xff4fx1f)}};_0xff4fx1b[_0x4a69[62]](_0xff4fx1d)};var _0xff4fx27=0;var _0xff4fx28=0;var _0xff4fx29=0;var _0xff4fx2a=0;var _0xff4fx2b=0;var _0xff4fx2c=0;var _0xff4fx2d=0;for(var _0xff4fx2e=1;_0xff4fx2e<= _0xff4fx13;_0xff4fx2e++){if(getp(_0x4a69[44]+ _0xff4fx2e)!= _0x4a69[7]){var _0xff4fx2f=parseFloat(getp(_0x4a69[44]+ _0xff4fx2e));_0xff4fx27+= parseFloat(_0xff4fx2f)}};_0xff4fx27= parseFloat(_0xff4fx27);var _0xff4fx30=0;if(getp(_0x4a69[52])== _0x4a69[66]){_0xff4fx30= parseFloat(getp(_0x4a69[54])/ 100)* _0xff4fx27}else {if(getp(_0x4a69[52])== _0x4a69[67]){_0xff4fx30= parseFloat(getp(_0x4a69[54]))}};_0xff4fx2b= _0xff4fx27;_0xff4fx27= _0xff4fx27- _0xff4fx30;if(getp(_0x4a69[68])== 1){_0xff4fx29= parseFloat(_0xff4fx27* 0.1);_0xff4fx2c= parseFloat(_0xff4fx2b* 0.1)}else {_0xff4fx29= parseFloat(_0xff4fx29);_0xff4fx2c= parseFloat(_0xff4fx2c)};if(getp(_0x4a69[69])== 1){_0xff4fx2a= parseFloat((_0xff4fx27+ _0xff4fx29)* 0.07);_0xff4fx2d= parseFloat((_0xff4fx2b+ _0xff4fx2c)* 0.07)}else {_0xff4fx2a= parseFloat(_0xff4fx2a);_0xff4fx2d= parseFloat(_0xff4fx2d)};var _0xff4fx31=parseFloat(_0xff4fx30/ _0xff4fx18[_0x4a69[10]]);var _0xff4fx32=[];for(var _0xff4fx33=0;_0xff4fx33< _0xff4fx1b[_0x4a69[10]];_0xff4fx33++){var _0xff4fx34=_0xff4fx1b[_0xff4fx33][_0x4a69[10]];var _0xff4fx35=[];var _0xff4fx36=0;if(_0xff4fx34> 1){for(var _0xff4fx37=0;_0xff4fx37< _0xff4fx34;_0xff4fx37++){_0xff4fx36= parseFloat(_0xff4fx36)+ parseFloat(_0xff4fx1b[_0xff4fx33][_0xff4fx37][1])}}else {_0xff4fx36= parseFloat(_0xff4fx1b[_0xff4fx33][0][1])};_0xff4fx36= _0xff4fx36- _0xff4fx31;_0xff4fx36= money_it(_0xff4fx36);var _0xff4fx38=money_it(0);var _0xff4fx39=money_it(0);var _0xff4fx3a=money_it(0);var _0xff4fx3b=money_it(0);if(getp(_0x4a69[70])== 1){var _0xff4fx3c=_0xff4fx18[_0x4a69[10]];if(getp(_0x4a69[68])== 1){_0xff4fx39= parseFloat(_0xff4fx29/ _0xff4fx3c);_0xff4fx38= _0xff4fx36+ _0xff4fx39;_0xff4fx39= money_it(_0xff4fx39)};if(getp(_0x4a69[69])== 1){if(_0xff4fx38!= _0x4a69[7]){_0xff4fx3b= parseFloat(_0xff4fx2a/ _0xff4fx3c);_0xff4fx3a= parseFloat(_0xff4fx36)+ parseFloat(_0xff4fx39)+ parseFloat(_0xff4fx3b);_0xff4fx3b= money_it(_0xff4fx3b);_0xff4fx3a= money_it(_0xff4fx3a)}else {_0xff4fx3a= parseFloat(_0xff4fx36)+ parseFloat(_0xff4fx3b);_0xff4fx3a= money_it(_0xff4fx3a)}}}else {if(getp(_0x4a69[68])== 1){_0xff4fx38= money_it(_0xff4fx36* 1.1);_0xff4fx39= money_it(_0xff4fx36* 0.1)}else {_0xff4fx38= money_it(_0xff4fx36)};if(getp(_0x4a69[69])== 1){if(_0xff4fx38!= _0x4a69[7]){_0xff4fx3a= money_it(_0xff4fx38* 1.07);_0xff4fx3b= money_it(_0xff4fx38* 0.07)}else {_0xff4fx3a= money_it(_0xff4fx36* 1.07);_0xff4fx3b= money_it(_0xff4fx36* 0.07)}}else {_0xff4fx3a= _0xff4fx38}};_0xff4fx35[_0x4a69[62]]([_0xff4fx36,_0xff4fx39,_0xff4fx3b,_0xff4fx3a,_0xff4fx31]);_0xff4fx32[_0x4a69[62]](_0xff4fx35)};$(_0x4a69[72])[_0x4a69[12]](getp(_0x4a69[71]));$(_0x4a69[74])[_0x4a69[12]](getp(_0x4a69[73]));$(_0x4a69[13])[_0x4a69[12]](getp(_0x4a69[41]));$(_0x4a69[75])[_0x4a69[12]](getp(_0x4a69[38]))};if(getp(_0x4a69[69])== _0x4a69[76]){$(_0x4a69[79])[_0x4a69[78]](_0x4a69[77],true)};if(getp(_0x4a69[68])== _0x4a69[76]){$(_0x4a69[80])[_0x4a69[78]](_0x4a69[77],true)};if(getp(_0x4a69[70])== _0x4a69[76]){$(_0x4a69[81])[_0x4a69[78]](_0x4a69[77],true)};var _0xff4fx3d=_0x4a69[82]+ getp(_0x4a69[73])+ _0x4a69[83]+ getp(_0x4a69[71])+ _0x4a69[84];$(_0x4a69[86])[_0x4a69[85]](_0xff4fx3d);var _0xff4fx3e=_0x4a69[7];_0xff4fx3e+= _0x4a69[87];if(getp(_0x4a69[68])== _0x4a69[76]){_0xff4fx3e+= _0x4a69[88]}else {_0xff4fx3e+= _0x4a69[89]};if(getp(_0x4a69[69])== _0x4a69[76]){_0xff4fx3e+= _0x4a69[90]}else {_0xff4fx3e+= _0x4a69[91]};if(getp(_0x4a69[70])== _0x4a69[76]){if(getp(_0x4a69[68])== _0x4a69[76]&& getp(_0x4a69[69])== _0x4a69[76]){_0xff4fx3e+= _0x4a69[92]+ _0xff4fx18[_0x4a69[10]]+ _0x4a69[93]}else {if(getp(_0x4a69[68])== _0x4a69[76]&& getp(_0x4a69[69])!= _0x4a69[76]){_0xff4fx3e+= _0x4a69[94]+ _0xff4fx18[_0x4a69[10]]+ _0x4a69[93]}else {if(getp(_0x4a69[68])!= _0x4a69[76]&& getp(_0x4a69[69])== _0x4a69[76]){_0xff4fx3e+= _0x4a69[95]+ _0xff4fx18[_0x4a69[10]]+ _0x4a69[93]}}}};_0xff4fx3e+= _0x4a69[96];$(_0x4a69[97])[_0x4a69[36]](_0xff4fx3e);for(var _0xff4fx3f=0;_0xff4fx3f< _0xff4fx18[_0x4a69[10]];_0xff4fx3f++){var _0xff4fx40=_0x4a69[7];_0xff4fx40+= _0x4a69[98];_0xff4fx40+= _0x4a69[99];_0xff4fx40+= _0x4a69[100]+ _0xff4fx18[_0xff4fx3f][_0x4a69[101]]()+ _0x4a69[102];_0xff4fx40+= _0x4a69[20];_0xff4fx40+= _0x4a69[103];_0xff4fx40+= _0x4a69[104];_0xff4fx40+= _0x4a69[105];_0xff4fx40+= _0x4a69[106];_0xff4fx40+= _0x4a69[107];_0xff4fx40+= _0x4a69[108];_0xff4fx40+= _0x4a69[109];_0xff4fx40+= _0x4a69[110];_0xff4fx40+= _0x4a69[111];_0xff4fx40+= _0x4a69[112];for(var _0xff4fx41=0;_0xff4fx41< _0xff4fx1b[_0xff4fx3f][_0x4a69[10]];_0xff4fx41++){_0xff4fx40+= _0x4a69[113];_0xff4fx40+= _0x4a69[114]+ (_0xff4fx41+ 1)+ _0x4a69[115];_0xff4fx40+= _0x4a69[114];_0xff4fx40+= _0xff4fx1b[_0xff4fx3f][_0xff4fx41][0];if(_0xff4fx1b[_0xff4fx3f][_0xff4fx41][2]== _0x4a69[60]){_0xff4fx40+= _0x4a69[116];var _0xff4fx42=_0xff4fx1b[_0xff4fx3f][_0xff4fx41][3];var _0xff4fx43=_0xff4fx42[_0x4a69[10]]+ 1;_0xff4fx40+= _0x4a69[117]+ _0xff4fx43+ _0x4a69[118]+ _0xff4fx42[_0x4a69[119]]()[_0x4a69[101]]()+ _0x4a69[120]};_0xff4fx40+= _0x4a69[115];_0xff4fx40+= _0x4a69[121];_0xff4fx40+= _0xff4fx1b[_0xff4fx3f][_0xff4fx41][1];_0xff4fx40+= _0x4a69[115];_0xff4fx40+= _0x4a69[110];if(_0xff4fx41== (_0xff4fx1b[_0xff4fx3f][_0x4a69[10]]- 1)){if((getp(_0x4a69[52])== _0x4a69[66]|| getp(_0x4a69[52])== _0x4a69[67])&& getp(_0x4a69[54])> 0){_0xff4fx40+= _0x4a69[113];_0xff4fx40+= _0x4a69[122];_0xff4fx40+= _0x4a69[123];if(getp(_0x4a69[52])== _0x4a69[66]){_0xff4fx40+= _0x4a69[124]+ money_it(getp(_0x4a69[54]))+ _0x4a69[125]}else {_0xff4fx40+= _0x4a69[126]};if(getp(_0x4a69[56])!= _0x4a69[7]&& getp(_0x4a69[56])!= null&& getp(_0x4a69[56])!= _0x4a69[127]){_0xff4fx40+= _0x4a69[128]+ getp(_0x4a69[56])+ _0x4a69[129]};_0xff4fx40+= _0x4a69[115];_0xff4fx40+= _0x4a69[121];_0xff4fx40+= money_it(_0xff4fx32[_0xff4fx3f][0][4]);_0xff4fx40+= _0x4a69[115];_0xff4fx40+= _0x4a69[110]};_0xff4fx40+= _0x4a69[113];_0xff4fx40+= _0x4a69[122];_0xff4fx40+= _0x4a69[130];_0xff4fx40+= _0x4a69[121];_0xff4fx40+= _0xff4fx32[_0xff4fx3f][0][0];_0xff4fx40+= _0x4a69[115];_0xff4fx40+= _0x4a69[110];if(getp(_0x4a69[68])== _0x4a69[76]){_0xff4fx40+= _0x4a69[113];_0xff4fx40+= _0x4a69[122];_0xff4fx40+= _0x4a69[131];if(getp(_0x4a69[70])== _0x4a69[76]){_0xff4fx40+= _0x4a69[132]+ _0xff4fx18[_0x4a69[10]]+ _0x4a69[133]}else {_0xff4fx40+= _0x4a69[134]};_0xff4fx40+= _0x4a69[135];_0xff4fx40+= _0x4a69[121];_0xff4fx40+= _0xff4fx32[_0xff4fx3f][0][1];_0xff4fx40+= _0x4a69[115];_0xff4fx40+= _0x4a69[110]};if(getp(_0x4a69[69])== _0x4a69[76]){_0xff4fx40+= _0x4a69[113];_0xff4fx40+= _0x4a69[122];_0xff4fx40+= _0x4a69[136];if(getp(_0x4a69[70])== _0x4a69[76]){_0xff4fx40+= _0x4a69[137]+ _0xff4fx18[_0x4a69[10]]+ _0x4a69[133]}else {_0xff4fx40+= _0x4a69[138]};_0xff4fx40+= _0x4a69[135];_0xff4fx40+= _0x4a69[121];_0xff4fx40+= _0xff4fx32[_0xff4fx3f][0][2];_0xff4fx40+= _0x4a69[115];_0xff4fx40+= _0x4a69[110]};_0xff4fx40+= _0x4a69[139];_0xff4fx40+= _0x4a69[122];_0xff4fx40+= _0x4a69[140];_0xff4fx40+= _0x4a69[121];_0xff4fx40+= _0xff4fx32[_0xff4fx3f][0][3];_0xff4fx40+= _0x4a69[115];_0xff4fx40+= _0x4a69[110]}};_0xff4fx40+= _0x4a69[141];_0xff4fx40+= _0x4a69[142];_0xff4fx40+= _0x4a69[20];_0xff4fx40+= _0x4a69[20];_0xff4fx40+= _0x4a69[143];$(_0x4a69[144])[_0x4a69[36]](_0xff4fx40)};var _0xff4fx44=_0x4a69[7];_0xff4fx44+= _0x4a69[98];_0xff4fx44+= _0x4a69[99];_0xff4fx44+= _0x4a69[20];_0xff4fx44+= _0x4a69[103];_0xff4fx44+= _0x4a69[104];_0xff4fx44+= _0x4a69[105];_0xff4fx44+= _0x4a69[106];_0xff4fx44+= _0x4a69[145];_0xff4fx44+= _0x4a69[146];_0xff4fx44+= _0x4a69[147];_0xff4fx44+= _0x4a69[110];_0xff4fx44+= _0x4a69[111];_0xff4fx44+= _0x4a69[112];_0xff4fx44+= _0x4a69[148];_0xff4fx44+= _0x4a69[122];_0xff4fx44+= _0x4a69[149];_0xff4fx44+= _0x4a69[121];_0xff4fx44+= money_it(_0xff4fx2b);_0xff4fx44+= _0x4a69[115];_0xff4fx44+= _0x4a69[110];if((getp(_0x4a69[52])== _0x4a69[66]|| getp(_0x4a69[52])== _0x4a69[67])&& getp(_0x4a69[54])> 0){_0xff4fx44+= _0x4a69[148];_0xff4fx44+= _0x4a69[122];_0xff4fx44+= _0x4a69[150];if(getp(_0x4a69[52])== _0x4a69[66]){_0xff4fx44+= _0x4a69[124]+ money_it(getp(_0x4a69[54]))+ _0x4a69[151]}else {_0xff4fx44+= _0x4a69[7]};_0xff4fx44+= _0x4a69[135];_0xff4fx44+= _0x4a69[121];_0xff4fx44+= money_it(_0xff4fx30);_0xff4fx44+= _0x4a69[115];_0xff4fx44+= _0x4a69[110];_0xff4fx44+= _0x4a69[148];_0xff4fx44+= _0x4a69[122];_0xff4fx44+= _0x4a69[152];_0xff4fx44+= _0x4a69[135];_0xff4fx44+= _0x4a69[121];_0xff4fx44+= money_it(_0xff4fx27);_0xff4fx44+= _0x4a69[115];_0xff4fx44+= _0x4a69[110]};_0xff4fx44+= _0x4a69[148];_0xff4fx44+= _0x4a69[122];_0xff4fx44+= _0x4a69[153];_0xff4fx44+= _0x4a69[121];_0xff4fx44+= money_it(_0xff4fx29);_0xff4fx44+= _0x4a69[115];_0xff4fx44+= _0x4a69[110];_0xff4fx44+= _0x4a69[148];_0xff4fx44+= _0x4a69[122];_0xff4fx44+= _0x4a69[154];_0xff4fx44+= _0x4a69[121];_0xff4fx44+= money_it(_0xff4fx2a);_0xff4fx44+= _0x4a69[115];_0xff4fx44+= _0x4a69[110];_0xff4fx44+= _0x4a69[148];_0xff4fx44+= _0x4a69[122];_0xff4fx44+= _0x4a69[155];_0xff4fx44+= _0x4a69[121];_0xff4fx44+= money_it(parseFloat(money_it(_0xff4fx27))+ parseFloat(money_it(_0xff4fx29))+ parseFloat(money_it(_0xff4fx2a)));_0xff4fx44+= _0x4a69[115];_0xff4fx44+= _0x4a69[110];_0xff4fx44+= _0x4a69[110];_0xff4fx44+= _0x4a69[156];_0xff4fx44+= _0x4a69[157];_0xff4fx44+= _0x4a69[122];_0xff4fx44+= _0x4a69[110];_0xff4fx44+= _0x4a69[141];_0xff4fx44+= _0x4a69[142];_0xff4fx44+= _0x4a69[20];_0xff4fx44+= _0x4a69[20];$(_0x4a69[144])[_0x4a69[36]](_0xff4fx44);$(_0x4a69[160])[_0x4a69[159]](_0x4a69[158]+ getp(_0x4a69[71])[_0x4a69[101]]());show_bill()}function show_main(){$(_0x4a69[162])[_0x4a69[161]]();$(_0x4a69[165])[_0x4a69[164]](_0x4a69[163])}function hide_main(){$(_0x4a69[162])[_0x4a69[166]]();$(_0x4a69[165])[_0x4a69[167]](_0x4a69[163])}function show_bill(){create_short_uri();$(_0x4a69[168])[_0x4a69[161]]();reward_eaters();hide_main()}function hide_bill(){$(_0x4a69[169])[_0x4a69[161]]();show_main();window[_0x4a69[170]](0,0);$(_0x4a69[168])[_0x4a69[166]]()}function edit_bill(){hide_bill()}function create_short_uri(){uri= window[_0x4a69[1]][_0x4a69[0]];$[_0x4a69[173]](_0x4a69[172]+ encodeURIComponent(uri))[_0x4a69[171]](function(){})}function short_uri(_0xff4fx4c){$(_0x4a69[177])[_0x4a69[36]](_0x4a69[174]+ _0xff4fx4c[_0x4a69[175]]+ _0x4a69[15]+ _0xff4fx4c[_0x4a69[175]]+ _0x4a69[176])}function drop_item(_0xff4fx4e,_0xff4fx4f){var _0xff4fx50=_0xff4fx4e[_0x4a69[9]](_0xff4fx4f);if(_0xff4fx50>  -1){_0xff4fx4e[_0x4a69[178]](_0xff4fx50,1)};return _0xff4fx4e}function arr_has(_0xff4fxb,_0xff4fx52){return (_0xff4fxb[_0x4a69[9]](_0xff4fx52)!=  -1)}function no_dup(_0xff4fx54,_0xff4fx55){var _0xff4fxb=_0xff4fx54&& _0xff4fx54[_0x4a69[60]](_0xff4fx55|| _0x4a69[58]),_0xff4fx1e=_0xff4fxb&& _0xff4fxb[_0x4a69[10]],_0xff4fx56={};for(var _0xff4fx15=0;_0xff4fx15< _0xff4fx1e;_0xff4fx15++){if(_0xff4fx56[_0x4a69[179]](_0xff4fxb[_0xff4fx15])){return false}else {_0xff4fx56[_0xff4fxb[_0xff4fx15]]= true}};return true}function money_it(_0xff4fx58){return parseFloat(Math[_0x4a69[181]](_0xff4fx58* 100)/ 100)[_0x4a69[180]](2)}function format_eaters(_0xff4fx54){for(var _0xff4fx5a=0;_0xff4fx5a<= 10;_0xff4fx5a++){_0xff4fx54= _0xff4fx54[_0x4a69[3]](_0x4a69[183],_0x4a69[58])[_0x4a69[3]](_0x4a69[182],_0x4a69[58])};return _0xff4fx54}function strip_spaces(_0xff4fx54){return _0xff4fx54[_0x4a69[3]](/ /g,_0x4a69[7])}function reward_eaters(){$[_0x4a69[173]](_0x4a69[184]+ ytk+ _0x4a69[185])[_0x4a69[171]](function(){})}function show_videos(_0xff4fx5e){var _0xff4fx5f=_0xff4fx5e[_0x4a69[186]];var _0xff4fx60=_0x4a69[7];var _0xff4fx61=parseInt(Math[_0x4a69[187]]()* (10- 0)+ 0);for(var _0xff4fx41=0;_0xff4fx41< _0xff4fx5f[_0x4a69[10]];_0xff4fx41++){var _0xff4fx62=_0xff4fx5f[_0xff4fx41][_0x4a69[188]];var _0xff4fx63=_0xff4fx5f[_0xff4fx41][_0x4a69[190]][_0x4a69[189]];var _0xff4fx64=_0xff4fx5f[_0xff4fx41][_0x4a69[190]][_0x4a69[191]];var _0xff4fx65=_0xff4fx5f[_0xff4fx41][_0x4a69[190]][_0x4a69[160]];var _0xff4fx66=_0xff4fx5f[_0xff4fx41][_0x4a69[190]][_0x4a69[192]];var _0xff4fx67=_0xff4fx5f[_0xff4fx41][_0x4a69[190]][_0x4a69[193]];var _0xff4fx68=_0xff4fx5f[_0xff4fx41][_0x4a69[190]][_0x4a69[196]][_0x4a69[195]][_0x4a69[194]];if(_0xff4fx41== _0xff4fx61){_0xff4fx60+= _0x4a69[197];_0xff4fx60+= _0x4a69[198]+ _0xff4fx62+ _0x4a69[199];_0xff4fx60+= _0x4a69[20];_0xff4fx60+= _0x4a69[200];_0xff4fx60+= _0x4a69[98];_0xff4fx60+= _0x4a69[201];_0xff4fx60+= _0x4a69[202]+ _0xff4fx65+ _0x4a69[102];_0xff4fx60+= _0x4a69[203]+ _0xff4fx64+ _0x4a69[15]+ _0xff4fx63+ _0x4a69[204]+ _0xff4fx67[_0x4a69[60]](_0x4a69[205])[0]+ _0x4a69[19];_0xff4fx60+= _0x4a69[206];_0xff4fx60+= _0x4a69[20];_0xff4fx60+= _0x4a69[20];_0xff4fx60+= _0x4a69[20];break}};$(_0x4a69[207])[_0x4a69[36]](_0xff4fx60)}$(_0x4a69[209])[_0x4a69[208]](function(){addline()});$(_0x4a69[212])[_0x4a69[208]](function(){$(_0x4a69[211])[_0x4a69[210]](_0x4a69[161])});$(_0x4a69[37])[_0x4a69[217]](_0x4a69[208],_0x4a69[213],function(){var _0xff4fx69=$(this)[_0x4a69[78]](_0x4a69[188])[_0x4a69[3]](_0x4a69[214],_0x4a69[7]);$(_0x4a69[46]+ _0xff4fx69)[_0x4a69[12]](_0x4a69[7]);$(_0x4a69[47]+ _0xff4fx69)[_0x4a69[12]](_0x4a69[7]);$(_0x4a69[45]+ _0xff4fx69)[_0x4a69[12]](_0x4a69[7])[_0x4a69[215]]();$(this)[_0x4a69[50]](_0x4a69[48],_0x4a69[216])});$(_0x4a69[37])[_0x4a69[217]](_0x4a69[218],_0x4a69[219],function(){for(var _0xff4fx6a=1;_0xff4fx6a<= $(_0x4a69[13])[_0x4a69[12]]();_0xff4fx6a++){if($(_0x4a69[45]+ _0xff4fx6a)[_0x4a69[12]]()!= _0x4a69[7]|| $(_0x4a69[46]+ _0xff4fx6a)[_0x4a69[12]]()!= _0x4a69[7]|| $(_0x4a69[47]+ _0xff4fx6a)[_0x4a69[12]]()!= _0x4a69[7]){$(_0x4a69[51]+ _0xff4fx6a)[_0x4a69[50]](_0x4a69[48],_0x4a69[49])}else {$(_0x4a69[51]+ _0xff4fx6a)[_0x4a69[50]](_0x4a69[48],_0x4a69[216])}}});$(_0x4a69[223])[_0x4a69[217]](_0x4a69[218],function(){var _0xff4fx6b=false;if($(this)[_0x4a69[12]]()!= _0x4a69[7]){var _0xff4fx6c=$(this)[_0x4a69[12]]()[_0x4a69[11]]();if(!no_dup(_0xff4fx6c,_0x4a69[58])){_0xff4fx6b= true}};if(_0xff4fx6b){$(_0x4a69[220])[_0x4a69[210]](_0x4a69[161]);console[_0x4a69[222]](_0x4a69[221])}});$(document)[_0x4a69[228]](function(){$(_0x4a69[225])[_0x4a69[78]](_0x4a69[224],ep);$(_0x4a69[226])[_0x4a69[78]](_0x4a69[0],ep);$(_0x4a69[227])[_0x4a69[78]](_0x4a69[0],ep);if(getp(_0x4a69[38])== 1){process_form()}})  
+
+</script>
+</body>
+</html>

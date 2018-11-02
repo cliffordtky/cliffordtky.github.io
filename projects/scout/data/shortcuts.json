@@ -1,8 +1,0 @@
-[
-     {"sc":"*store","hint":"Shop online"},
-     {"sc":"*phones","hint":"Browse phones and tablets"},
-     {"sc":"*fibre","hint":"Browse Fibre Broadband"},
-     {"sc":"*mobile","hint":"Browse mobile products"},
-     {"sc":"*msa-android","hint":"Download My StarHub App for Android"},
-     {"sc":"*msa-apple","hint":"Download My StarHub App for Apple"}
-]
