@@ -72,7 +72,7 @@
   var exr = 82;
   $('#jpy').focus().keyup(function(){
     if ($(this).val() > 0){
-      var tgt_amt = Math.round(($(this).val()) / exr * 100) / 100;
+      var tgt_amt = (Math.round(($(this).val()) / exr * 100) / 100).toFixed(2);
       $('.curr-amt').html(tgt_amt);
     }else{
       $('.curr-amt').html(' _');
