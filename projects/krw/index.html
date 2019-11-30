@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="robots" content="INDEX, FOLLOW" />
+  <meta name="theme-color" content="#333333">
+  <title>KRW-SGD Calculator</title>
+  <style>
+    body{
+      background: #000000; 
+      color:#fafafa;
+    }
+    .clear30{
+      clear:both;
+      height:30px;
+    }
+    .main{
+      padding-top:20px;
+      margin:auto;
+      width:100%;
+      max-width:300px;
+    }
+    .curr-label{
+      display:block;
+      float: left;
+      color:#fafefa;
+      font-size:3em;
+      width:100%;
+    }
+    .iseq{
+      color:#e4a60f;
+      font-size:2em;
+    }
+    .curr-amt{
+      color: #a07919;
+      font-size: 3em;
+      display: block;
+      float: left;
+    }    
+    form #krw{
+      float: left;
+      padding: 8px;
+      margin-top: 10px;
+      width: 100%;
+      font-size: 20px;
+      color: #a07919;
+      box-sizing: border-box;
+    }
+    h2{
+      font-size:4em;
+      color:#fafafa;
+      margin-top:100px;
+    }
+  </style>
+</head>
+<body>  
+
+<div class="main">
+  <form>
+    <span class="curr-label">KRW</span>
+    <input type="number" id="krw">
+    <div class="clear30"></div>
+    <span class="iseq">is about</span>
+    <div class="clear30"></div>
+    <span class="curr-label">SGD</span>
+    <span class="curr-amt"> _</span>       
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script>
+  var exr = 860;
+  $('#krw').focus().keyup(function(){
+    if ($(this).val() > 0){
+      var tgt_amt = (Math.round(($(this).val()) / exr * 100) / 100).toFixed(2);
+      $('.curr-amt').html(tgt_amt);
+    }else{
+      $('.curr-amt').html(' _');
+    }
+  });
+</script>
+</body>
+</html>
