@@ -1,84 +1,235 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="robots" content="INDEX, FOLLOW" />
-  <meta name="theme-color" content="#333333">
-  <title>KRW-SGD Calculator</title>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />     
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">    
+  <title>Test</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
   <style>
     body{
-      background: #000000; 
-      color:#fafafa;
-    }
-    .clear30{
-      clear:both;
-      height:30px;
-    }
-    .main{
-      padding-top:20px;
-      margin:auto;
+      font-family:Arial, Helvetica, sans-serif;
+      background:#000000;
+      padding:0;
+      margin:0;
       width:100%;
-      max-width:300px;
+      height:100%;
     }
-    .curr-label{
+    #app{
+      margin:0 auto;
+      width:100%;
+      height:100%;
+      background:#ffffff;
+      position:relative;
       display:block;
-      float: left;
-      color:#fafefa;
-      font-size:3em;
-      width:100%;
+      box-sizing:border-box;
     }
-    .iseq{
-      color:#e4a60f;
-      font-size:2em;
-    }
-    .curr-amt{
-      color: #a07919;
-      font-size: 3em;
-      display: block;
-      float: left;
-    }    
-    form #krw{
-      float: left;
-      padding: 8px;
-      margin-top: 10px;
+    .frame{
+      position: absolute;
       width: 100%;
-      font-size: 20px;
-      color: #a07919;
+      top: 0;
+      bottom: 50%;
+      left: 0;
+      right: 0;
       box-sizing: border-box;
     }
-    h2{
-      font-size:4em;
-      color:#fafafa;
-      margin-top:100px;
+    .input{
+      position: absolute;
+      width: 100%;
+      top: 0;
+      bottom: 30%;
+      left: 0;
+      right: 0;
+      font-size:35px;
+      padding:20px;
+      color:#555555;
+      box-sizing: border-box;
+      overflow-y: scroll;
+    }
+    .input-compute,.input-last-char{
+      display:none;
+    }
+    .results{
+      position: absolute;
+      width: 100%;
+      top: 70%;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      box-sizing: border-box;
+      border-top: 1px solid #eeeeee;
+      display:table;
+    }
+    .results .conv{
+      height:100%;
+      vertical-align:middle;
+      padding: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+      box-sizing: border-box;      
+    }    
+    .results .conv .curr{
+      color:#ff5b5b;
+    }
+    .numberpad{
+      position: absolute;
+      width: 100%;
+      top:50%;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      box-sizing: border-box;
+    }
+    .num{
+      background:#eeeeee;
+      color:#666666;
+      text-align:center;
+      font-weight:bold;
+      font-size:24px;
+      width:20%;
+      box-sizing:border-box;
+      float:left;
+      padding:25px 0px;
+      border:1px solid #aaaaaa;
+    }
+    .num2{
+      background:#dddddd;
+      color:#444444;
+      text-align:center;
+      font-weight:bold;
+      font-size:24px;
+      width:40%;
+      box-sizing:border-box;      
+      float:left;
+      padding:25px 0px;
+      border:1px solid #aaaaaa;
+    }
+    .red{
+      background:#ff5b5b;
+      color:#ffffff;
+    }
+    .orange{
+      background:#f3b013;
+      color:#ffffff;
     }
   </style>
 </head>
-<body>  
+<body>
+  <div id="app">
+    <div class="frame">
+      <div class="input">{{input}}</div>
+      <div class="input-compute">{{input_raw}}</div>
+      <div class="input-last-char">{{last_char}}</div>
+      <div class="results">
+        <div class="conv">
+          KRW <span class="curr">{{k_curr}}</span> is about SGD <span class="curr">{{s_curr}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="numberpad">
+      <button class="num" v-on:click="push_num('7')">7</button>
+      <button class="num" v-on:click="push_num('8')">8</button>
+      <button class="num" v-on:click="push_num('9')">9</button>
+      <button class="num orange" v-on:click="back">&laquo;</button>
+      <button class="num red" v-on:click="clear">C</button>      
+      <button class="num" v-on:click="push_num('4')">4</button>
+      <button class="num" v-on:click="push_num('5')">5</button>
+      <button class="num" v-on:click="push_num('6')">6</button>
+      <button class="num" v-on:click="push_sign('+')">+</button>
+      <button class="num" v-on:click="push_sign('-')">-</button>
+      <button class="num" v-on:click="push_num('1')">1</button>
+      <button class="num" v-on:click="push_num('2')">2</button>
+      <button class="num" v-on:click="push_num('3')">3</button>
+      <button class="num" v-on:click="push_sign('&times;')">&times;</button>
+      <button class="num" v-on:click="push_sign('&divide;')">&divide;</button>
+      <button class="num2" v-on:click="push_num('0')">0</button>
+      <button class="num" v-on:click="push_num('.')">&middot;</button>
+      <button class="num2" v-on:click="calculate_set">=</button>
+    </div>
 
-<div class="main">
-  <form>
-    <span class="curr-label">KRW</span>
-    <input type="number" id="krw">
-    <div class="clear30"></div>
-    <span class="iseq">is about</span>
-    <div class="clear30"></div>
-    <span class="curr-label">SGD</span>
-    <span class="curr-amt"> _</span>       
-  </form>
-</div>
+  </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script>
-  var exr = 860;
-  $('#krw').focus().keyup(function(){
-    if ($(this).val() > 0){
-      var tgt_amt = (Math.round(($(this).val()) / exr * 100) / 100).toFixed(2);
-      $('.curr-amt').html(tgt_amt);
-    }else{
-      $('.curr-amt').html(' _');
-    }
-  });
-</script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        header : 'Test header',
+        input : '',
+        input_raw : '',
+        k_curr : 0,
+        rate : 860,
+        last_char : ''
+      },
+      created : function(){
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        var app_con = document.getElementById('app');
+        app_con.style.width = w+'px';
+        app_con.style.height = h+'px';
+      },
+      computed : {
+        s_curr: function(){
+          return (this.k_curr / this.rate).toFixed(2);
+        }
+      },
+      methods: {
+        push_num : function(what){
+          this.input += what;
+          this.input_raw += what;
+          this.last_char = what;
+          this.calculate();            
+        },
+        push_sign : function(what){
+          var ops = ['+','-','×','÷','*','/'];
+          if (ops.includes(this.last_char) || this.input_raw == ''){
+            // should not add sign
+          }else{
+            this.last_char = what;
+            this.input += what;
+            if (what == '÷'){
+              this.input_raw += '/';
+            }else if (what == '×'){
+              this.input_raw += '*';
+            }else{
+              this.input_raw += what;
+            }
+          }
+        },
+        clear : function(){
+          this.input = '';
+          this.input_raw = '';
+          this.k_curr = 0;
+        },        
+        back : function(){
+          this.input = this.input.toString().substring(0,this.input.toString().length-1);
+          this.input_raw = this.input_raw.toString().substring(0,this.input_raw.toString().length-1);
+          this.last_char = this.input_raw.toString().substring(this.input_raw.toString().length-1,this.input_raw.toString().length);
+        },
+        calculate : function(){
+          var curr_i = this.input_raw.trim();
+          curr_i = curr_i.replace(/ /g,'');
+          var ans_now = eval(curr_i);
+          this.k_curr = ans_now;
+          //this.input = ans_now;
+        },
+        calculate_set : function(){
+          var ops = ['+','-','×','÷','*','/'];
+          var nums = ['0','1','2','3','4','5','6','7','8','9','.'];
+          if (ops.includes(this.last_char) || this.input_raw == ''){
+            // if last char is a sign of if input is empty, don't get total
+          }else{
+            this.calculate();
+            this.input_raw = this.k_curr;
+            this.input = this.k_curr;
+            this.last_char = this.k_curr.toString().substring(this.k_curr.toString().length-1,this.k_curr.toString().length);
+          }
+        }
+      }
+    })
+  </script>
 </body>
 </html>
