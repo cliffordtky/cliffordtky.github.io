@@ -7,12 +7,12 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />     
   <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">    
-  <title>Test</title>
+  <title>KRW-SGD Calculator</title>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
   <style>
     body{
       font-family:Arial, Helvetica, sans-serif;
-      background:#000000;
+      background:#ffffff;
       padding:0;
       margin:0;
       width:100%;
@@ -20,30 +20,28 @@
     }
     #app{
       margin:0 auto;
-      width:100%;
-      height:100%;
+      width:97vw;
+      height:100vh;
       background:#ffffff;
       position:relative;
       display:block;
       box-sizing:border-box;
+      max-width: 767px;
     }
     .frame{
-      position: absolute;
+      position: relative;
+      float:left;
       width: 100%;
-      top: 0;
-      bottom: 50%;
-      left: 0;
-      right: 0;
+      height:50%;
+      padding:0px;
       box-sizing: border-box;
     }
     .input{
-      position: absolute;
+      position: relative;
+      float:left;
       width: 100%;
-      top: 0;
-      bottom: 30%;
-      left: 0;
-      right: 0;
-      font-size:35px;
+      height:75%;
+      font-size:45px;
       padding:20px;
       color:#555555;
       box-sizing: border-box;
@@ -53,21 +51,18 @@
       display:none;
     }
     .results{
-      position: absolute;
+      position: relative;
+      float:left;
       width: 100%;
-      top: 70%;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      height:25%;
       box-sizing: border-box;
-      border-top: 1px solid #eeeeee;
       display:table;
     }
     .results .conv{
       height:100%;
       vertical-align:middle;
       padding: 20px;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: bold;
       text-align: center;
       box-sizing: border-box;      
@@ -76,37 +71,69 @@
       color:#ff5b5b;
     }
     .numberpad{
-      position: absolute;
+      position: relative;
+      float:left;
       width: 100%;
-      top:50%;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      height:50%;
+      padding:0px;
       box-sizing: border-box;
     }
+    .button-wrap{
+      float:left;
+      width:20%;
+      height:24%;
+      box-sizing:border-box;
+      padding:0px 3px;
+    }
+    .button-wrap2{
+      float:left;
+      width:40%;
+      height:24%;
+      box-sizing:border-box;
+      padding:0px 3px;
+    }    
     .num{
+      width:100%;
+      background-position: center;
+      transition: background 0.4s;
       background:#eeeeee;
       color:#666666;
       text-align:center;
-      font-weight:bold;
-      font-size:24px;
-      width:20%;
+      font-weight:normal;
+      font-size:26px;
+      padding:23px 0px;
+      border-radius:500px;
       box-sizing:border-box;
-      float:left;
-      padding:25px 0px;
-      border:1px solid #aaaaaa;
     }
     .num2{
+      width:100%;
+      background-position: center;
+      transition: background 0.4s;
       background:#dddddd;
       color:#444444;
       text-align:center;
-      font-weight:bold;
-      font-size:24px;
-      width:40%;
-      box-sizing:border-box;      
-      float:left;
-      padding:25px 0px;
-      border:1px solid #aaaaaa;
+      font-weight:normal;
+      font-size:26px;    
+      padding:23px 0px;
+      box-sizing:border-box;
+      border-radius:500px;
+    }
+    .num:hover {
+      background: #eeeeee radial-gradient(circle, transparent 1%, #eeeeee 1%) center/15000%;
+    }
+    .num2:hover {
+      background: #dddddd radial-gradient(circle, transparent 1%, #dddddd 1%) center/15000%;
+    }    
+    .red:hover {
+      background: #ff5b5b radial-gradient(circle, transparent 1%, #ff5b5b 1%) center/15000%;
+    }
+    .orange:hover {
+      background: #f3b013 radial-gradient(circle, transparent 1%, #f3b013 1%) center/15000%;
+    }     
+    .num:active,.num2:active {
+      background-color: #f1dba7;
+      background-size: 100%;
+      transition: background 0s;
     }
     .red{
       background:#ff5b5b;
@@ -116,6 +143,36 @@
       background:#f3b013;
       color:#ffffff;
     }
+    button:focus {outline:0;}
+    @media screen and (max-height:670px){
+      .num,.num2{
+        padding:20px 0px;
+      }
+    }
+    @media screen and (max-height:610px){
+      .num,.num2{
+        padding:15px 0px;
+      }
+    }     
+    @media screen and (max-height:500px){
+      .frame{
+        width: 50%;
+        height:100%;        
+      }
+      .input{
+        font-size:32px;
+      }
+      .numberpad{
+        margin-top:20px;
+        width: 50%;
+        height:100%;
+      }
+    }
+    @media screen and (min-width:500px){
+      .num,.num2{
+        padding:20px 0px;
+      }
+    }    
   </style>
 </head>
 <body>
@@ -131,24 +188,60 @@
       </div>
     </div>
     <div class="numberpad">
-      <button class="num" v-on:click="push_num('7')">7</button>
-      <button class="num" v-on:click="push_num('8')">8</button>
-      <button class="num" v-on:click="push_num('9')">9</button>
-      <button class="num orange" v-on:click="back">&laquo;</button>
-      <button class="num red" v-on:click="clear">C</button>      
-      <button class="num" v-on:click="push_num('4')">4</button>
-      <button class="num" v-on:click="push_num('5')">5</button>
-      <button class="num" v-on:click="push_num('6')">6</button>
-      <button class="num" v-on:click="push_sign('+')">+</button>
-      <button class="num" v-on:click="push_sign('-')">-</button>
-      <button class="num" v-on:click="push_num('1')">1</button>
-      <button class="num" v-on:click="push_num('2')">2</button>
-      <button class="num" v-on:click="push_num('3')">3</button>
-      <button class="num" v-on:click="push_sign('&times;')">&times;</button>
-      <button class="num" v-on:click="push_sign('&divide;')">&divide;</button>
-      <button class="num2" v-on:click="push_num('0')">0</button>
-      <button class="num" v-on:click="push_num('.')">&middot;</button>
-      <button class="num2" v-on:click="calculate_set">=</button>
+      <div class="button-wrap">
+        <button class="num" v-on:click="push_num('7')">7</button>
+      </div>
+      <div class="button-wrap">
+        <button class="num" v-on:click="push_num('8')">8</button>
+      </div>
+      <div class="button-wrap">
+        <button class="num" v-on:click="push_num('9')">9</button>
+      </div>
+      <div class="button-wrap">
+        <button class="num orange" v-on:click="back">&larr;</button>
+      </div>
+      <div class="button-wrap">
+        <button class="num red" v-on:click="clear">C</button>
+      </div>
+      <div class="button-wrap">
+        <button class="num" v-on:click="push_num('4')">4</button>
+      </div>
+      <div class="button-wrap">
+        <button class="num" v-on:click="push_num('5')">5</button>
+      </div>
+      <div class="button-wrap">
+        <button class="num" v-on:click="push_num('6')">6</button>
+      </div>
+      <div class="button-wrap">
+        <button class="num" v-on:click="push_sign('+')">+</button>
+      </div>
+      <div class="button-wrap">
+        <button class="num" v-on:click="push_sign('-')">-</button>
+      </div>
+      <div class="button-wrap">
+        <button class="num" v-on:click="push_num('1')">1</button>
+      </div>
+      <div class="button-wrap">
+        <button class="num" v-on:click="push_num('2')">2</button>
+      </div>
+      <div class="button-wrap">
+        <button class="num" v-on:click="push_num('3')">3</button>
+      </div>
+      <div class="button-wrap">
+        <button class="num" v-on:click="push_sign('×')">&times;</button>
+      </div>
+      <div class="button-wrap">
+        <button class="num" v-on:click="push_sign('÷')">&divide;</button>
+      </div>
+      <div class="button-wrap2">
+        <button class="num2" v-on:click="push_num('0')">0</button>
+      </div>
+      <div class="button-wrap">
+        <button class="num" v-on:click="push_num('.')">&middot;</button>
+      </div>
+      <div class="button-wrap2">
+        <button class="num2" v-on:click="calculate_set">=</button>
+      </div>
     </div>
 
   </div>
@@ -162,14 +255,8 @@
         input_raw : '',
         k_curr : 0,
         rate : 860,
-        last_char : ''
-      },
-      created : function(){
-        var w = window.innerWidth;
-        var h = window.innerHeight;
-        var app_con = document.getElementById('app');
-        app_con.style.width = w+'px';
-        app_con.style.height = h+'px';
+        last_char : '',
+        operators : ['+','-','×','÷','*','/']
       },
       computed : {
         s_curr: function(){
@@ -177,19 +264,50 @@
         }
       },
       methods: {
+        last_num_has_period : function(){
+          var ri = this.input_raw.trim();
+          for (var i=0; i<this.operators.length; i++){
+            ri = ri.replace(this.operators[i],' ');
+          }
+          var has_space = false;
+          if (ri.indexOf(' ') !== -1){
+            has_space = true;
+          }
+          var last_num;
+          if (has_space){
+            var t = ri.split(' ');
+            last_num = t[t.length-1];
+          }else{
+            last_num = ri;
+          }
+          if (last_num.indexOf('.') !== -1){
+            return true;
+          }else{
+            return false;
+          }
+        },
         push_num : function(what){
-          this.input += what;
-          this.input_raw += what;
-          this.last_char = what;
-          this.calculate();            
+          if (what == '.'){
+            if (!this.last_num_has_period()){
+              console.log(this.last_num_has_period());
+              this.input += what;
+              this.input_raw += what;
+              this.last_char = what;
+            }
+          }else{
+            this.input += what;
+            this.input_raw += what;
+            this.last_char = what;
+            this.calculate();                        
+          }
+
         },
         push_sign : function(what){
-          var ops = ['+','-','×','÷','*','/'];
-          if (ops.includes(this.last_char) || this.input_raw == ''){
+          if (this.operators.includes(this.last_char) || this.input_raw == ''){
             // should not add sign
           }else{
             this.last_char = what;
-            this.input += what;
+            this.input += ' '+what+' ';
             if (what == '÷'){
               this.input_raw += '/';
             }else if (what == '×'){
@@ -202,12 +320,23 @@
         clear : function(){
           this.input = '';
           this.input_raw = '';
+          this.last_char = '';
           this.k_curr = 0;
         },        
         back : function(){
-          this.input = this.input.toString().substring(0,this.input.toString().length-1);
-          this.input_raw = this.input_raw.toString().substring(0,this.input_raw.toString().length-1);
+          if (this.operators.includes(this.last_char)){
+            this.input = this.input.toString().substring(0,this.input.toString().length-3);
+            this.input_raw = this.input_raw.toString().substring(0,this.input_raw.toString().length-1);
+          }else{
+            this.input = this.input.toString().substring(0,this.input.toString().length-1);
+            this.input_raw = this.input_raw.toString().substring(0,this.input_raw.toString().length-1);
+          }
           this.last_char = this.input_raw.toString().substring(this.input_raw.toString().length-1,this.input_raw.toString().length);
+          if (this.input_raw != ''){
+            this.calculate();  
+          }else{
+            this.k_curr = 0;
+          }
         },
         calculate : function(){
           var curr_i = this.input_raw.trim();
@@ -217,9 +346,8 @@
           //this.input = ans_now;
         },
         calculate_set : function(){
-          var ops = ['+','-','×','÷','*','/'];
           var nums = ['0','1','2','3','4','5','6','7','8','9','.'];
-          if (ops.includes(this.last_char) || this.input_raw == ''){
+          if (this.operators.includes(this.last_char) || this.input_raw == ''){
             // if last char is a sign of if input is empty, don't get total
           }else{
             this.calculate();
