@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<head>
+	<title>Crocodile Clubhouse</title>
+	<meta charset="utf-8" />
+	<meta name="robots" content="noindex, nofollow">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />	
+    <meta http-equiv="X-UA-Compatible" content="IE=9,10,11,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+	<link href="css/style.css" rel="stylesheet"/>
+	
+</head>
+<body>
+	<div class="first">
+		<div class="logo"><img src="img/logo-croc.png"/></div>
+		<h2 id="first-title">Welcome to the Crocodile Clubhouse</h2>
+		<br><br>
+		<button id="start">Press here to start</button>
+
+		<div id="welcome">
+			<span>Please enter your password:</span><br>
+			<input type="password" id="password"/>
+			<button id="login">Log in</button>
+		</div>
+	</div>
+
+	<div class="second hide">
+		<h2 id="second-title"></h2>
+		<div class="videos">
+		</div>
+		<div class="footer">
+			<button id="videos">
+				See Crystal's videos <i class="fas fa-film"></i>
+			</button>
+		</div>
+		
+		
+	</div>
+
+
+
+	<script src="js/jquery.js"></script>
+
+	<script>
+		$('#start').click(function(){
+			$('#welcome').slideDown('slow');
+		});
+
+		$('#login').click(function(){
+			if ($('#password').val() == "15253545"){
+				//alert('Hi, welcome Crystal!');
+				$('.first').slideUp();
+				$('.second #second-title').html("Welcome back, Crystal!");
+				$('.second').removeClass('hide').slideDown();
+			}else{
+				alert('Wrong password, please try again.');
+			}
+		});
+	</script>
+
+
+
+</body>
+</html>
