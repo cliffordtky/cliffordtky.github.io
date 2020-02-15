@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<head>
+	<title>Crocodile Clubhouse</title>
+	<meta charset="utf-8" />
+	<meta name="robots" content="noindex, nofollow">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />	
+    <meta http-equiv="X-UA-Compatible" content="IE=9,10,11,chrome=1" />
+    <link rel="icon" href="img/favicon.png" type="image/png" sizes="32x32">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet"/>
+	<link href="css/style.css" rel="stylesheet"/>
+	
+</head>
+<body>
+	<div class="screen welcome screen-show">
+		<div class="container">
+			<div class="logo"><img src="img/logo-croc.png"/></div>
+			<h2 class="welcome-title">Welcome to the world's <em>funnest</em> Crocodile Clubhouse!</h2>
+			<br><br>
+			<button class="pri-butt" id="start">Member's login</button>
+		</div>
+	</div>
+
+	<div class="screen login screen-hide">
+		<a href="javascript:;" class="close" onclick="close_screen('login')">&times;</a>
+		<h2 class="screen-title">Member Login</h2>
+		<div class="container">
+			<a href="javascript:;" class="member-link" onclick="show_members('login')">Pick a member &rarr;</a>
+			<span class="form-label">Please enter your password:</span><br>
+			<input type="password" id="password"/>
+			<button class="sec-butt" id="login">Log in</button>
+		</div>
+	</div>
+
+	<div class="screen pictures screen-hide">
+		<h2 class="screen-title"></h2>
+		<div class="videos">
+		</div>
+		<div class="footer">
+			<button id="videos">
+				See Crystal's videos <i class="fas fa-film"></i>
+			</button>
+		</div>
+		
+		
+	</div>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/data.js"></script>
+	<script src="js/app.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+body{
+	font-family:arial;
+	font-size:18px;
+	background:#e06076;
+	box-sizing: border-box;
+	padding:0px;
+	margin:0px;
+	color:#888888 !important;
+}
+
+.logo{
+	margin: 30px auto !important;
+    width: 140px;
+    height: 140px;
+    box-sizing: border-box;
+    border-radius: 500px;
+    background: #ffffff;
+    padding: 20px 0px;
+    position: relative;
+}
+.logo img{
+	position: absolute;
+    left: -20px;
+    bottom: -5px;
+    width: 150px;
+}
+
+a.close{
+    display: block;
+    float: right;
+    text-decoration: none;
+    font-size: 45px;
+    font-weight: normal;
+    color: #e06076;
+    position: absolute;
+    top: 7px;
+    right: 15px;
+    z-index: 4;
+}
+
+.screen{
+	background:#ffffff;
+	position:fixed;
+	top:0;
+	bottom:0;
+	width:100%;
+	border-top:5px solid #e06076;
+	box-sizing: border-box;
+	padding:0px;
+	margin:0px;
+	z-index:1;
+	transition:.5s top;
+	-webkit-transition:.5s top;
+	transition-timing-function: ease-in-out;
+	-webkit-transition-timing-function: ease-in-out;
+}
+
+.container{
+	float:left;
+	width:100%;
+	padding:30px;
+	box-sizing: border-box;
+}
+
+.welcome{
+	background:#e06076 !important;
+}
+
+.welcome-title{
+	font-weight:bold;
+	font-size:25px;
+	color:#ffffff;
+	text-align:center;
+	box-sizing: border-box;
+}
+
+.form-label{
+	display:block;
+	float:left;
+	width:100%;
+}
+
+.member-link{
+	background: #734f55;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 15px;
+    /* width: 92%; */
+    text-decoration: none;
+    display: block;
+    margin: 0px 0px 20px 0px;
+}
+
+.login #password{
+	background: #ffffff;
+    color: #e06076;
+    font-size: 16px;
+    padding: 10px;
+    width: 92%;
+    border: 3px solid #e06076;
+    float: left;
+    margin: 20px 0px;
+}
+
+.screen-hide{
+	top:1000px !important;
+}
+
+.screen-show{
+	top:0px !important;
+}
+
+.screen-title{
+	float: left;
+    position: relative;
+    width: 100%;
+    padding: 0px 0px 15px 20px;
+    box-sizing: border-box;
+    background: #ffffff;
+    color: #e06076;
+    font-size: 25px;
+    border-bottom: 1px solid #cccccc;
+}
+
+
+.pri-butt{
+	background: #ffffff;
+    color: #e06076;
+    font-weight: bold;
+    padding: 15px;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    border: none;
+    display: block;
+    margin: auto;
+    border-radius: 30px;
+    box-sizing: border-box;
+}
+
+.sec-butt{
+	background:#e06076;
+	color:#ffffff;
+    font-weight: bold;
+    padding: 15px;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    border: none;
+    display: block;
+    margin: auto;
+    border-radius: 30px;
+    box-sizing: border-box;
+}
+
+.footer{
+	position:absolute;
+	text-align: center;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	height:70px;
+}
