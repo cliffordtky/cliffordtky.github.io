@@ -7,6 +7,9 @@ body{
 	margin:0px;
 	color:#888888 !important;
 }
+:focus {
+	outline: none !important;
+}
 
 .logo{
 	margin: 30px auto !important;
@@ -248,6 +251,14 @@ a.close{
 	padding:5px 10px;
 	background:#e06076;
 	border-radius:5px;
+}
+
+.rules-page ol{
+	margin-left:-10px;
+}
+.rules-page ol li{
+	font-size:18px;
+	line-height:28px;
 }
 
 .hide{

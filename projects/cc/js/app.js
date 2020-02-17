@@ -22,7 +22,7 @@ function check(){
 
 function start(){
 	show_screen('.login');
-	show_members();
+	show_login_members();
 	adjust_member_list_scroll()
 	$('#password').val('');
 }
@@ -101,10 +101,26 @@ function hide_all_screens(){
 	}
 }
 
-async function get_camera(){
+function get_camera(){
+	/*
 	if('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices){
   		const stream = await navigator.mediaDevices.getUserMedia({video: true})
 	}
+	*/
+	let scanner = new Instascan.Scanner({ video: document.getElementById('qr-capture') });
+		scanner.addListener('scan', function (content) {
+		console.log(content);
+	});
+	Instascan.Camera.getCameras().then(function (cameras) {
+		if (cameras.length > 0) {
+		    scanner.start(cameras[0]);
+		} else {
+		    console.error('No cameras found.');
+		}
+	}).catch(function (e) {
+		console.error(e);
+	});
+	show_screen('.camera-page');
 }
 
 function get_member_count(){
@@ -132,7 +148,9 @@ function add_member(){
 		if (people[j].type == "friend"){
 			friends_html += "<div class='friend'>";
 			friends_html += "<img src='profile/"+people[j].picture+"'/>";
-			friends_html += "<a href='javascript:;' class='title'>Add</a>";	
+			if (get_user_attr('type') == 'admin'){
+				friends_html += "<a href='javascript:;' class='title'>Add</a>";
+			}
 			friends_html += "<span class='title'>"+people[j].name+"</span>";	
 			friends_html += "<span class='year'>"+people[j].birth_year+"</span>";	
 			friends_html += "</div>";			
@@ -152,7 +170,7 @@ $('.tabs a').click(function(){
 
 });
 
-function show_members(){
+function show_login_members(){
 	var members_html = "<div class='member-wrapper'>";
 	for (var i=0; i<people.length; i++){
 		if (people[i].type == 'admin' || people[i].type == 'member'){

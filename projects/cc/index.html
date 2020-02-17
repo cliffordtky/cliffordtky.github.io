@@ -13,7 +13,7 @@
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet"/>
 	<link href="css/style.css" rel="stylesheet"/>
-	
+	<script type="text/javascript" src="js/instascan.min.js"></script>
 </head>
 <body>
 	<div class="screen welcome screen-show">
@@ -51,6 +51,7 @@
 			<button class="sec-butt" id="club-rules" onclick="show_screen('.rules-page')">Clubhouse rules</button><br>
 			<button class="sec-butt" id="see-photos">Member's photos</button><br>
 			<button class="sec-butt" id="scan-code" onclick="get_camera()">Scan QR code</button><br>
+			<button class="sec-butt" id="see-mem" onclick="see_members()">See all members</button><br>
 			<button class="sec-butt" id="add-mem" onclick="add_member()">Add new member</button><br>
 		</div>
 	</div>	
@@ -74,7 +75,15 @@
 				<li>This is rule # 1</li>
 			</ol>
 		</div>
-	</div>		
+	</div>
+
+	<div class="screen camera-page screen-hide">
+		<a href="javascript:;" class="close" onclick="hide_screen('.camera-page')">&times;</a>
+		<h2 class="screen-title">Scan to enter clubhouse</h2>
+		<div class="camera">
+			<video id="qr-capture"></video>		
+		</div>
+	</div>			
 
 <!--
 	<div class="screen members screen-hide">
