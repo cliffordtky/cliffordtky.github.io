@@ -19,35 +19,64 @@
 	<div class="screen welcome screen-show">
 		<div class="container">
 			<div class="logo"><img src="img/logo-croc.png"/></div>
-			<h2 class="welcome-title">Welcome to the world's <em>funnest</em> Crocodile Clubhouse!</h2>
+			<h2 class="welcome-title">Welcome to the Crocodile Clubhouse!</h2>
 			<br><br>
-			<button class="pri-butt" id="start">Member's login</button>
+			<button class="pri-butt" id="start" onclick="start()">Member's login</button>
+			<button class="pri-butt hide" id="logout" onclick="logout()">Log out</button><br>
+			<button class="pri-butt hide" id="mem-page" onclick="show_screen('.member-page')">Member's page</button>
 		</div>
 	</div>
 
 	<div class="screen login screen-hide">
-		<a href="javascript:;" class="close" onclick="close_screen('login')">&times;</a>
+		<a href="javascript:;" class="close" onclick="hide_screen('.login')">&times;</a>
 		<h2 class="screen-title">Member Login</h2>
 		<div class="container">
-			<a href="javascript:;" class="member-link" onclick="show_members('login')">Pick a member &rarr;</a>
+			<span class="form-label">Choose user:</span><br>
+			<div class="member-list"></div>
+			<input type="hidden" id="username"/>
 			<span class="form-label">Please enter your password:</span><br>
 			<input type="password" id="password"/>
-			<button class="sec-butt" id="login">Log in</button>
+			<button class="sec-butt" id="login" onclick="login()">Log in</button>
+			<p class="login-error"></p>
 		</div>
 	</div>
 
-	<div class="screen pictures screen-hide">
+	<div class="screen member-page screen-hide">
+		<a href="javascript:;" class="close" onclick="hide_screen('.member-page')">&times;</a>
 		<h2 class="screen-title"></h2>
-		<div class="videos">
+		<p id="avatar" class="hide"><img src=""/></p>
+		<div class="container">
+			<p class="desc">You have joined the Crocodile Clubhouse, Crocodile Manager Office, JS Clubhouse and JS Manager Office.</p>
+			<br>
+			<button class="sec-butt" id="club-rules">Clubhouse rules</button><br>
+			<button class="sec-butt" id="see-photos">Member's photos</button><br>
+			<button class="sec-butt" id="scan-code" onclick="get_camera()">Scan QR code</button><br>
+			<button class="sec-butt" id="add-mem" onclick="add_member()">Add new member</button><br>
 		</div>
-		<div class="footer">
-			<button id="videos">
-				See Crystal's videos <i class="fas fa-film"></i>
-			</button>
+	</div>	
+
+	<div class="screen friends-page screen-hide">
+		<a href="javascript:;" class="close" onclick="hide_screen('.friends-page')">&times;</a>
+		<h2 class="screen-title">Add a friend as member</h2>
+		<div class="friends"></div>
+	</div>	
+
+<!--
+	<div class="screen members screen-hide">
+		<h2 class="screen-title"></h2>
+		<div class="tabs">
+			<a href="javascript:;" id="tab-f" rel="friends" onclick="change_tab('Friends')" class="active">Friends</a>
+			<a href="javascript:;" id="tab-p" rel="photos" onclick="change_tab('Photos')">Photos</a>
+			<a href="javascript:;" id="tab-v" rel="videos" onclick="change_tab('Videos')">Videos</a>
 		</div>
-		
-		
+		<div class="container">
+			<p class="desc"></p>
+		</div>
+		<div class="tab-s friends"></div>
+		<div class="tab-s photos hide"></div>
+		<div class="tab-s videos hide"></div>
 	</div>
+-->
 
 	<script src="js/jquery.js"></script>
 	<script src="js/data.js"></script>

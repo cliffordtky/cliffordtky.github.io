@@ -58,7 +58,7 @@ a.close{
 .container{
 	float:left;
 	width:100%;
-	padding:30px;
+	padding:10px 30px;
 	box-sizing: border-box;
 }
 
@@ -80,15 +80,76 @@ a.close{
 	width:100%;
 }
 
-.member-link{
-	background: #734f55;
-    color: #ffffff;
-    font-size: 20px;
-    padding: 15px;
-    /* width: 92%; */
-    text-decoration: none;
-    display: block;
-    margin: 0px 0px 20px 0px;
+.member-list{
+	width:100%;
+	padding:0px;	
+	overflow-x:auto;
+	overflow-y:hidden;
+	box-sizing: border-box;
+	margin-bottom:30px;
+}
+
+.member-list .member-wrapper{
+	white-space:nowrap;
+	padding:10px 0px;
+	box-sizing: border-box;
+	/*width:900px;*/
+}
+
+.member-list .member{
+	width:150px;
+	border-radius:100px;
+	margin-right:20px;
+	box-sizing: border-box;
+	float:left;
+	background:#efefef;
+}
+
+.member-chosen{
+	background:#e06076 !important;
+	color:#ffffff !important;
+}
+
+.member a{
+	color:#666666;
+}
+
+.member-chosen a{
+	color:#ffffff !important;
+	text-decoration:none !important;
+}
+
+.member-list .member span{
+	display:block;
+	float:right;
+	width:110px;
+	box-sizing: border-box;
+	padding:8px;
+	font-weight:bold;
+	font-size:21px;
+}
+
+.member-list .member img{
+	display:block;
+	float:left;	
+	width:40px;	
+	border-radius:50px;
+}
+
+.ball{
+	display:block;
+	float:left;	
+	width:40px;	
+	height:40px;	
+	border-radius:50px;
+	background:#999999;	
+}
+
+.login-error{
+	margin-top:20px;
+	color:red;
+	font-size:18px;
+	line-height:24px;
 }
 
 .login #password{
@@ -100,6 +161,97 @@ a.close{
     border: 3px solid #e06076;
     float: left;
     margin: 20px 0px;
+    border-radius: 50px;
+}
+
+.member-page #avatar{
+	text-align:center;
+	margin:90px 0px 0px 0px;
+}
+
+.member-page #avatar img{
+	width:110px;
+	border-radius:300px;
+}
+
+/*
+.members .tabs{
+	box-sizing:border-box;
+	margin:0;
+	float:left;
+    width: 100%;
+    overflow:hidden;
+}
+
+.members .tabs a{
+	display:block;
+	background:#ffffff;
+	border:1px solid #eeeeee;
+	color:#777777;
+	box-sizing:border-box;
+	padding:10px 20px;
+	width:33.33%;
+	text-align:center;
+	text-decoration:none !important;
+	float:left;
+}
+.members .tabs a:hover, .members .tabs a.active{
+	color:#ffffff !important;
+	background:#e06076;
+	border:1px solid #e06076;
+}
+*/
+
+.friends-page .friends{
+	box-sizing:border-box;
+	float:left;
+	width:100%;
+	padding:0;
+}
+
+.friends-page .friends .friend{
+	float:left;
+	width:100%;
+	margin:15px 0px;
+	position:relative;
+}
+
+.friends-page .friends .friend img{
+	width:100px;
+	float:left;
+}
+
+.friends-page .friends .friend span.title{
+	display:block;
+	float:left;
+	margin-left: 20px;
+	font-weight:bold;
+	font-size:22px;
+	width:70%;
+}
+
+.friends-page .friends .friend span.year{
+	display:block;
+	float:left;
+	margin-left: 20px;
+	font-weight:normal;
+	font-size:18px;
+	width:70%;
+}
+
+.friends-page .friends .friend a{
+	position:absolute;
+	text-decoration:none;
+	display:block;
+	right:20px;
+	color:#ffffff;
+	padding:5px 10px;
+	background:#e06076;
+	border-radius:5px;
+}
+
+.hide{
+	display:none !important;
 }
 
 .screen-hide{
@@ -119,6 +271,7 @@ a.close{
     background: #ffffff;
     color: #e06076;
     font-size: 25px;
+    margin-bottom:0px;
     border-bottom: 1px solid #cccccc;
 }
 
@@ -151,6 +304,10 @@ a.close{
     margin: auto;
     border-radius: 30px;
     box-sizing: border-box;
+}
+
+.hide{
+	display:none !important;
 }
 
 .footer{
