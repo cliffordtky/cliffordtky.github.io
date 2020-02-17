@@ -5,6 +5,11 @@ function check(){
 		$('#mem-page').removeClass('hide');
 		hide_screen('.login');
 		$('.member-page .screen-title').html('Welcome back, '+get_user()+'!');
+		if (get_user_attr('type') != 'admin'){
+			$('#add-mem').addClass('hide');
+		}else{
+			$('#add-mem').removeClass('hide');
+		}
 		if (get_user_attr('picture') != ''){
 			$('.member-page #avatar img').attr('src','profile/'+get_user_attr('picture'));
 			$('.member-page #avatar').removeClass('hide');
@@ -147,7 +152,11 @@ function add_member(){
 	for (var j=0; j<people.length; j++){
 		if (people[j].type == "friend"){
 			friends_html += "<div class='friend'>";
-			friends_html += "<img src='profile/"+people[j].picture+"'/>";
+			if (people[j].picture != ''){
+				friends_html += "<img src='profile/"+people[j].picture+"'/>";
+			}else{
+				friends_html += "<div class='square'></div>";
+			}
 			if (get_user_attr('type') == 'admin'){
 				friends_html += "<a href='javascript:;' class='title'>Add</a>";
 			}
@@ -158,6 +167,30 @@ function add_member(){
 	}
 	$('.friends-page .friends').html(friends_html);	
 	show_screen('.friends-page');
+}
+
+function see_members(){
+	var members_html = "";
+	for (var j=0; j<people.length; j++){
+		if (people[j].type == 'admin' || people[j].type == 'member'){
+			members_html += "<div class='member'>";
+			if (people[j].picture != ''){
+				members_html += "<img src='profile/"+people[j].picture+"'/>";
+			}else{
+				members_html += "<div class='square'></div>";
+			}
+			if (get_user_attr('type') == 'admin'){
+				if (people[j].type != 'admin'){
+					members_html += "<a href='javascript:;' class='title'>Remove</a>";	
+				}
+			}
+			members_html += "<span class='title'>"+people[j].name+"</span>";	
+			members_html += "<span class='year'>"+people[j].birth_year+"</span>";	
+			members_html += "</div>";			
+		}
+	}
+	$('.members-page .members').html(members_html);	
+	show_screen('.members-page');
 }
 
 $('.tabs a').click(function(){

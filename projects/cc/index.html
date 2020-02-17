@@ -16,6 +16,7 @@
 	<script type="text/javascript" src="js/instascan.min.js"></script>
 </head>
 <body>
+	<div class="mask hide">Use a smaller device to use the app.</div>
 	<div class="screen welcome screen-show">
 		<div class="container">
 			<div class="logo"><img src="img/logo-croc.png"/></div>
@@ -30,58 +31,76 @@
 	<div class="screen login screen-hide">
 		<a href="javascript:;" class="close" onclick="hide_screen('.login')">&times;</a>
 		<h2 class="screen-title">Member Login</h2>
-		<div class="container">
-			<span class="form-label">Choose user:</span><br>
-			<div class="member-list"></div>
-			<input type="hidden" id="username"/>
-			<span class="form-label">Please enter your password:</span><br>
-			<input type="password" id="password"/>
-			<button class="sec-butt" id="login" onclick="login()">Log in</button>
-			<p class="login-error"></p>
+		<div class="container-wrapper">	
+			<div class="container">
+				<span class="form-label">Choose user:</span><br>
+				<div class="member-list"></div>
+				<input type="hidden" id="username"/>
+				<span class="form-label">Please enter your password:</span><br>
+				<input type="password" id="password"/>
+				<button class="sec-butt" id="login" onclick="login()">Log in</button>
+				<p class="login-error"></p>
+			</div>
 		</div>
 	</div>
 
 	<div class="screen member-page screen-hide">
 		<a href="javascript:;" class="close" onclick="hide_screen('.member-page')">&times;</a>
 		<h2 class="screen-title"></h2>
-		<p id="avatar" class="hide"><img src=""/></p>
-		<div class="container">
-			<p class="desc">You have joined the Crocodile Clubhouse, Crocodile Manager Office, JS Clubhouse and JS Manager Office.</p>
-			<br>
-			<button class="sec-butt" id="club-rules" onclick="show_screen('.rules-page')">Clubhouse rules</button><br>
-			<button class="sec-butt" id="see-photos">Member's photos</button><br>
-			<button class="sec-butt" id="scan-code" onclick="get_camera()">Scan QR code</button><br>
-			<button class="sec-butt" id="see-mem" onclick="see_members()">See all members</button><br>
-			<button class="sec-butt" id="add-mem" onclick="add_member()">Add new member</button><br>
+		<div class="container-wrapper">	
+			<p id="avatar" class="hide"><img src=""/></p>
+			<div class="container">
+				<p class="desc">You have joined the Crocodile Clubhouse, Crocodile Manager Office, JS Clubhouse and JS Manager Office.</p>
+				<br>
+				<button class="sec-butt" id="club-rules" onclick="show_screen('.rules-page')">Clubhouse rules</button><br>
+				<button class="sec-butt" id="see-photos">Member's photos</button><br>
+				<button class="sec-butt" id="scan-code" onclick="get_camera()">Scan QR code</button><br>
+				<button class="sec-butt" id="see-mem" onclick="see_members()">See all members</button><br>
+				<button class="sec-butt" id="add-mem" onclick="add_member()">Add new member</button><br>
+			</div>
 		</div>
 	</div>	
 
 	<div class="screen friends-page screen-hide">
 		<a href="javascript:;" class="close" onclick="hide_screen('.friends-page')">&times;</a>
 		<h2 class="screen-title">Add a friend as member</h2>
-		<div class="friends"></div>
+		<div class="container-wrapper">	
+			<div class="friends"></div>
+		</div>
 	</div>
+
+	<div class="screen members-page screen-hide">
+		<a href="javascript:;" class="close" onclick="hide_screen('.members-page')">&times;</a>
+		<h2 class="screen-title">See all members</h2>
+		<div class="container-wrapper">	
+			<div class="members"></div>
+		</div>
+	</div>	
 
 	<div class="screen rules-page screen-hide">
 		<a href="javascript:;" class="close" onclick="hide_screen('.rules-page')">&times;</a>
 		<h2 class="screen-title">Crocodile Clubhouse rules</h2>
-		<div class="container">
-			<ol>
-				<li>This is rule # 1</li>
-				<li>This is rule # 1</li>
-				<li>This is rule # 1</li>
-				<li>This is rule # 1</li>
-				<li>This is rule # 1</li>
-				<li>This is rule # 1</li>
-			</ol>
+		<div class="container-wrapper">	
+			<div class="container">
+				<ol>
+					<li>This is rule # 1</li>
+					<li>This is rule # 1</li>
+					<li>This is rule # 1</li>
+					<li>This is rule # 1</li>
+					<li>This is rule # 1</li>
+					<li>This is rule # 1</li>
+				</ol>
+			</div>
 		</div>
 	</div>
 
 	<div class="screen camera-page screen-hide">
 		<a href="javascript:;" class="close" onclick="hide_screen('.camera-page')">&times;</a>
 		<h2 class="screen-title">Scan to enter clubhouse</h2>
-		<div class="camera">
-			<video id="qr-capture"></video>		
+		<div class="container-wrapper">	
+			<div class="camera">
+				<video id="qr-capture"></video>		
+			</div>
 		</div>
 	</div>			
 
