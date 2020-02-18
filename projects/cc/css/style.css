@@ -400,7 +400,7 @@ a.close{
     box-sizing: border-box;
 }
 
-.sec-butt{
+.sec-butt,.qrcode-butt{
 	background:#e06076;
 	color:#ffffff;
     font-weight: bold;
@@ -413,6 +413,10 @@ a.close{
     margin: auto;
     border-radius: 30px;
     box-sizing: border-box;
+}
+
+#qr{
+	display:none;
 }
 
 .hide{
