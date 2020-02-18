@@ -114,7 +114,7 @@ function get_camera(){
 	*/
 	let scanner = new Instascan.Scanner({ video: document.getElementById('qr-capture') });
 		scanner.addListener('scan', function (content) {
-		console.log(content);
+		alert(content);
 	});
 	Instascan.Camera.getCameras().then(function (cameras) {
 		if (cameras.length > 0) {
@@ -155,13 +155,14 @@ function add_member(){
 			if (people[j].picture != ''){
 				friends_html += "<img src='profile/"+people[j].picture+"'/>";
 			}else{
-				friends_html += "<div class='square'></div>";
+				friends_html += "<div class='square'><i class='fa fa-user'></i></div>";
 			}
 			if (get_user_attr('type') == 'admin'){
 				friends_html += "<a href='javascript:;' class='title'>Add</a>";
 			}
 			friends_html += "<span class='title'>"+people[j].name+"</span>";	
-			friends_html += "<span class='year'>"+people[j].birth_year+"</span>";	
+			curr_year = new Date().getFullYear();
+			friends_html += "<span class='year'>"+(curr_year - parseInt(people[j].birth_year))+" years old</span>";	
 			friends_html += "</div>";			
 		}
 	}
@@ -177,15 +178,16 @@ function see_members(){
 			if (people[j].picture != ''){
 				members_html += "<img src='profile/"+people[j].picture+"'/>";
 			}else{
-				members_html += "<div class='square'></div>";
+				members_html += "<div class='square'><i class='fa fa-user'></i></div>";
 			}
 			if (get_user_attr('type') == 'admin'){
 				if (people[j].type != 'admin'){
 					members_html += "<a href='javascript:;' class='title'>Remove</a>";	
 				}
 			}
-			members_html += "<span class='title'>"+people[j].name+"</span>";	
-			members_html += "<span class='year'>"+people[j].birth_year+"</span>";	
+			members_html += "<span class='title'>"+people[j].name+"</span>";
+			curr_year = new Date().getFullYear();	
+			members_html += "<span class='year'>"+(curr_year - parseInt(people[j].birth_year))+" years old</span>";	
 			members_html += "</div>";			
 		}
 	}
@@ -193,6 +195,8 @@ function see_members(){
 	show_screen('.members-page');
 }
 
+
+/*
 $('.tabs a').click(function(){
 	var id = $(this).attr('id');
 	var rel = $(this).attr('rel');
@@ -202,6 +206,16 @@ $('.tabs a').click(function(){
 	$('.members .'+rel).removeClass('hide');
 
 });
+*/
+
+function get_photos(){
+	var pswpElement = document.querySelectorAll('.pswp')[0];
+	var options = {
+    	index: 0 // start at first slide
+	};
+	var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, people[0].photos, options);
+	gallery.init();	
+}
 
 function show_login_members(){
 	var members_html = "<div class='member-wrapper'>";

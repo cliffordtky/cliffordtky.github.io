@@ -7,19 +7,29 @@ const people = [
 		"password" : "15253545",
 		"photos" : [
 			{
-				"name" : "crystal-family-cny.jpg"
+				"src" : "photos/crystal-family-cny.jpg",
+				"w" : 1816,
+				"h" : 2073,
 			},
 			{
-				"name" : "crystal-family-table.jpg"
+				"src" : "photos/crystal-family-table.jpg",
+				"w" : 1799,
+				"h" : 2143,				
 			},
 			{
-				"name" : "crystal-family-umbrella.jpg"
+				"src" : "photos/crystal-family-umbrellas.jpg",
+				"w" : 3327,
+				"h" : 1816,				
 			},
 			{
-				"name" : "crystal-family.jpg"
+				"src" : "photos/crystal-family.jpg",
+				"w" : 2852,
+				"h" : 1654,				
 			},
 			{
-				"name" : "crystal-herself.jpg"
+				"src" : "photos/crystal-herself.jpg",
+				"w" : 1816,
+				"h" : 2157,				
 			},						
 		]
 	},
