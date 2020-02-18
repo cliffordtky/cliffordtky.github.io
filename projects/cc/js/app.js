@@ -17,11 +17,13 @@ function check(){
 			$('.member-page #avatar').addClass('hide');
 		}
 		show_screen('.member-page');
+		set_current_screen('.member-page');
 	}else{
 		$('#start').removeClass('hide');
 		$('#logout').addClass('hide');
 		$('#mem-page').addClass('hide');
 		hide_screen('.member-page');
+		set_current_screen('.welcome');
 	}
 }
 
@@ -30,6 +32,7 @@ function start(){
 	show_login_members();
 	adjust_member_list_scroll()
 	$('#password').val('');
+	set_current_screen('.login');
 }
 
 function login(){
@@ -52,13 +55,12 @@ function login(){
 				}
 				break;
 			}
-		}else{
-
 		}
 	}
 	if (auth){
 		hide_screen('.login');
 		show_screen('.member-page');
+		set_current_screen('.member-page');
 	}else{
 		$('.login-error').html('Oops either username or password is wrong. Please try again.');
 	}
@@ -67,6 +69,7 @@ function login(){
 
 function logout(){
 	sessionStorage.clear();
+	set_current_screen('.welcome');
 	check();
 }
 
@@ -93,17 +96,17 @@ function get_user_attr(attr){
 
 function show_screen(screen){
 	$(screen).removeClass('screen-hide').addClass('screen-show');
+	set_current_screen(screen);
 }
 
 function hide_screen(screen){
-	$(screen).addClass('screen-hide').removeClass('screen-show');	
+	$(screen).addClass('screen-hide').removeClass('screen-show');
+	set_current_screen('.member-page');
 }
 
 function hide_all_screens(){
-	var s = ['.login','.member-page','.members'];
-	for (var i=0; i<s.length; i++){
-		hide_screen(s[i]);
-	}
+	$('.screen').removeClass('screen-show').addClass('screen-hide');
+	show_screen('.welcome');
 }
 
 function get_camera(){
@@ -126,6 +129,7 @@ function get_camera(){
 		console.error(e);
 	});
 	show_screen('.camera-page');
+	set_current_screen('.camera-page');
 }
 
 function get_member_count(){
@@ -168,6 +172,7 @@ function add_member(){
 	}
 	$('.friends-page .friends').html(friends_html);	
 	show_screen('.friends-page');
+	set_current_screen('.friends-page');
 }
 
 function see_members(){
@@ -193,8 +198,22 @@ function see_members(){
 	}
 	$('.members-page .members').html(members_html);	
 	show_screen('.members-page');
+	set_current_screen('.members-page');
 }
 
+function set_current_screen(screen){
+	if (sessionStorage){
+		sessionStorage.setItem('currscreen',screen);
+	}
+}
+
+function get_current_screen(){
+	if (sessionStorage.getItem('currscreen')){
+		return sessionStorage.getItem('currscreen');
+	}else{
+		return '';
+	}
+}
 
 /*
 $('.tabs a').click(function(){
@@ -209,12 +228,14 @@ $('.tabs a').click(function(){
 */
 
 function get_photos(){
+	//show_screen();
 	var pswpElement = document.querySelectorAll('.pswp')[0];
 	var options = {
     	index: 0 // start at first slide
 	};
 	var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, people[0].photos, options);
-	gallery.init();	
+	gallery.init();
+	set_current_screen('.camera-page');
 }
 
 function show_login_members(){
@@ -235,6 +256,7 @@ function show_login_members(){
 	}
 	members_html += "</div>";
 	$('.member-list').html(members_html);
+	set_current_screen('.login');
 }
 
 function choose_login_member(name){
@@ -246,4 +268,12 @@ function choose_login_member(name){
 
 $(document).ready(function(){
 	check();
+	/*
+	if (sessionStorage.getItem('currscreen')){
+		hide_all_screens();	
+		cs = sessionStorage.getItem('currscreen');
+		show_screen(cs);
+	}
+	*/
+	
 });
