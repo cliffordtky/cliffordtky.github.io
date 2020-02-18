@@ -448,6 +448,10 @@ a.close{
 	.mask{
 		display:block !important;
 	}
+}
 
+@media screen and (max-width:390px){
+	.friends-page .friends .friend img, .members-page .members .member img, .square{
+		width:80px !important;
 	}
 }
