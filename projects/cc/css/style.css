@@ -20,11 +20,13 @@ body{
     background: #ffffff;
     padding: 20px 0px;
     position: relative;
+    overflow-x:visible;
+    overflow-y:hidden;
 }
 .logo img{
 	position: absolute;
     left: -20px;
-    bottom: -5px;
+    bottom: -65px;
     width: 150px;
 }
 
@@ -52,8 +54,8 @@ a.close{
 	padding:0px;
 	margin:0px;
 	z-index:1;
-	transition:.5s top;
-	-webkit-transition:.5s top;
+	transition:.3s top;
+	-webkit-transition:.3s top;
 	transition-timing-function: ease-in-out;
 	-webkit-transition-timing-function: ease-in-out;
 }
@@ -240,12 +242,13 @@ a.close{
 
 .members-page .members .member{
 	float: left;
-    width: 100%;
-    margin: 10px 0px;
+    width: 95%;
+    margin: 10px;
     position: relative;
     box-sizing: border-box;
-    padding: 15px;
-    border: 1px solid #ccc;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    box-shadow: 1px 2px 3px #cccccc;
     border-radius: 6px;
 }
 
@@ -295,12 +298,13 @@ a.close{
 
 .friends-page .friends .friend{
 	float: left;
-    width: 100%;
-    margin: 10px 0px;
+    width: 95%;
+    margin: 10px;
     position: relative;
     box-sizing: border-box;
-    padding: 15px;
-    border: 1px solid #ccc;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    box-shadow: 1px 2px 3px #cccccc;
     border-radius: 6px;
 }
 
@@ -347,6 +351,7 @@ a.close{
 .rules-page ol li{
 	font-size:18px;
 	line-height:28px;
+	margin-bottom: 10px;
 }
 
 .camera-page .camera{
@@ -457,5 +462,9 @@ a.close{
 @media screen and (max-width:390px){
 	.friends-page .friends .friend img, .members-page .members .member img, .square{
 		width:80px !important;
+		height:80px !important;
 	}
+	.square i {
+	    font-size: 50px;
+	}	
 }

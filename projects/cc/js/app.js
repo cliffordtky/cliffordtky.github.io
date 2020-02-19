@@ -16,14 +16,14 @@ function check(){
 		}else{
 			$('.member-page #avatar').addClass('hide');
 		}
-		show_screen('.member-page');
-		set_current_screen('.member-page');
+		//show_screen('.member-page');
+		//set_current_screen('.member-page');
 	}else{
 		$('#start').removeClass('hide');
 		$('#logout').addClass('hide');
 		$('#mem-page').addClass('hide');
-		hide_screen('.member-page');
-		set_current_screen('.welcome');
+		//hide_screen('.member-page');
+		//set_current_screen('.welcome');
 	}
 }
 
@@ -101,7 +101,7 @@ function show_screen(screen){
 
 function hide_screen(screen){
 	$(screen).addClass('screen-hide').removeClass('screen-show');
-	set_current_screen('.member-page');
+	//set_current_screen('.member-page');
 }
 
 function hide_all_screens(){
@@ -114,7 +114,7 @@ function get_camera(){
 	if('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices){
   		const stream = await navigator.mediaDevices.getUserMedia({video: true})
 	}
-	*/
+	
 	let scanner = new Instascan.Scanner({ video: document.getElementById('qr-capture') });
 		scanner.addListener('scan', function (content) {
 		alert(content);
@@ -130,6 +130,7 @@ function get_camera(){
 	});
 	show_screen('.camera-page');
 	set_current_screen('.camera-page');
+	*/
 }
 
 function get_member_count(){
@@ -235,7 +236,7 @@ function get_photos(){
 	};
 	var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, people[0].photos, options);
 	gallery.init();
-	set_current_screen('.camera-page');
+	set_current_screen('.photos-page');
 }
 
 function show_login_members(){
@@ -268,12 +269,22 @@ function choose_login_member(name){
 
 $(document).ready(function(){
 	check();
-	/*
+	
 	if (sessionStorage.getItem('currscreen')){
-		hide_all_screens();	
+		//hide_all_screens();	
 		cs = sessionStorage.getItem('currscreen');
-		show_screen(cs);
+		if (cs == '.members-page'){
+			see_members();
+		}else if (cs == '.friends-page'){
+			add_member();
+		}else if (cs == '.photos-page'){
+			get_photos();
+		}else if (cs == '.login'){	
+			start();
+		}else{
+			show_screen(cs);	
+		}
+		
 	}
-	*/
 	
 });
