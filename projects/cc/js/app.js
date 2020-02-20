@@ -1,4 +1,60 @@
+function get_param(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
 function check(){
+	if (get_param('action') == 'scan'){
+		if (sessionStorage){
+			if (sessionStorage.getItem('incoming-scan')){
+				window.location.href = window.location.href.replace('?action=scan','');
+			}else{
+				sessionStorage.setItem('incoming-scan','yes');
+				window.location.href = window.location.href.replace('?action=scan','');
+			}
+		}
+	}else{
+		if (sessionStorage){
+			if (sessionStorage.getItem('incoming-scan') == 'yes'){
+				if (sessionStorage.getItem('name')){
+					var c_user = sessionStorage.getItem('name');
+					for (var i=0; i<people.length; i++){
+						if (people[i].name == c_user && (people[i].type == 'admin' || people[i].type == 'member')){		
+							// show ok
+							$('.scan-page .ok-wrapper').removeClass('hide');
+							$('.scan-page .not-ok-wrapper').addClass('hide');
+							show_screen('.scan-page');
+							setTimeout(function(){
+								$('.scan-page .ok-wrapper h4').html('Please enter, '+c_user+'!');
+								$('.circle-loader').toggleClass('load-complete');
+								$('.checkmark').toggle();
+								sessionStorage.removeItem('incoming-scan');
+							},2000);
+							break;
+						}else{		
+							// show not ok
+							$('.scan-page .not-ok-wrapper').removeClass('hide');
+							$('.scan-page .not-ok-wrapper h4').html('You cannot enter, '+c_user+', because you are not a member!');
+							$('.scan-page .ok-wrapper').addClass('hide');
+							show_screen('.scan-page');
+							sessionStorage.removeItem('incoming-scan');
+							break;
+						}
+					}
+				}else{
+					// no login
+					hide_screen('.scan-page');
+					show_screen('.login');
+				}
+			}
+		}
+	}
+
 	if (sessionStorage.getItem('name')){
 		$('#start').addClass('hide');
 		$('#logout').removeClass('hide');
@@ -50,7 +106,7 @@ function login(){
 				birth_year = people[i].birth_year;
 				picture = people[i].picture;
 				photos = people[i].photos;
-				if (window.sessionStorage){
+				if (sessionStorage){
 					sessionStorage.setItem('name',name);
 				}
 				break;
@@ -59,8 +115,28 @@ function login(){
 	}
 	if (auth){
 		hide_screen('.login');
-		show_screen('.member-page');
-		set_current_screen('.member-page');
+		if (sessionStorage && sessionStorage.getItem('incoming-scan') == 'yes' && (type == 'admin' || type == 'member')){
+			// show ok
+			$('.scan-page .ok-wrapper').removeClass('hide');
+			$('.scan-page .not-ok-wrapper').addClass('hide');
+			show_screen('.scan-page');
+			setTimeout(function(){
+				$('.scan-page .ok-wrapper h4').html('Please enter, '+c_user+'!');
+				$('.circle-loader').toggleClass('load-complete');
+				$('.checkmark').toggle();
+				sessionStorage.removeItem('incoming-scan');
+			},2000);
+		}else if (sessionStorage && sessionStorage.getItem('incoming-scan') == 'yes' && type != 'admin' && type != 'member'){
+			// show not ok
+			$('.scan-page .not-ok-wrapper').removeClass('hide');
+			$('.scan-page .not-ok-wrapper h4').html('You cannot enter, '+c_user+', because you are not a member!');
+			$('.scan-page .ok-wrapper').addClass('hide');
+			show_screen('.scan-page');
+			sessionStorage.removeItem('incoming-scan');
+		}else{
+			show_screen('.member-page');
+			set_current_screen('.member-page');
+		}
 	}else{
 		$('.login-error').html('Oops either username or password is wrong. Please try again.');
 	}
@@ -96,7 +172,9 @@ function get_user_attr(attr){
 
 function show_screen(screen){
 	$(screen).removeClass('screen-hide').addClass('screen-show');
-	set_current_screen(screen);
+	if (screen != '.scan-page'){
+		set_current_screen(screen);	
+	}
 }
 
 function hide_screen(screen){

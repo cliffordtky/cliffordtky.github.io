@@ -84,5 +84,17 @@ const people = [
 		"type" : "friend",
 		"birth_year" : "2005",
 		"picture" : "echo.jpg",
-	},	
+	},
+	{
+		"name" : "Alfred",
+		"type" : "friend",
+		"birth_year" : "1978",
+		"picture" : "",
+	},
+	{
+		"name" : "Bernard",
+		"type" : "friend",
+		"birth_year" : "1982",
+		"picture" : "",
+	},			
 ];

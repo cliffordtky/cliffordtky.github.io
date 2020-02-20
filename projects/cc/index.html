@@ -27,6 +27,25 @@
 </head>
 <body>
 	<div class="mask hide">Use a smaller device to use the app.</div>
+
+	<div class="screen scan-page screen-hide">
+		<a href="javascript:;" class="close" onclick="hide_screen('.scan-page')">&times;</a>
+		<h2 class="screen-title">Scan to enter</h2>
+		<div class="container-wrapper">	
+			<div class="container">
+				<div class="not-ok-wrapper hide">
+					<h4></h4>
+				</div>
+				<div class="ok-wrapper hide">
+					<h4></h4>
+					<div class="circle-loader">
+				  		<div class="checkmark draw"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="screen welcome screen-show">
 		<div class="container">
 			<div class="logo"><img src="img/logo-croc-full.png"/></div>
@@ -64,9 +83,9 @@
 				<br>
 				<button class="sec-butt" id="club-rules" onclick="show_screen('.rules-page')">Clubhouse rules</button><br>
 				<button class="sec-butt" id="see-photos" onclick="get_photos()">Member's photos</button><br>
-				<!--<button class="sec-butt" id="scan-code" onclick="get_camera()">Scan QR code</button><br>-->
-				<label for="qr" class="qrcode-butt">Scan QR code</label><br>
-				<input id="qr" type=file accept="image/*" capture=environment tabindex=-1>
+				<button class="sec-butt" id="enter-cc" onclick="window.location.href='?action=scan';">Enter clubhouse</button><br>
+				<!--<label for="qr" class="qrcode-butt">Scan QR code</label><br>
+				<input id="qr" type=file accept="image/*" capture=environment tabindex=-1>-->
 				<button class="sec-butt" id="see-mem" onclick="see_members()">See all members</button><br>
 				<button class="sec-butt" id="add-mem" onclick="add_member()">Add new member</button><br>
 			</div>
