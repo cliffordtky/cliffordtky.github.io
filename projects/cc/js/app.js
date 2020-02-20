@@ -36,7 +36,7 @@ function check(){
 								sessionStorage.removeItem('incoming-scan');
 							},2000);
 							break;
-						}else{		
+						}else if (people[i].name == c_user && people[i].type != 'admin' && people[i].type != 'member'){		
 							// show not ok
 							$('.scan-page .not-ok-wrapper').removeClass('hide');
 							$('.scan-page .not-ok-wrapper h4').html('You cannot enter, '+c_user+', because you are not a member!');
@@ -72,14 +72,10 @@ function check(){
 		}else{
 			$('.member-page #avatar').addClass('hide');
 		}
-		//show_screen('.member-page');
-		//set_current_screen('.member-page');
 	}else{
 		$('#start').removeClass('hide');
 		$('#logout').addClass('hide');
 		$('#mem-page').addClass('hide');
-		//hide_screen('.member-page');
-		//set_current_screen('.welcome');
 	}
 }
 
@@ -134,13 +130,13 @@ function login(){
 			show_screen('.scan-page');
 			sessionStorage.removeItem('incoming-scan');
 		}else{
+			check();
 			show_screen('.member-page');
 			set_current_screen('.member-page');
 		}
 	}else{
 		$('.login-error').html('Oops either username or password is wrong. Please try again.');
 	}
-	check();
 }
 
 function logout(){

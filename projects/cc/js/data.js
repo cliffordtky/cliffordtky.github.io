@@ -57,7 +57,7 @@ const people = [
 	{
 		"name" : "Zoey",
 		"type" : "member",
-		"birth_year" : "2003",
+		"birth_year" : "2004",
 		"picture" : "",
 		"password" : "12348595"
 	},
