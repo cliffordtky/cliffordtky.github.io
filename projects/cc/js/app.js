@@ -26,11 +26,12 @@ function check(){
 					for (var i=0; i<people.length; i++){
 						if (people[i].name == c_user && (people[i].type == 'admin' || people[i].type == 'member')){		
 							// show ok
+							$('.scan-page .ok-wrapper h4').html('Welcome '+c_user+', you may enter the clubhouse!');
 							$('.scan-page .ok-wrapper').removeClass('hide');
 							$('.scan-page .not-ok-wrapper').addClass('hide');
 							show_screen('.scan-page');
 							setTimeout(function(){
-								$('.scan-page .ok-wrapper h4').html('Please enter, '+c_user+'!');
+								$('.scan-page .ok-wrapper h4').css('visibility','visible');
 								$('.circle-loader').toggleClass('load-complete');
 								$('.checkmark').toggle();
 								sessionStorage.removeItem('incoming-scan');
@@ -113,11 +114,12 @@ function login(){
 		hide_screen('.login');
 		if (sessionStorage && sessionStorage.getItem('incoming-scan') == 'yes' && (type == 'admin' || type == 'member')){
 			// show ok
+			$('.scan-page .ok-wrapper h4').html('Welcome '+name+', you may enter the clubhouse!');
 			$('.scan-page .ok-wrapper').removeClass('hide');
 			$('.scan-page .not-ok-wrapper').addClass('hide');
 			show_screen('.scan-page');
 			setTimeout(function(){
-				$('.scan-page .ok-wrapper h4').html('Please enter, '+c_user+'!');
+				$('.scan-page .ok-wrapper h4').css('visibility','visible');
 				$('.circle-loader').toggleClass('load-complete');
 				$('.checkmark').toggle();
 				sessionStorage.removeItem('incoming-scan');
@@ -168,7 +170,7 @@ function get_user_attr(attr){
 
 function show_screen(screen){
 	$(screen).removeClass('screen-hide').addClass('screen-show');
-	if (screen != '.scan-page'){
+	if (screen != '.scan-page' && screen != '.login'){
 		set_current_screen(screen);	
 	}
 }
