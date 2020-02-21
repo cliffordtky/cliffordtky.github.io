@@ -235,7 +235,7 @@ function see_friends(){
 				friends_html += "<div class='square'><i class='fa fa-user'></i></div>";
 			}
 			if (get_user_attr('type') == 'admin'){
-				friends_html += "<a href='javascript:;' class='title'>Add</a>";
+				friends_html += "<a href='javascript:;' class='title' onclick='alert(\"Cannot add new member. Clubhouse is not ready. Please approach Shayla or Jaymee.\");'>Add</a>";
 			}
 			friends_html += "<span class='title'>"+people[j].name+"</span>";	
 			curr_year = new Date().getFullYear();
@@ -259,7 +259,7 @@ function see_members(){
 			}
 			if (get_user_attr('type') == 'admin'){
 				if (people[j].type != 'admin'){
-					members_html += "<a href='javascript:;' class='title'>Remove</a>";	
+					members_html += "<a href='javascript:;' class='title'onclick='alert(\"Cannot remove member now. Please approach Shayla or Jaymee.\");'>Remove</a>";	
 				}
 			}
 			members_html += "<span class='title'>"+people[j].name+"</span>";
@@ -306,7 +306,7 @@ function get_photos(){
 	};
 	var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, people[0].photos, options);
 	gallery.init();
-	show_screen('.photos-page');
+	//show_screen('.photos-page');
 }
 
 function show_login_members(){
