@@ -10,19 +10,19 @@ function get_param(name, url) {
 
 function scan_check(){
 	if (get_param('action') == 'scan'){
-		if (sessionStorage){
-			if (sessionStorage.getItem('incoming-scan')){
+		if (localStorage){
+			if (localStorage.getItem('incoming-scan')){
 				window.location.href = window.location.href.replace('?action=scan','');
 			}else{
-				sessionStorage.setItem('incoming-scan','yes');
+				localStorage.setItem('incoming-scan','yes');
 				window.location.href = window.location.href.replace('?action=scan','');
 			}
 		}
 	}else{
-		if (sessionStorage){
-			if (sessionStorage.getItem('incoming-scan') == 'yes'){
-				if (sessionStorage.getItem('name')){
-					var c_user = sessionStorage.getItem('name');
+		if (localStorage){
+			if (localStorage.getItem('incoming-scan') == 'yes'){
+				if (localStorage.getItem('name')){
+					var c_user = localStorage.getItem('name');
 					for (var i=0; i<people.length; i++){
 						if (people[i].name == c_user && (people[i].type == 'admin' || people[i].type == 'member')){		
 							// show ok
@@ -34,7 +34,7 @@ function scan_check(){
 								$('.scan-page .ok-wrapper h4').css('visibility','visible');
 								$('.circle-loader').toggleClass('load-complete');
 								$('.checkmark').toggle();
-								sessionStorage.removeItem('incoming-scan');
+								localStorage.removeItem('incoming-scan');
 							},2000);
 							break;
 						}else if (people[i].name == c_user && people[i].type != 'admin' && people[i].type != 'member'){		
@@ -43,7 +43,7 @@ function scan_check(){
 							$('.scan-page .not-ok-wrapper h4').html('You cannot enter, '+c_user+', because you are not a member!');
 							$('.scan-page .ok-wrapper').addClass('hide');
 							show_screen('.scan-page');
-							sessionStorage.removeItem('incoming-scan');
+							localStorage.removeItem('incoming-scan');
 							break;
 						}
 					}
@@ -58,7 +58,7 @@ function scan_check(){
 }
 
 function check(){
-	if (sessionStorage.getItem('name')){
+	if (localStorage.getItem('name')){
 		$('#start').addClass('hide');
 		$('#logout').removeClass('hide');
 		$('#mem-page').removeClass('hide');
@@ -100,8 +100,8 @@ function login(){
 				picture = people[i].picture;
 				photos = people[i].photos;
 				type = people[i].type;
-				if (sessionStorage){
-					sessionStorage.setItem('name',name);
+				if (localStorage){
+					localStorage.setItem('name',name);
 				}
 				break;
 			}
@@ -110,7 +110,7 @@ function login(){
 	if (auth){
 		hide_screen('.login');
 		check();
-		if (sessionStorage && sessionStorage.getItem('incoming-scan') == 'yes' && (type == 'admin' || type == 'member')){
+		if (localStorage && localStorage.getItem('incoming-scan') == 'yes' && (type == 'admin' || type == 'member')){
 			// show ok
 			$('.scan-page .ok-wrapper h4').html('Welcome '+name+', you may enter the clubhouse!');
 			$('.scan-page .ok-wrapper').removeClass('hide');
@@ -120,15 +120,15 @@ function login(){
 				$('.scan-page .ok-wrapper h4').css('visibility','visible');
 				$('.circle-loader').toggleClass('load-complete');
 				$('.checkmark').toggle();
-				sessionStorage.removeItem('incoming-scan');
+				localStorage.removeItem('incoming-scan');
 			},2000);
-		}else if (sessionStorage && sessionStorage.getItem('incoming-scan') == 'yes' && type != 'admin' && type != 'member'){
+		}else if (localStorage && localStorage.getItem('incoming-scan') == 'yes' && type != 'admin' && type != 'member'){
 			// show not ok
 			$('.scan-page .not-ok-wrapper').removeClass('hide');
 			$('.scan-page .not-ok-wrapper h4').html('You cannot enter, '+name+', because you are not a member!');
 			$('.scan-page .ok-wrapper').addClass('hide');
 			show_screen('.scan-page');
-			sessionStorage.removeItem('incoming-scan');
+			localStorage.removeItem('incoming-scan');
 		}else{
 			//scan_check();
 			show_screen('.member-page');
@@ -140,20 +140,20 @@ function login(){
 
 function logout(){
 	show_screen('.welcome');
-	sessionStorage.clear();
+	localStorage.clear();
 	check();
 }
 
 function get_user(){
-	if (sessionStorage.getItem('name')){
-		return sessionStorage.getItem('name');
+	if (localStorage.getItem('name')){
+		return localStorage.getItem('name');
 	}else{
 		return '';
 	}
 }
 
 function get_user_attr(attr){
-	if (sessionStorage.getItem('name')){
+	if (localStorage.getItem('name')){
 		for (var i=0; i<people.length; i++){
 			if (people[i].name == get_user()){
 				return people[i][attr];
@@ -273,14 +273,14 @@ function see_members(){
 }
 
 function set_current_screen(screen){
-	if (sessionStorage){
-		sessionStorage.setItem('currscreen',screen);
+	if (localStorage){
+		localStorage.setItem('currscreen',screen);
 	}
 }
 
 function get_current_screen(){
-	if (sessionStorage.getItem('currscreen')){
-		return sessionStorage.getItem('currscreen');
+	if (localStorage.getItem('currscreen')){
+		return localStorage.getItem('currscreen');
 	}else{
 		return '';
 	}
@@ -340,9 +340,9 @@ $(document).ready(function(){
 	check();
 	scan_check();
 	
-	if (sessionStorage.getItem('currscreen')){
+	if (localStorage.getItem('currscreen')){
 		//hide_all_screens();	
-		cs = sessionStorage.getItem('currscreen');
+		cs = localStorage.getItem('currscreen');
 		if (cs == '.members-page'){
 			see_members();
 		}else if (cs == '.friends-page'){
