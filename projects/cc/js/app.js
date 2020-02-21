@@ -8,7 +8,7 @@ function get_param(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-function check(){
+function scan_check(){
 	if (get_param('action') == 'scan'){
 		if (sessionStorage){
 			if (sessionStorage.getItem('incoming-scan')){
@@ -50,23 +50,20 @@ function check(){
 				}else{
 					// no login
 					hide_screen('.scan-page');
-					show_screen('.login');
+					start();
 				}
 			}
 		}
 	}
+}
 
+function check(){
 	if (sessionStorage.getItem('name')){
 		$('#start').addClass('hide');
 		$('#logout').removeClass('hide');
 		$('#mem-page').removeClass('hide');
 		hide_screen('.login');
 		$('.member-page .screen-title').html('Welcome back, '+get_user()+'!');
-		if (get_user_attr('type') != 'admin'){
-			$('#add-mem').addClass('hide');
-		}else{
-			$('#add-mem').removeClass('hide');
-		}
 		if (get_user_attr('picture') != ''){
 			$('.member-page #avatar img').attr('src','profile/'+get_user_attr('picture'));
 			$('.member-page #avatar').removeClass('hide');
@@ -85,7 +82,6 @@ function start(){
 	show_login_members();
 	adjust_member_list_scroll()
 	$('#password').val('');
-	set_current_screen('.login');
 }
 
 function login(){
@@ -103,6 +99,7 @@ function login(){
 				birth_year = people[i].birth_year;
 				picture = people[i].picture;
 				photos = people[i].photos;
+				type = people[i].type;
 				if (sessionStorage){
 					sessionStorage.setItem('name',name);
 				}
@@ -112,6 +109,7 @@ function login(){
 	}
 	if (auth){
 		hide_screen('.login');
+		check();
 		if (sessionStorage && sessionStorage.getItem('incoming-scan') == 'yes' && (type == 'admin' || type == 'member')){
 			// show ok
 			$('.scan-page .ok-wrapper h4').html('Welcome '+name+', you may enter the clubhouse!');
@@ -127,14 +125,13 @@ function login(){
 		}else if (sessionStorage && sessionStorage.getItem('incoming-scan') == 'yes' && type != 'admin' && type != 'member'){
 			// show not ok
 			$('.scan-page .not-ok-wrapper').removeClass('hide');
-			$('.scan-page .not-ok-wrapper h4').html('You cannot enter, '+c_user+', because you are not a member!');
+			$('.scan-page .not-ok-wrapper h4').html('You cannot enter, '+name+', because you are not a member!');
 			$('.scan-page .ok-wrapper').addClass('hide');
 			show_screen('.scan-page');
 			sessionStorage.removeItem('incoming-scan');
 		}else{
-			check();
+			//scan_check();
 			show_screen('.member-page');
-			set_current_screen('.member-page');
 		}
 	}else{
 		$('.login-error').html('Oops either username or password is wrong. Please try again.');
@@ -142,8 +139,8 @@ function login(){
 }
 
 function logout(){
+	show_screen('.welcome');
 	sessionStorage.clear();
-	set_current_screen('.welcome');
 	check();
 }
 
@@ -177,7 +174,6 @@ function show_screen(screen){
 
 function hide_screen(screen){
 	$(screen).addClass('screen-hide').removeClass('screen-show');
-	//set_current_screen('.member-page');
 }
 
 function hide_all_screens(){
@@ -228,7 +224,7 @@ function adjust_member_list_scroll(){
 	$('.member-list .member-wrapper').css('width',(c*170)+"px");
 }
 
-function add_member(){
+function see_friends(){
 	var friends_html = "";
 	for (var j=0; j<people.length; j++){
 		if (people[j].type == "friend"){
@@ -249,7 +245,6 @@ function add_member(){
 	}
 	$('.friends-page .friends').html(friends_html);	
 	show_screen('.friends-page');
-	set_current_screen('.friends-page');
 }
 
 function see_members(){
@@ -275,7 +270,6 @@ function see_members(){
 	}
 	$('.members-page .members').html(members_html);	
 	show_screen('.members-page');
-	set_current_screen('.members-page');
 }
 
 function set_current_screen(screen){
@@ -312,7 +306,7 @@ function get_photos(){
 	};
 	var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, people[0].photos, options);
 	gallery.init();
-	set_current_screen('.photos-page');
+	show_screen('.photos-page');
 }
 
 function show_login_members(){
@@ -333,7 +327,6 @@ function show_login_members(){
 	}
 	members_html += "</div>";
 	$('.member-list').html(members_html);
-	set_current_screen('.login');
 }
 
 function choose_login_member(name){
@@ -345,6 +338,7 @@ function choose_login_member(name){
 
 $(document).ready(function(){
 	check();
+	scan_check();
 	
 	if (sessionStorage.getItem('currscreen')){
 		//hide_all_screens();	
@@ -352,7 +346,7 @@ $(document).ready(function(){
 		if (cs == '.members-page'){
 			see_members();
 		}else if (cs == '.friends-page'){
-			add_member();
+			see_friends();
 		}else if (cs == '.photos-page'){
 			get_photos();
 		}else if (cs == '.login'){	
